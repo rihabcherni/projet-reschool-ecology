@@ -1,108 +1,109 @@
 import React from 'react';
-import { Button,ThemeProvider,createTheme} from "@mui/material";
-import { useState } from "react";
-import {baseTheme, theme1} from "./style";
-import { deepmerge } from "@mui/utils";
-import { Route, Routes , BrowserRouter as Router} from 'react-router-dom';
+import { Route, Routes ,Navigate, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
-import InterfaceGestionnaire from './interface/gestionnaire/InterfaceGestionnaire';
-import InterfaceInternaute from './interface/internaute/InterfaceInternaute';
-import InterfaceResponsableEtablissement from './interface/responsable-etablissements/InterfaceResponsableEtablissement';
+/**** ---------------------internaute ------------------------ ****/
+	import InterfaceInternaute from './interface/internaute/InterfaceInternaute';
 
+/**** ---------------------internaute ------------------------ ****/
+/**** ---------------------gestionnaire ------------------------ ****/
+	import InterfaceGestionnaire from './interface/gestionnaire/InterfaceGestionnaire';
 
-import DashboardResponsableEtablissement from './interface/responsable-etablissements/pages/DashboardResponsableEtablissement';
-import LoginResponsableEtablissement from './interface/responsable-etablissements/pages/LoginResponsableEtablissement';
+	import Dashboard from './interface/gestionnaire/pages/Dashboard';
+	import MapGestionnaire from './interface/gestionnaire/pages/MapGestionnaire';
+	import Poubelles from './interface/gestionnaire/pages/Poubelles';
+	import Camion from './interface/gestionnaire/pages/Camion';
+	import Ouvrier from './interface/gestionnaire/pages/personnel/Ouvrier';
+	import ReparateurPoubelle from './interface/gestionnaire/pages/personnel/ReparateurPoubelle';
+	import ReparateurCamion from './interface/gestionnaire/pages/personnel/ReparateurCamion';
+	import ResponsableEtablissement from './interface/gestionnaire/pages/clients/ResponsableEtablissement';
+	import ClientDechet from './interface/gestionnaire/pages/clients/ClientDechet';
+	import Fournisseur from './interface/gestionnaire/pages/productionPoubelle/Fournisseur';
+	import CommandeDechets from './interface/gestionnaire/pages/commande/CommandeDechets';
+	import CommandePoubelle from './interface/gestionnaire/pages/commande/CommandePoubelle';
+	import CalendrierGestionnaire from './interface/gestionnaire/pages/CalendrierGestionnaire';
+	import LoginGestionnaire from './interface/gestionnaire/pages/LoginGestionnaire';
+/**** ----------------------gestionnaire ------------------------ ****/
+/**** ----------------------responsable Etablissement ------------------------ ****/
+	import InterfaceResponsableEtablissement from './interface/responsable-etablissements/InterfaceResponsableEtablissement';
 
-
-import Dashboard from './interface/gestionnaire/pages/Dashboard';
-
-import MapGestionnaire from './interface/gestionnaire/pages/MapGestionnaire';
-import Poubelles from './interface/gestionnaire/pages/Poubelles';
-import Camion from './interface/gestionnaire/pages/Camion';
-
-import Ouvrier from './interface/gestionnaire/pages/personnel/Ouvrier';
-import ReparateurPoubelle from './interface/gestionnaire/pages/personnel/ReparateurPoubelle';
-import ReparateurCamion from './interface/gestionnaire/pages/personnel/ReparateurCamion';
-
-import ResponsableEtablissement from './interface/gestionnaire/pages/clients/ResponsableEtablissement';
-import ClientDechet from './interface/gestionnaire/pages/clients/ClientDechet';
-
-import Fournisseur from './interface/gestionnaire/pages/Fournisseur';
-
-import CommandeDechets from './interface/gestionnaire/pages/commande/CommandeDechets';
-import CommandePoubelle from './interface/gestionnaire/pages/commande/CommandePoubelle';
-
-import LoginGestionnaire from './interface/gestionnaire/pages/LoginGestionnaire';
-
-
+	import DashboardResponsable from './interface/responsable-etablissements/pages/DashboardResponsable';
+	import CommanderResponsable from './interface/responsable-etablissements/pages/CommandeResponsable';
+	import CalendrierResponsable from './interface/responsable-etablissements/pages/CalendrierResponsable';
+	import MapResponsable from './interface/responsable-etablissements/pages/MapResponsable';
+	import PannePoubelleEtablissement from './interface/responsable-etablissements/pages/PannePoubelleEtablissement';
+	import PoubelleEtablissement from './interface/responsable-etablissements/pages/PoubelleEtablissement';
+	import PanierResponsable from './interface/responsable-etablissements/pages/PanierResponsable';
+	import LoginResponsable from './interface/responsable-etablissements/pages/LoginResponsable';
+	import StockPoubelle from './interface/gestionnaire/pages/productionPoubelle/StockPoubelle';
+	import MateriauxPrimaire from './interface/gestionnaire/pages/productionPoubelle/MateriauxPrimaire';
+/**** ----------------------responsable Etablissement ------------------------ ****/
+import axios from 'axios';
+import Page401 from './Global/error-pages/Page401';
 const PageNotFound=()=><div>page not found</div>
+
+axios.defaults.baseURL= "http://127.0.0.1:8000/";
+axios.defaults.headers.post['Content-type']="application/json";
+axios.defaults.headers.post['Accept']="application/json";
+
+axios.defaults.withCredentials = true;
+axios.interceptors.request.use(function(config){
+	const token=localStorage.getItem('auth_token_gestionnaire');
+	config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
+	return config;
+})
+
 function App() {
-	const [theme, setTheme] = useState(baseTheme);
-    const handleSwitch = (whichTheme) => {
-      const newTheme = deepmerge(theme, whichTheme);
-      setTheme(createTheme(newTheme));
-    };
-return (
-	<>
-	<ThemeProvider theme={theme}>
+	return (
+		<>
+			<Router>
+				<Routes>
+					<Route path='/' element={<InterfaceInternaute/>}></Route>
+					<Route path="/gestionnaire/login" element={localStorage.getItem('auth_token_gestionnaire') ? <Navigate replace to="/gestionnaire" />: <LoginGestionnaire/>}/>
+					<Route path='/gestionnaire' element={localStorage.getItem('auth_token_gestionnaire')?<InterfaceGestionnaire/>:<Page401/>}>
+						<Route index element={<Dashboard/>}/>
+						<Route path='map' element={<MapGestionnaire/>}/>
+						<Route path='poubelles' element={<Poubelles/>}/>
+						<Route path='camions' element={<Camion/>}/>
 
-		<Router>
-			<Routes>
-				<Route path='/' element={<InterfaceInternaute/>}>
-					<Route index element={<Dashboard/>}/>
-					<Route path='/about-as' element={<Dashboard/>}/>
-					<Route path='/mission' element={<Dashboard/>}/>
-					<Route path='/dashboard' element={<Dashboard/>}/>
-				</Route>
-				
-				<Route path='/gestionnaire' element={<InterfaceGestionnaire/>}>
-					<Route index element={<Dashboard/>}/>
-					<Route path='map' element={<MapGestionnaire/>}/>
-					<Route path='poubelles' element={<Poubelles/>}/>
-					<Route path='camions' element={<Camion/>}/>
+						<Route path='personnel/ouvriers' element={<Ouvrier/>}/>
+						<Route path='personnel/reparateurs-poubelle' element={<ReparateurPoubelle/>}/>		
+						<Route path='personnel/reparateurs-camion' element={<ReparateurCamion/>}/>
+						
+						<Route path='clients/responsables-etablissements' element={<ResponsableEtablissement/>}/>
+						<Route path='clients/acheteurs-dechets' element={<ClientDechet/>}/>
+						
+						<Route path='production/fournisseurs' element={<Fournisseur/>}/>
+						<Route path='production/stock-poubelles' element={<StockPoubelle/>}/>
+						<Route path='production/materiaux-primaires' element={<MateriauxPrimaire/>}/>
 
-					<Route path='personnel/ouvriers' element={<Ouvrier/>}/>
-					<Route path='personnel/reparateurs-poubelle' element={<ReparateurPoubelle/>}/>		
-					<Route path='personnel/reparateurs-camion' element={<ReparateurCamion/>}/>
+						<Route path='commandes-poubelles' element={<CommandePoubelle/>}/>
+						<Route path='commandes-dechets' element={<CommandeDechets/>}/>
 					
-					<Route path='clients/responsables-etablissements' element={<ResponsableEtablissement/>}/>
-					<Route path='clients/acheteurs-dechets' element={<ClientDechet/>}/>
-					<Route path='fournisseurs' element={<Fournisseur/>}/>
+						<Route path='calendrier' element={<CalendrierGestionnaire/>}/>
+					
+					</Route>
 
-					<Route path='commandes-poubelles' element={<CommandePoubelle/>}/>
-					<Route path='commandes-dechets' element={<CommandeDechets/>}/>
-				</Route>
-				<Route path="/gestionnaire/login" element={<LoginGestionnaire />} />
+					<Route path='/responsable-etablissement' element={<InterfaceResponsableEtablissement/>}>
+						<Route index element={<DashboardResponsable/>}/>
+						<Route path='map' element={<MapResponsable/>}/>
+						<Route path='poubelle' element={<PoubelleEtablissement/>}/>
+						<Route path='panne-poubelle' element={<PannePoubelleEtablissement/>}/>
+						<Route path='calendrier' element={<CalendrierResponsable/>}/>
+						<Route path='commander' element={<CommanderResponsable/>}/>
+						<Route path='panier' element={<PanierResponsable/>}/>
 
-				<Route path='/responsable-etablissement' element={<InterfaceResponsableEtablissement/>}>
-					<Route index element={<Dashboard/>}/>
-					<Route path='dashboard' element={<DashboardResponsableEtablissement/>}/>
-
-				</Route>
-				<Route path="/responsable-etablissement/login" element={<LoginResponsableEtablissement />} />
-
-
-				<Route path="*" element={<PageNotFound />} />
+					</Route>
+					<Route path="/responsable-etablissement/login" element={localStorage.getItem('auth_token_responsable') ? <Navigate replace to="/responsable-etablissement" />: <LoginResponsable/>}/>
 
 
-			</Routes>
-		</Router>
-		<Button
-		onClick={() => setTheme(baseTheme)}
-		variant="contained"
-		color="primary"
-	>
-		Reset
-	</Button>
+					<Route path="*" element={<PageNotFound />} />
 
-	<Button onClick={() => handleSwitch(theme1)} variant="contained">
-		Theme 
-	</Button>
-	</ThemeProvider>
-	</>
 
-);
-}
+				</Routes>
+			</Router>
+		</>
+	);
+   }
 
 export default App;
 

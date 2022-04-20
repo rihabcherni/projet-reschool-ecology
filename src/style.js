@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material/styles";
 export const baseTheme = createTheme({
   palette: {
     primary: {
-      main: "#000000"
+      main: "#4caf50"
     },
     secondary: {
       main: "#ffffff"
@@ -23,7 +23,7 @@ export const baseTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          background: "#393e46"
+          background: "#4caf50"
         }
       },
       defaultProps: {
@@ -33,6 +33,39 @@ export const baseTheme = createTheme({
   }
 });
 
+export const dark = createTheme({
+  palette: {
+    mode:"dark",
+    primary: {
+      main: "#4caf50"
+    },
+    secondary: {
+      main: "#4caf10"
+    }
+  },
+  shape: {
+    borderRadius: 4
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        sx: {
+          margin: 1
+        }
+      }
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          background: "#ffffff"
+        }
+      },
+      defaultProps: {
+        elevation: 0
+      }
+    }
+  },
+});
 export const theme1 = {
     palette: {
       primary: {
@@ -52,16 +85,19 @@ export const theme1 = {
           }
         }
       },
+      MuiIcon: {
+        size: "large"
+      },
       MuiPaper: {
         styleOverrides: {
           root: {
-            background: "gray"
+            background: "green"
           }
         },
         defaultProps: {
           elevation: 20
         }
-      }
+      },
     }
   };
   

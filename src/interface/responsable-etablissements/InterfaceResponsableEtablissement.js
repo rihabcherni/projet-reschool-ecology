@@ -15,10 +15,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link ,Outlet } from 'react-router-dom';
 import FooterResponsable from './components/FooterResponsable'
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { MdOutlineRecycling } from "react-icons/md"
 
+
+
+import { MdOutlineRecycling } from "react-icons/md"
+import { BsFillBasketFill, BsTrashFill, BsTools } from "react-icons/bs";
+import { FaMapMarkedAlt, FaTruckMoving, FaRecycle, FaBars, FaMoneyBill, FaUser, FaUserTie ,FaCalendarDay} from "react-icons/fa";
+import { HiUsers } from 'react-icons/hi'
+import { ImUserTie, ImStatsDots } from "react-icons/im";
+import { VscTrash } from "react-icons/vsc";
 
 const drawerWidth = 260;
 
@@ -99,20 +104,26 @@ export default function InterfaceResponsableEtablissement() {
     setOpen(false);
   };
   const linkDetails = [
-    {id: 1, text: "dashboard",route:"/gestionnaire/login", icon: <InboxIcon/>},
-    {id: 2, text: "map",route:"/gestionnaire/login", icon: <MailIcon/>},
-    {id: 3, text: "calendrier",route:"/gestionnaire/login", icon: <InboxIcon/>},
-    {id: 4, text: "commander",route:"/gestionnaire/login", icon: <MailIcon/>},
-    {id: 5, text: "panier",route:"/gestionnaire/login", icon: <MailIcon/>}];
+    {id: 1, name: "dashboard",path:"/responsable-etablissement", icon: <ImStatsDots/>},
+    {id: 2, name: "map",path:"/responsable-etablissement/map", icon: <FaMapMarkedAlt/>},
+    {id: 3, name: "poubelle",path:"/responsable-etablissement/poubelle", icon: <BsTrashFill/>},
+    {id: 4, name: "Pannes Poubelle",path:"/responsable-etablissement/panne-poubelle", icon: <BsTools/>},
+
+    {id: 5, name: "calendrier",path:"/responsable-etablissement/calendrier", icon: <FaCalendarDay/>},
+  
+    {id: 6, name: "commander",path:"/responsable-etablissement/commander", icon: <VscTrash/>},
+    {id: 7, name: "panier",path:"/responsable-etablissement/panier", icon: <BsFillBasketFill/>}
+  
+  ];
 
     const liens = linkDetails.map(lien => 
-        <Link key={lien.id}   to={lien.route}>
+        <Link key={lien.id}   to={lien.path}>
             <ListItemButton  sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center',  px: 2.5,  }}>
                     <ListItemIcon sx={{  minWidth: 0, mr: open ? 4 :'auto',  justifyContent: 'center', }}  >
                             {lien.icon}
                     </ListItemIcon>
                         <ListItemText component="div" sx={{ opacity: open ? 1 : 0}}>
-                            {lien.text}
+                            {lien.name}
                         </ListItemText>
 
             </ListItemButton>

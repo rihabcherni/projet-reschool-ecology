@@ -1,33 +1,32 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
+import {Toolbar,Box,Button,ThemeProvider,createTheme, List, ListItem, IconButton,ListItemButton ,ListItemText,ListItemIcon,Collapse} from "@mui/material";
+import {baseTheme,theme1} from "../../style";
+import { deepmerge } from "@mui/utils";
 import CssBaseline from '@mui/material/CssBaseline';
+import MuiAppBar from '@mui/material/AppBar';
+import MuiDrawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import FooterGestionnaire from './components/FooterGestionnaire'
 import { Link  , Outlet} from 'react-router-dom';
-
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { MdOutlineRecycling } from "react-icons/md"
-import { BiSearch } from "react-icons/bi";
 import { BsFillBasketFill, BsTrashFill, BsTools } from "react-icons/bs";
-import { FaMapMarkedAlt, FaTruckMoving, FaRecycle, FaBars, FaMoneyBill, FaUser, FaUserTie } from "react-icons/fa";
+import { FaMapMarkedAlt, FaTruckMoving, FaRecycle, FaBars, FaMoneyBill, FaUser, FaUserTie,FaCalendarDay} from "react-icons/fa";
 import { HiUsers } from 'react-icons/hi'
 import { ImUserTie, ImStatsDots } from "react-icons/im";
 import { VscTrash } from "react-icons/vsc";
+import RightSideBarGestionnaire from './components/RightSidebar/RightSideBarGestionnaire';
+import Badge from '@mui/material/Badge';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Swal from "sweetalert";
+import {useNavigate} from "react-router-dom";
 
-const drawerWidth = 260;
-
+import axios from "axios";
+const drawerWidth = 280;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -36,7 +35,6 @@ const openedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -48,7 +46,6 @@ const closedMixin = (theme) => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -57,7 +54,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
-
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -75,7 +71,6 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
@@ -92,89 +87,227 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
   }),
 );
+function hasChildren(item) {
+  const { items: children } = item;
+  if (children === undefined) {
+    return false;
+  }
+  if (children.constructor !== Array) {
+    return false;
+  }
+  if (children.length === 0) {
+    return false;
+  }
+
+  return true;
+}
 
 export default function InterfaceGestionnaire() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const [theme2, setTheme2] = useState(baseTheme);
+  const handleSwitch = (whichTheme) => {
+    const newTheme = deepmerge(theme2, whichTheme);
+    setTheme2(createTheme(newTheme));
+  };
+  const MenuItem = ({ item }) => {
+    const Component = hasChildren(item) ? MultiLevel : SingleLevel;
+    return <Component item={item} />;
+  };
+  
+  const SingleLevel = ({ item }) => {
+    return (
+      <Link key={item.id}   to={item.path}> 
+          <ListItemButton   sx={{ maxHeight:40, justifyContent: open ? 'initial' : 'center',  px: 1}}>
+                  <ListItemIcon sx={{  minWidth: 0, mr: open ? 1 :'auto',  justifyContent: 'center', }}  >
+                  <IconButton
+                  color="secondary"
+                  size="medium"
+                >
+                          {item.icon } 
+                </IconButton>
+                  </ListItemIcon> 
+                  <ListItemText component="div" color="secondary" sx={{ opacity: open ? 1 : 0, color:"white", textDecoration:"none"}}> {item.name}</ListItemText>
+          </ListItemButton>
+     </Link>
+    );
+  };
+  
+  const MultiLevel = ({ item }) => {
+    const { items: children } = item;
+    const [openSubmenu, setOpenSubmenu] = useState(false);
+  
+    const handleClick = () => {
+      setOpenSubmenu((prev) => !prev);
+    };
+    return (
+      <React.Fragment>
+        <ListItem button onClick={handleClick}>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText primary={item.name} />
+          {openSubmenu ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </ListItem>
+        <Collapse in={openSubmenu} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {children.map((child, key) => (
+              <MenuItem key={key} item={child} />
+            ))}
+          </List>
+        </Collapse>
+      </React.Fragment>
+    );
+  };
+  const navigate = useNavigate();
+
+  const logoutSubmit= (e)=>{
+    e.preventDefault();
+    axios.post(`api/auth-gestionnaire/logout`).then(res=>{
+      if(res.data.status===200){
+        localStorage.removeItem('auth_token_gestionnaire');
+        localStorage.removeItem('auth_email');
+        Swal('Success',res.data.message,"success")
+        navigate("/")   
+      }
+    })
+  }
+
+  var AuthButtons='';
+  if(!localStorage.getItem('auth_token_gestionnaire')){
+    AuthButtons=(
+      <>
+        <Link to="/gestionnaire/login">Register Gestionnaire</Link>
+        <Link to="/register-gestionnaire">Login Gestionnaire</Link>
+      </>   )
+  }else{  AuthButtons=( <li><button onClick={logoutSubmit}>LogoutGestionnaire</button></li> )
+  }
   const linkDetails = [
     {id: 1, name: "Dashboard",  path:"/gestionnaire", icon: <ImStatsDots/>},
     {id: 2, name: "Map",  path:"/gestionnaire/map", icon: <FaMapMarkedAlt/>},
+
     {id: 3, name: "Poubelles", path:"/gestionnaire/poubelles", icon: <BsTrashFill/>},
     {id: 4, name: "Camions", path:"/gestionnaire/camions", icon: <FaTruckMoving/>},
    
-    {id: 5, name: "Ouvriers", path:"/gestionnaire/personnel/ouvriers", icon: <HiUsers/>},
-    {id: 6, name: "Réparateurs poubelle", path:"/gestionnaire/personnel/reparateurs-poubelle", icon: <BsTools/>},
-    {id: 7, name: "Réparateurs camion", path:"/gestionnaire/personnel/reparateurs-camion", icon: <BsTools/>},
-   
-    {id: 8, name: "Responsables Etablissement", path:"/gestionnaire/clients/responsables-etablissements", icon: <FaUser/>},
-    {id: 9, name: "Acheteurs de déchets", path:"/gestionnaire/clients/acheteurs-dechets", icon: <FaRecycle/>},
-    
-    {id: 10, name: "Fournisseurs", path:"/gestionnaire/fournisseurs", icon: <FaUserTie/>},
-   
-    {id: 11, name: "Commandes Poubelles", path:"/gestionnaire/commandes-poubelles", icon: <VscTrash/>},
-    {id: 12, name: "Commandes Déchets", path:"/gestionnaire/commandes-dechets", icon: <BsFillBasketFill/>},
+    {id: 5, name: "Production poubelle", icon: <HiUsers/>,
+      items: [
+        {id: 1, name: "Fournisseurs", path:"/gestionnaire/production/fournisseurs", icon: <FaUserTie/>},
+        {id: 2,name: "Stock poubelles", path:"/gestionnaire/production/stock-poubelles", icon: <VscTrash/>},
+        {id: 3,name: "Materiaux primaires", path:"/gestionnaire/production/materiaux-primaires", icon: <BsTools/>},
+      ]},
+    {id: 6, name: "Personnel", icon: <HiUsers/>,
+      items: [
+        {id: 1,name: "Ouvriers", path:"/gestionnaire/personnel/ouvriers", icon: <HiUsers/>},
+        {id: 2,name: "Réparateurs poubelle", path:"/gestionnaire/personnel/reparateurs-poubelle", icon: <BsTools/>},
+        {id: 3,name: "Réparateurs camion", path:"/gestionnaire/personnel/reparateurs-camion", icon: <BsTools/>},
+      ]},
+    {id: 7, name: "Clients", icon: <FaUser/>,
+    items: [
+      {id: 1,name: "Responsables Etablissement", path:"/gestionnaire/clients/responsables-etablissements", icon: <FaUser/>},
+      {id: 2,name: "Acheteurs de déchets", path:"/gestionnaire/clients/acheteurs-dechets", icon: <FaRecycle/>},
+    ]
+    },
+    {id: 8, name: "Commandes", icon: <BsFillBasketFill/>,
+    items: [
+      { id: 1,name: "Commandes Poubelles", path:"/gestionnaire/commandes-poubelles", icon: <VscTrash/>},
+      { id: 2,name: "Commandes Déchets", path:"/gestionnaire/commandes-dechets", icon: <BsFillBasketFill/>},
+    ]
+    },
+    {id: 9, name: "Pannes", icon: <BsFillBasketFill/>,
+    items: [
+      { id: 1,name: "Pannes Poubelles", path:"/gestionnaire/pannes-poubelles", icon: <VscTrash/>},
+      { id: 2,name: "Pannes Déchets", path:"/gestionnaire/pannes-dechets", icon: <BsFillBasketFill/>},
+    ]
+    },
+    {id:10, name: "Calendrier",path:"/gestionnaire/calendrier", icon: <FaCalendarDay/>},
+
   ];
-
-    const liens = linkDetails.map(lien => 
-        <Link key={lien.id}   to={lien.path}>
-            <ListItemButton  sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center',  px: 2.5,  }}>
-                    <ListItemIcon sx={{  minWidth: 0, mr: open ? 4 :'auto',  justifyContent: 'center', }}  >
-                            {lien.icon}
-                    </ListItemIcon>
-                        <ListItemText component="div" sx={{ opacity: open ? 1 : 0}}>
-                            {lien.name}
-                        </ListItemText>
-
-            </ListItemButton>
-        </Link> )
+  const liens = linkDetails.map((lien, key)=> 
+    <>
+     <MenuItem key={key} item={lien} />
+    </>
+      
+   );
+     
   return (
     <>
-        <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="fixed" open={open}>
-        <Toolbar>
-            <Box sx={{  marginRight: 5, ...(open && { display: 'none' })  }}>
-                    <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" >
-                        <MenuIcon /> 
+       <ThemeProvider theme={theme2}>
+          <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
+                <AppBar position="fixed" open={open} >
+                    <Toolbar>
+                        <Box sx={{  marginRight: 5, ...(open && { display: 'none' })  }}>
+                                <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" >
+                                    <MenuIcon /> 
+                                </IconButton>
+                                <MdOutlineRecycling/> Re school ecology 
+                        </Box>
+                       
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Button onClick={() => setTheme2(baseTheme)} variant="contained" color="primary" > Reset </Button>
+                        <Button onClick={() => handleSwitch(theme1)} variant="contained">Theme </Button>
+                       {AuthButtons}
+                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                          <IconButton size="large" aria-label="show 4 new mails" color="secondary">
+                            <Badge badgeContent={4} color="error">
+                              <MailIcon />
+                            </Badge>
+                          </IconButton>
+                          <IconButton
+                            size="large"
+                            aria-label="show 17 new notifications"
+                            color="secondary"
+                          >
+                            <Badge badgeContent={17} color="error">
+                              <NotificationsIcon />
+                            </Badge>
+                          </IconButton>
+                          <IconButton
+                            size="large"
+                            edge="end"
+                            aria-label="account of current user"
+                            aria-haspopup="true"
+                            color="secondary"
+                          >
+                            <AccountCircle />
+                          </IconButton>
+                        </Box>
+                        <RightSideBarGestionnaire/>
+
+                    </Toolbar>  
+                </AppBar>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <Typography variant="h6" noWrap component="div">
+                                <MdOutlineRecycling/>
+                                Re school ecology
+                        </Typography>
+                    <IconButton onClick={handleDrawerClose}>
+                      <MenuIcon/>
                     </IconButton>
-                    <MdOutlineRecycling/> Re school ecology 
-            </Box>
-         </Toolbar>
-         
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
-                <Typography variant="h6" noWrap component="div">
-                        <MdOutlineRecycling/>
-                        Re school ecology
-                </Typography>
-            <IconButton onClick={handleDrawerClose}>
-               <MenuIcon/>
-            </IconButton>
-            </DrawerHeader>
-            <Divider />
-            <List>
-                {liens}
-            </List>
-        
-            <Divider />
-
-        </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 4 }}>
-            <DrawerHeader />
-            <Outlet/>
-        </Box>
-        </Box>
-        <FooterGestionnaire/>
-
+                    </DrawerHeader>
+                    <List >
+                      {liens}             
+                    </List>
+                </Drawer>              
+                <Box component="main" sx={{ flexGrow: 1,p:2, backgroundColor: 'secondary', }}>
+                    <DrawerHeader />
+                    <Outlet/>
+                </Box>
+              
+          </Box>
+          <AppBar open={open} position="fixed" color="primary" sx={{ top: 'auto', bottom: 0, height:27,textAlign:'center'}}>
+              <Box>
+                Re school ecology © 2022    
+                <a href='https://www.facebook.com/RESCHOOL.EDUCATION/'> facebook</a>
+                <a href='https://www.facebook.com/RESCHOOL.EDUCATION/'> website</a>
+              </Box>
+          </AppBar>
+      </ThemeProvider>
     </>
   );
 }

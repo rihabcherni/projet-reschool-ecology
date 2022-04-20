@@ -1,12 +1,15 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import InterHeader from './InterHeader';
+import Interfooter from './InterFooter';
+import InterMain from './InterMain';
+
 
 export default function InterfaceInternaute() {
   return (
     <>
-        <div>Header InterfaceInternaute</div>
-        <div>Navbar InterfaceInternaute</div>
-        <Outlet/>
-        <div>Footer InterfaceInternaute</div>
+      <InterHeader/> 
+      <InterMain/>
+      <Interfooter/>
     </>  )
 }

@@ -11,7 +11,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
-const LoginGestionnaire=()=>{
+const LoginResponsable=()=>{
   function onChange(value) {
     console.log("Captcha value:", value);
   }
@@ -35,13 +35,13 @@ const LoginGestionnaire=()=>{
       axios.get('sanctum/csrf-cookie').then(response => {
                 console.log(response)
 
-        axios.post(`api/auth-gestionnaire/login`,data).then(res =>{
+        axios.post(`api/auth-responsable-etablissement/login`,data).then(res =>{
           if(res.data.status === 200){
-            localStorage.setItem('auth_token_gestionnaire',res.data.token);
+            localStorage.setItem('auth_token_responsable',res.data.token);
             localStorage.setItem('auth_email',res.data.email);
 
             Swal('Success',res.data.message,"success")
-            navigate("/gestionnaire")          
+            navigate("/responsable-etablissement")          
           }
             else if(res.data.status === 401){
             Swal ( "Oops" ,  res.data.validation_credentials,  "error" )
@@ -74,7 +74,7 @@ const LoginGestionnaire=()=>{
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
-                    <h2>Admin Login</h2>
+                    <h2>Responsable etablissement Login</h2>
                 </Grid>
             <form onSubmit={loginSubmit}>
                    <FormControl fullWidth variant="outlined" color="success">
@@ -153,4 +153,4 @@ const LoginGestionnaire=()=>{
     )
 }
 
-export default LoginGestionnaire;
+export default LoginResponsable;
