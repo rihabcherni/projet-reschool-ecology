@@ -1,7 +1,12 @@
 import React from 'react'
-
+import Carte1 from '../../components/ListeCarte/Carte'
+import ClientTable from '../../components/Table/GestionCompte/Client/ClientTable'
 export default function ClientDechet() {
   return (
-    <div>ClientDechet</div>
+    <>
+        <Carte1/>
+        <ClientTable/>
+    
+    </>
   )
 }

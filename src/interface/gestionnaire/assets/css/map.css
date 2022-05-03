@@ -1,0 +1,117 @@
+
+.data {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  
+  .plastique {
+    color: rgb(18, 102, 241) ;
+  }
+  .papier {
+    color: rgb(255, 173, 13);
+  }
+  .composte {
+    color: rgb(0, 183, 74) ;
+  }
+  .canette {
+    color: rgb(249, 49, 84) ;
+  }
+  
+  
+   .regionstyle1 {
+    fill: yellow  ;
+    stroke: #eee;
+    stroke-width: 1;
+    stroke:green;
+  }
+  
+   .regionstyle2{
+  
+    fill: purple;
+    stroke-width: 4;
+    stroke:red;
+  }
+  
+  .scroller {
+    display:block;
+    overflow:hidden;
+    overflow-y: scroll;
+    background-color: #E0E0E0;
+  }
+  .scroller::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .scroller::-webkit-scrollbar-thumb {
+    background-color: #90A4AE;
+    border-radius: 10px;
+  }
+  
+  
+  
+  .scroller::-webkit-scrollbar-track {
+    background-color: #CFD8DC;
+  }
+  
+  
+  
+  
+  .awssld__controls__arrow-lef, .awssld__controls__arrow-left{
+    width: 1px;
+    height: 10px;
+    margin-left: 20px;
+  }
+  
+   .awssld__controls__arrow-right, .awssld__controls__arrow-right{
+    width: 1px;
+    height: 10px;
+    margin-right: 40px;
+  }
+  .awssld__container figure, .awssld__content, .awssld__box {
+   background-color: rgb(241, 241, 241);
+  }
+  
+  .awssld__bullets button{
+    margin-top: -60px;
+    width: 7px;
+    height: 7px;
+  }
+  
+
+
+  
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background-color: #f1f1f1;
+}

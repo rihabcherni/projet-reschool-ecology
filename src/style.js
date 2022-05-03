@@ -1,4 +1,6 @@
 import { createTheme } from "@mui/material/styles";
+import Button  from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 
 export const baseTheme = createTheme({
   palette: {
@@ -100,4 +102,8 @@ export const theme1 = {
       },
     }
   };
-  
+export const ButtonTable = styled(Button)(({ theme }) => ({
+  maxWidth:"10px !important",
+  minWidth:"10px !important",
+  width: "10px"
+}));

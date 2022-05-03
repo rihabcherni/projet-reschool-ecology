@@ -1,7 +1,10 @@
 import React from 'react'
+import MecanicienTable from '../../components/Table/gestionPanne/Mecanicien/MecanicienTable'
 
 export default function ReparateurCamion() {
   return (
-    <div>Reparateur Camion Gestionnaire</div>
+    <>
+      <MecanicienTable/>
+    </>
   )
 }

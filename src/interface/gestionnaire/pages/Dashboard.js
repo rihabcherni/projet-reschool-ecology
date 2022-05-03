@@ -1,12 +1,36 @@
-import React from 'react'
+import React from 'react';
+import MapRegion from './mapRegion'
+import Chartline from "../components/ChartLine";
+import Barchart from "../components/BarChart"
+import Piechart from "../components/PieChart"
+import Counter from "../components/Counter"
+import '../css/Dashboard.css'
+import { Grid } from '@mui/material'
 
-export default function Dashboard() {
-  return (
-    <div>Dashboard gestionnaire
+const Dashboard = () => {
+    return (
+      <div className="container_dashboard">
+        <div className="title"> 
+          Dashboard  
+        </div>
+        <Counter/>
+        <Grid container>
+          <Grid item xs={6}> 
+            <Chartline/> 
+          </Grid>
+          <Grid item xs={6}> 
+            <Barchart/> 
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={4}> 
+            <Piechart/> 
+          </Grid>
+        </Grid>
+        <MapRegion/>
+
+      </div>
+    );
+  };
   
-    
-    
-    
-    </div>
-  )
-}
+export default Dashboard;

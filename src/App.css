@@ -23,3 +23,31 @@
   li{
       list-style: none;
   }
+    .ag-paging-panel{
+        background-color: rgb(155, 171, 149);
+    }
+    .ag-paging-row-summary-panel, .ag-paging-page-summary-panel{
+      color:white;
+    }
+
+    .ag-paging-panel .ag-icon{
+      font-weight: bolder;
+      background-color: rgb(85, 225, 125);
+      border-radius: 8px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding-top: 5px;
+    }
+    .ag-header-cell{
+      padding:0 20px !important;
+      text-align: center;
+    }
+    .ag-cell{
+      padding:0 15px !important;
+    }
+    .tableIcon{
+      max-width:"10px !important";
+      min-width:"10px !important";
+      width: 10px;
+    }

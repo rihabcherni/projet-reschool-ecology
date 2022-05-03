@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 import { Grid,Paper, Avatar, TextField, Button, Typography,Link,FormControl,FormHelperText,InputLabel,OutlinedInput,InputAdornment ,IconButton} from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -11,6 +11,16 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
+axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-responsable-etablissement";
+
+let token='';
+if(localStorage.getItem('auth_token_responsable')!==''){
+	 token=localStorage.getItem('auth_token_responsable');
+	 axios.interceptors.request.use(function(config){
+		config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
+		return config;
+    });
+}
 const LoginResponsable=()=>{
   function onChange(value) {
     console.log("Captcha value:", value);
@@ -33,30 +43,21 @@ const LoginResponsable=()=>{
         mot_de_passe:loginInput.mot_de_passe,
       }
       axios.get('sanctum/csrf-cookie').then(response => {
-                console.log(response)
-
         axios.post(`api/auth-responsable-etablissement/login`,data).then(res =>{
           if(res.data.status === 200){
             localStorage.setItem('auth_token_responsable',res.data.token);
-            localStorage.setItem('auth_email',res.data.email);
-
-            Swal('Success',res.data.message,"success")
-            navigate("/responsable-etablissement")          
-          }
-            else if(res.data.status === 401){
+            localStorage.setItem('auth_email_responsable',res.data.email);
+            window.location.reload();   
+            navigate("/responsable-etablissement");  
+            Swal('Success',res.data.message,"success");
+          }else if(res.data.status === 401){
             Swal ( "Oops" ,  res.data.validation_credentials,  "error" )
-
-          }  else{
+          }else{
             setLoginInput({...loginInput,error_list:res.data.validation_errors});
-
           }
-        })
-        
+        }) 
       })
     };
-
-
-
     const handleClickShowPassword = () => {
       setLoginInput({
         ...loginInput,
@@ -74,81 +75,80 @@ const LoginResponsable=()=>{
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
-                    <h2>Responsable etablissement Login</h2>
+                    <h2>Responsable Login</h2>
                 </Grid>
-            <form onSubmit={loginSubmit}>
-                   <FormControl fullWidth variant="outlined" color="success">
-                      <InputLabel htmlFor="mot_de_passe" >email</InputLabel>
-                      <OutlinedInput 
-                        id="outlined-adornment-email"
-                        type='text'
-                        name="email"
-                        value={loginInput.email}
-                        onChange={handleInput}
-                        placeholder='Entrer votre email'
-                        startAdornment={
-                          <InputAdornment position="start">
-                            <PersonIcon/>
-                          </InputAdornment>
-                        }  
-                        error={!!loginInput.error_list.email}
-  
-                        label="email" />
-                        <FormHelperText error={true}>
-                        {loginInput.error_list.email}           
-                       </FormHelperText> 
-                  </FormControl>
-                  
-                  <FormControl fullWidth sx={{ marginTop: 2 }} variant="outlined" color="success" >
-                      <InputLabel htmlFor="outlined-adornment-password" >mot de passe</InputLabel>
-                      <OutlinedInput 
-                        id="outlined-adornment-password"
-                        type={loginInput.showPassword ? 'text' : 'password'}
-                        value={loginInput.mot_de_passe}
-                        name="mot_de_passe"
-                        onChange={handleInput}
-                        placeholder='Entrer votre mot de passe'
-                        startAdornment={
-                          <InputAdornment position="start">
-                            <LockIcon/>
-                          </InputAdornment>
-                        }
-                        endAdornment={<InputAdornment position="end">
-                                        <IconButton
-                                          aria-label="toggle password visibility"
-                                          onClick={handleClickShowPassword}
-                                          onMouseDown={handleMouseDownPassword}
-                                          edge="end" >
-                                            {loginInput.showPassword ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                      </InputAdornment>
-                        }
-                        error={!!loginInput.error_list.mot_de_passe}
-
-                        label="mot de passe" /> 
-                        <FormHelperText error={true}>
-                        {loginInput.error_list.mot_de_passe}           
-                       </FormHelperText> 
-                  </FormControl>
-
-
-                  <FormControlLabel control={ <Checkbox name="rememberme" color="success"/>} label="Remember me" />
-                  <ReCAPTCHA
-                      sitekey='6LcApHsfAAAAAHz09e3JvjZHKzd-8xV4d3BhmeQH'
+                <form onSubmit={loginSubmit}>
+                      <FormControl fullWidth variant="outlined" color="success">
+                          <InputLabel htmlFor="mot_de_passe" >email</InputLabel>
+                          <OutlinedInput 
+                            id="outlined-adornment-email"
+                            type='text'
+                            name="email"
+                            value={loginInput.email}
+                            onChange={handleInput}
+                            placeholder='Entrer votre email'
+                            startAdornment={
+                              <InputAdornment position="start">
+                                <PersonIcon/>
+                              </InputAdornment>
+                            }  
+                            error={!!loginInput.error_list.email}
+      
+                            label="email" />
+                            <FormHelperText error={true}>
+                            {loginInput.error_list.email}           
+                          </FormHelperText> 
+                      </FormControl>
                       
-                      onChange={onChange}
-                    />
-                                  
-                  <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
-                  <Typography sx={{textAlign:"center"}}>
-                      <Link href="#" >
-                          Forgot password ?
-                  </Link>
-                  </Typography>
-            </form>
-              
+                      <FormControl fullWidth sx={{ marginTop: 2 }} variant="outlined" color="success" >
+                          <InputLabel htmlFor="outlined-adornment-password" >mot de passe</InputLabel>
+                          <OutlinedInput 
+                            id="outlined-adornment-password"
+                            type={loginInput.showPassword ? 'text' : 'password'}
+                            value={loginInput.mot_de_passe}
+                            name="mot_de_passe"
+                            onChange={handleInput}
+                            placeholder='Entrer votre mot de passe'
+                            startAdornment={
+                              <InputAdornment position="start">
+                                <LockIcon/>
+                              </InputAdornment>
+                            }
+                            endAdornment={<InputAdornment position="end">
+                                            <IconButton
+                                              aria-label="toggle password visibility"
+                                              onClick={handleClickShowPassword}
+                                              onMouseDown={handleMouseDownPassword}
+                                              edge="end" >
+                                                {loginInput.showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                          </InputAdornment>
+                            }
+                            error={!!loginInput.error_list.mot_de_passe}
 
+                            label="mot de passe" /> 
+                            <FormHelperText error={true}>
+                            {loginInput.error_list.mot_de_passe}           
+                          </FormHelperText> 
+                      </FormControl>
+
+
+                      <FormControlLabel control={ <Checkbox name="rememberme" color="success"/>} label="Remember me" />
+                      <ReCAPTCHA
+                          sitekey='6LcApHsfAAAAAHz09e3JvjZHKzd-8xV4d3BhmeQH'
+                          
+                          onChange={onChange}
+                        />
+                                      
+                      <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                      <Typography sx={{textAlign:"center"}}>
+                          <Link href="#" >
+                              Forgot password ?
+                      </Link>
+                      </Typography>
+                </form>
             </Paper>
+        
         </Grid>
     )
 }
