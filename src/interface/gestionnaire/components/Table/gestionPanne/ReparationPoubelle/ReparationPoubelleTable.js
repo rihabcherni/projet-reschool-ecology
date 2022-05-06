@@ -26,7 +26,7 @@ export default function ReparationPoubelleTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/reparation-poubelle`
+  const url = `http://127.0.0.1:8000/api/reparation-poubelle`
   const columnDefs = [
     { headerName: "id reparation poubelle", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "id_poubelle", field: "id_poubelle"},

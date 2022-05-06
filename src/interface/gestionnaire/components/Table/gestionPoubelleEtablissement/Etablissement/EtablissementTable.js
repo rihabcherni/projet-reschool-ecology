@@ -26,7 +26,7 @@ export default function EtablissementTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/etablissement`
+  const url = `http://127.0.0.1:8000/api/etablissement`
   const columnDefs = [
     { headerName: "ID", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true, maxWidth: 105},
     { headerName: "zone travail", field: "zone_travail_id", maxWidth: 135 },

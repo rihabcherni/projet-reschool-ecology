@@ -51,3 +51,95 @@
       min-width:"10px !important";
       width: 10px;
     }
+
+
+
+
+
+
+
+
+
+
+
+    :root{
+      --light-red-color: 	#32CD32;
+      --dark-red-color: rgb(167, 167, 167);
+      --white-color: #fff;
+      --light-black-color: #404040;
+      --border-radius: 10px;
+  }
+  .card-template{
+      display: flex;
+      color: var(--light-black-color);
+      border: #d8d8df solid 1px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius:var(--border-radius);
+      max-height: 200px;
+      margin: 10px;
+  }
+  
+  .card-template-1{
+      flex-direction: row;
+  }
+  
+  .card-template .left-part{
+      display: flex;
+      padding:10px 10px;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+  }
+  
+  .card-template-1 .left-part{
+      background: var(--light-red-color);
+      border-top-left-radius: var(--border-radius);
+      border-bottom-left-radius: var(--border-radius);
+      border-right: 2px solid var(--dark-red-color);
+      color:white;
+  }
+  
+  .card-template .left-part img{
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 25px 0 -20px 0;
+
+  }
+  
+  .card-template .right-part *{
+      position: relative;
+      z-index: 1;
+  }
+  .card-template .right-part li{
+    margin-left: 10px;
+}
+  .card-template .right-part{
+      padding: 5px;
+      flex: 1;
+      position: relative;
+      text-align: left;
+  }
+  .icon-card{
+   font-size: 15px !important;
+   color: green !important;
+}
+  
+  .card-template-1 .right-part {
+      border-top-right-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      background: linear-gradient(to right, var(--light-red-color) 50%, var(--white-color) 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+      transition: all .5s ease-in-out;
+      padding:0 1px;
+  }
+  
+  .card-template-1 .right-part:hover{
+      transition: all 2s ease;
+      background-position: left bottom;
+  }
+  .card-template-1 .right-part:hover *{
+    color: white !important;
+}
+  

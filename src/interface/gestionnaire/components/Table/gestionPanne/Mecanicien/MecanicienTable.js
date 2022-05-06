@@ -26,12 +26,12 @@ export default function MecanicienTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/mecanicien`
+  const url = `http://127.0.0.1:8000/api/mecanicien`
   const columnDefs = [
     { headerName: "id mecanicien", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://ami.monconstat.tech/storage/images/mecanicien/${params.data.photo}`}alt="mecanicien" />},
+          src={`http://127.0.0.1:8000/storage/images/mecanicien/${params.data.photo}`}alt="mecanicien" />},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
     { headerName: "CIN", field: "CIN"},

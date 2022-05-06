@@ -27,14 +27,14 @@ export default function OuvrierTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/ouvrier`
+  const url = `http://127.0.0.1:8000/api/ouvrier`
   const columnDefs = [
     { headerName: "ID", field: "id", width:"100",headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "zone_travail_id", field: "zone_travail_id"},
     { headerName: "camion_id", field: "camion_id"},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
       <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://ami.monconstat.tech/storage/images/ouvrier/${params.data.photo}`} alt="ouvrier" />},
+          src={`http://127.0.0.1:8000/storage/images/ouvrier/${params.data.photo}`} alt="ouvrier" />},
     { headerName: "qrcode", field: "qrcode"},
     { headerName: "poste", field: "poste"},
     { headerName: "nom", field: "nom"},

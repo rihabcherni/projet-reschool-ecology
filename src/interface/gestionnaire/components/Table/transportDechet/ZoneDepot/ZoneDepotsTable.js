@@ -26,7 +26,7 @@
       setOpen(false);
       setFormData(initialValue)
     };
-    const url = `https://ami.monconstat.tech/api/zone-depot`
+    const url = `http://127.0.0.1:8000/api/zone-depot`
     const columnDefs = [
       { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
       { headerName: "adresse", field: "adresse"},

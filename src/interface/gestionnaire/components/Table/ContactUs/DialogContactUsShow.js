@@ -4,8 +4,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { TextField } from '@mui/material';
 
-export default function DialogZoneTravailShow({open,handleClose,data}) {
+export default function DialogContactUsShow({open,handleClose,data}) {
     console.log(data)
   return (
     <div>
@@ -21,11 +22,11 @@ export default function DialogZoneTravailShow({open,handleClose,data}) {
         >
                 <ul>
                     <li><b>Identifiant:</b>{data.id}</li>
-                    <li><b>Region:</b>{data.region}</li>
-                    <li><b>Quantité total collecté plastique:</b>{data.quantite_total_collecte_plastique}</li>
-                    <li><b>Quantité total collecté composte:</b>{data.quantite_total_collecte_composte}</li>
-                    <li><b>Quantité total collecté papier:</b>{data.quantite_total_collecte_papier}</li>
-                    <li><b>Quantité total collecté canette:</b>{data.quantite_total_collecte_canette}</li>
+                    <li><b>nom:</b>{data.nom}</li>
+                    <li><b>prenom:</b>{data.prenom}</li>
+                    <li><b>email:</b>{data.email}</li>
+                    <li><b>numero_telephone:</b>{data.numero_telephone}</li>
+                    <li><b>message:</b>{data.message}</li>
                     <li><b>Date de création :</b>{data.created_at}</li>
                     <li><b>Date de mise à jour:</b>{data.updated_at}</li>
                 </ul>

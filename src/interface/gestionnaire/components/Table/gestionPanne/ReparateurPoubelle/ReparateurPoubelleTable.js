@@ -31,7 +31,7 @@ export default function ReparateurPoubelleTable() {
     { headerName: "id mecanicien", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://ami.monconstat.tech/storage/images/reparateur_poubelle/${params.data.photo}`}alt="reparateur-poubelle" />},
+          src={`http://127.0.0.1:8000/storage/images/reparateur_poubelle/${params.data.photo}`}alt="reparateur-poubelle" />},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
     { headerName: "CIN", field: "CIN"},

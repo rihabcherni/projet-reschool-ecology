@@ -25,7 +25,7 @@ export default function MateriauxPrimairesTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/materiaux-primaires`
+  const url = `http://127.0.0.1:8000/api/materiaux-primaires`
   const columnDefs = [
     { headerName: "ID", field: "id" },
     { headerName: "id_fournisseur", field: "id_fournisseur", },

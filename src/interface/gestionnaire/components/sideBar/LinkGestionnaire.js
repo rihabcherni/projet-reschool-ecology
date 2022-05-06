@@ -6,6 +6,8 @@ import { VscTrash } from "react-icons/vsc";
 import { FaMapMarkedAlt, FaTruckMoving, FaRecycle, FaTrash, FaUser, FaUserTie,FaCalendarDay} from "react-icons/fa";
 import { RiShoppingBasketFill } from "react-icons/ri"
 import { MdReportProblem,MdLogout } from "react-icons/md"
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 export const linkDetailsGestionnaire = [
     {id: 1, name: "Dashboard",  path:"/gestionnaire", icon: <ImStatsDots/>},
@@ -45,5 +47,7 @@ export const linkDetailsGestionnaire = [
     ]
     },
     {id:10, name: "Calendrier",path:"/gestionnaire/calendrier", icon: <BsFillCalendarDateFill/>},
+    {id:11, name: "Gestionnaire liste",path:"/gestionnaire/liste-gestionnaire", icon: <AdminPanelSettingsIcon/>},
+    {id:12, name: "Contact-us",path:"/gestionnaire/contact-us", icon: <ContactsIcon/>},
 
   ];

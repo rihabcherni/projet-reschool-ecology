@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography'
 import { Icon, Statistic } from 'semantic-ui-react'
 
 
-const dashboardURL = 'https://ami.monconstat.tech/api/dashboard'
-const DechetsURL = 'https://127.0.0.1:8000/api/somme-total-dechet-zone-depot'
+const dashboardURL = 'https://reschoolecology.tech/api/dashboard'
+const DechetsURL = 'https://reschoolecology.tech/api/somme-total-dechet-zone-depot'
 
 export default function Counter() {
     // const [count, setcount] = React.useState([])

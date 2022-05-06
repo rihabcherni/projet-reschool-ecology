@@ -40,7 +40,7 @@ export default function ZoneTravailTable() {
     setOpenShow(false);
   };
 
-  const url = `https://ami.monconstat.tech/api/zone-travail`
+  const url = `http://127.0.0.1:8000/api/zone-travail`
   const columnDefs = [
     { headerName: "ID", field: "id" , maxWidth: 65},
     { headerName: "region", field: "region", maxWidth: 100},

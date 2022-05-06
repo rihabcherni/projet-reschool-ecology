@@ -26,7 +26,7 @@ export default function DechetsTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/dechets`
+  const url = `http://127.0.0.1:8000/api/dechets`
   const columnDefs = [
     { headerName: "id dechets", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "type_dechet", field: "type_dechet"},

@@ -10,7 +10,7 @@ const Piechart = () => {
     const [zones, setZones] = React.useState([])
     useEffect(() => {
         ;(async function getStatus() {
-        const response = await fetch('https://ami.monconstat.tech/api/zone-travail')
+        const response = await fetch('https://reschoolecology.tech/api/zone-travail')
         const json = await response.json()
 
         setTimeout(getStatus, 60000)

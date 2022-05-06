@@ -40,18 +40,18 @@ export default function InterMain() {
             numero_telephone:contactInput.numero_telephone,
             message:contactInput.message,
         }
-        axios.get('sanctum/csrf-cookie').then(response => {
           axios.post(`api/contact-us`,data).then(res =>{
             if(res.data.status === 200){
-              localStorage.setItem('auth_token_gestionnaire',res.data.token);
-              localStorage.setItem('auth_email_gestionnaire',res.data.email);       
+                console.log(res.data.data)
+
             }else{
-              setcontactInput({...contactInput,error_list:res.data.validation_errors});
+              setcontactInput({...contactInput,error_list:res.data.data});
+              console.log(res.data.data)
+
             }
           }) 
-        })
+        
       };
-
     const { isLoaded } = useLoadScript({
         googleMapsApiKey:"AIzaSyCM_y_hH1jw8ucuvhzfmGdKMloxPwBjbAo" ,
       });
@@ -192,7 +192,7 @@ export default function InterMain() {
                                             value={contactInput.nom}
                                             onChange={handleInput}
                                         />
-                                        {contactInput.error_list.nom}  
+                                       <p style={{color:"red" , fontWeight:"bolder"}}>{contactInput.error_list.nom}</p>           
                                     </Form.Field>
                                     <br/>
                                     <Form.Field>
@@ -203,7 +203,8 @@ export default function InterMain() {
                                         value={contactInput.prenom}
                                         onChange={handleInput}
                                     />
-                                    {contactInput.error_list.prenom}  
+                                    <p style={{color:"red" , fontWeight:"bolder"}}>{contactInput.error_list.prenom}</p>           
+
                                     </Form.Field>
                                 </Form.Group>
                                 <Form.Group widths='equal'>
@@ -216,7 +217,8 @@ export default function InterMain() {
                                         value={contactInput.email}
                                         onChange={handleInput}
                                     />
-                                    {contactInput.error_list.email}  
+                                    <p style={{color:"red" , fontWeight:"bolder"}}>{contactInput.error_list.email}</p>           
+
                                     </Form.Field>
                                 </Form.Group>
                                 <Form.Group widths='equal'>
@@ -229,7 +231,7 @@ export default function InterMain() {
                                      value={contactInput.numero_telephone}
                                      onChange={handleInput}
                                  />
-                                 {contactInput.error_list.numero_telephone}  
+                                 <p style={{color:"red" , fontWeight:"bolder"}}>{contactInput.error_list.numero_telephone}</p>           
                                  </Form.Field>
                              </Form.Group>
                                 <Form.Group widths='equal'>
@@ -241,8 +243,8 @@ export default function InterMain() {
                                     value={contactInput.message}
                                     onChange={handleInput}
                                 />
-                                {contactInput.error_list.message}     
                             </Form.Group>
+                            <p style={{color:"red" , fontWeight:"bolder"}}>{contactInput.error_list.message}</p>           
                                 <Button type='submit' color='green'>Submit</Button>
                             </Form>}
                         </Grid.Column>

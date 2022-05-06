@@ -26,7 +26,7 @@ export default function CamionsTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/camion`
+  const url = `http://127.0.0.1:8000/api/camion`
   const columnDefs = [
     { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "zone de travil", field: "zone_travail_id"},

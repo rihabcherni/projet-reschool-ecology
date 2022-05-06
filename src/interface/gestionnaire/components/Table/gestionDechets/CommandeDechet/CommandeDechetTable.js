@@ -27,7 +27,7 @@ import React, { useState,   useCallback, useEffect , useRef} from 'react';
       setOpen(false);
       setFormData(initialValue)
     };
-    const url = `https://ami.monconstat.tech/api/commande-dechet`
+    const url = `http://127.0.0.1:8000/api/commande-dechet`
     const columnDefs = [
       { headerName: "id zone depot", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
       { headerName: "id client", field: "client_dechet_id"},

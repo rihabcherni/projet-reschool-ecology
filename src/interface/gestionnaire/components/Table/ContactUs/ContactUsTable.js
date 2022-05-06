@@ -5,59 +5,41 @@ import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 import Button  from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import DialogGestionnaire from './dialogGestionnaire';
-import DialogGestionnaireShow from './DialogGestionnaireShow';
-import {ButtonTable} from '../../../../../../style'
+import DialogContactUsShow from './DialogContactUsShow';
+import {ButtonTable} from '../../../../../style'
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
-
-import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-const initialValue = { nom:"", prenom:"",CIN:"",photo:"", numero_telephone:"", email:"",mot_de_passe:"",created_at:"", updated_at:""}
-export default function GestionnaireTable() {
-  const gridRef = useRef();
-   
+import {Item , columnTypes , rowHeight, defaultColDef} from '../Table'
+const initialValue = { nom:"", prenom:"", numero_telephone:"", email:"",message:"",created_at:"", updated_at:""}
+export default function ContactUsable() {
+  const gridRef = useRef();  
   const [gridApi, setGridApi] = useState(null)
   const [tableData, setTableData] = useState(null)
-  const [open, setOpen] = React.useState(false);
   const [openShow, setOpenShow] = React.useState(false);
   const [formData, setFormData] = useState(initialValue)
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-    setFormData(initialValue)
-  };
+
   const handleClickOpenShow = () => {
     setOpenShow(true);
   };
   const handleCloseShow = () => {
     setOpenShow(false);
   };
-  const url = `http://127.0.0.1:8000/api/gestionnaire`
+
+  const url = `http://127.0.0.1:8000/api/contact-us`
   const columnDefs = [
     { headerName: "ID", field: "id", width:100,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
-    { headerName: "photo", field: "photo", cellRenderer: (params) =>
-    <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`http://127.0.0.1:8000/storage/images/gestionnaire/${params.data.photo}`}alt="gestionnaire" />},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
-    { headerName: "CIN", field: "CIN"},
     { headerName: "numero_telephone", field: "numero_telephone" },
     { headerName: "email", field: "email" },
-    { headerName: "mot_de_passe", field: "mot_de_passe"},
+    { headerName: "message", field: "message"},
     { headerName: "created_at", field: "created_at", type: ['dateColumn', 'nonEditableColumn']},
     { headerName: "updated_at", field: "updated_at", type: ['dateColumn', 'nonEditableColumn']},
     {
       headerName: "Actions",sortable:false,filter:false,maxWidth: 180, cellRenderer: (params) => <div>
       <ButtonTable variant="outlined" className='tableIcon' color="warning" onClick={() => handleShow(params.data)} style={{marginRight:"2px"}}><VisibilityIcon/></ButtonTable>
-      <ButtonTable variant="outlined" className='tableIcon' color="primary" onClick={() => handleUpdate(params.data)} style={{marginRight:"2px"}}><EditIcon/></ButtonTable>
-      <ButtonTable variant="outlined" className='tableIcon' color="error" onClick={() => handleDelete(params.value)}><DeleteIcon/></ButtonTable>
+        <Button variant="outlined" color="error" onClick={() => handleDelete(params.data)}><DeleteIcon/></Button>
       </div>
     }
   ]
@@ -74,45 +56,17 @@ export default function GestionnaireTable() {
   const onGridReady = (params) => {
     setGridApi(params)
   }
-  const handleUpdate = (oldData) => {
-    setFormData(oldData)
-    handleClickOpen()
+  const handleDelete = (oldData) => {
+    console.log(oldData.id)
+    const confirm = window.confirm("Êtes-vous sûr de vouloir supprimer cette ligne", oldData.id)
+    if (confirm) {
+      fetch(url + `/${oldData.id}`, { method: "DELETE" }).then(resp => resp.json()).then(resp => getData())
+
+    }
   }
   const handleShow = (oldData) => {
     setFormData(oldData)
     handleClickOpenShow()
-  }
-  const handleDelete = (id) => {
-    const confirm = window.confirm("Êtes-vous sûr de vouloir supprimer cette ligne", id)
-    if (confirm) {
-      fetch(url + `/${id}`, { method: "DELETE" }).then(resp => resp.json()).then(resp => getData())
-
-    }
-  }
-  const handleFormSubmit = () => {
-    if (formData.id) {
-      const confirm = window.confirm("Êtes-vous sûr de vouloir mettre à jour cette ligne ?")
-      confirm && fetch(url + `/${formData.id}`, {
-        method: "PUT", body: JSON.stringify(formData), headers: {
-          'content-type': "application/json"
-        }
-      }).then(resp => resp.json())
-        .then(resp => {
-          handleClose()
-          getData()
-
-        })
-    } else {
-      fetch(url, {
-        method: "POST", body: JSON.stringify(formData), headers: {
-          'content-type': "application/json"
-        }
-      }).then(resp => resp.json())
-        .then(resp => {
-          handleClose()
-          getData()
-        })
-    }
   }
   const onBtnExport = useCallback(() => {
     gridRef.current.api.exportDataAsCsv();
@@ -127,7 +81,7 @@ export default function GestionnaireTable() {
   }
   return (
     <div style={{width:"100%"}}>
-      <h2 align="center">gestionnaire</h2>
+      <h2 align="center">Contact Us</h2>
         <Grid  container direction="row" justifyContent="space-between" alignItems="flex-start" >
         <Item  style={{marginBottom:'8px'}}>
           <ManageSearchIcon variant="contained" color="success"  style={{marginBottom:"-7px"}} />
@@ -141,8 +95,6 @@ export default function GestionnaireTable() {
                   <option value='100'>100</option>
                 </select>
               <Button variant="contained" color="primary" onClick={onBtnExport} style={{marginRight:"5px"}}><FileDownloadIcon/></Button>
-              <Button  variant="contained" color="success" onClick={handleClickOpen}><AddIcon/></Button>
-              <Button  variant="contained" color="success" onClick={handleClickOpen}><AddIcon/></Button>
         </Item>
       
     </Grid>
@@ -151,11 +103,8 @@ export default function GestionnaireTable() {
                       onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight}
                       pagination={true} paginationPageSize={5}/>
     </div>
-        <DialogGestionnaire open={open} handleClose={handleClose}
-        data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} />
-        
-      <DialogGestionnaireShow open={openShow} handleClose={handleCloseShow}
-      data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} />
+      <DialogContactUsShow open={openShow} handleClose={handleCloseShow}
+      data={formData} onChange={onChange} />
     </div>
   );
 }

@@ -4,8 +4,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { TextField } from '@mui/material';
 
-export default function DialogZoneTravailShow({open,handleClose,data}) {
+export default function DialogGestionnaireShow({open,handleClose,data}) {
     console.log(data)
   return (
     <div>

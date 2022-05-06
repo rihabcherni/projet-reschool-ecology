@@ -12,7 +12,7 @@ import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogClient from './Dialogclient';
 import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
 
-const initialValue = { photo:"",nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",mot_de_passe:"",created_at:"", updated_at:""}
+const initialValue = { photo:"",nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",created_at:"", updated_at:""}
 export default function ClientTable() {
   const gridRef = useRef();
   const [gridApi, setGridApi] = useState(null)
@@ -26,19 +26,18 @@ export default function ClientTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/client`
+  const url = `http://127.0.0.1:8000/api/client`
   const columnDefs = [
     { headerName: "ID", field: "id", maxWidth:50,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://ami.monconstat.tech/storage/images/client/${params.data.photo}`} alt="client"/>},
+          src={`http://127.0.0.1:8000/storage/images/client/${params.data.photo}`} alt="client"/>},
     { headerName: "nom", field: "nom", maxWidth: 135 },
     { headerName: "prenom", field: "prenom", maxWidth: 135 },
     { headerName: "CIN", field: "CIN", maxWidth: 135 },
     { headerName: "numero_telephone", field: "numero_telephone" , maxWidth: 135 },
     { headerName: "email", field: "email", maxWidth: 135  },
     { headerName: "adresse", field: "adresse" , maxWidth: 135 },
-    { headerName: "mot_de_passe", field: "mot_de_passe", maxWidth: 135 },
     { headerName: "created_at", field: "created_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135 },
     { headerName: "updated_at", field: "updated_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135 },
     {

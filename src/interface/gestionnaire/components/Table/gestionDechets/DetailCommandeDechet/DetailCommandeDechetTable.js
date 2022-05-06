@@ -26,7 +26,7 @@ import React, { useState, useCallback, useEffect , useRef} from 'react';
       setOpen(false);
       setFormData(initialValue)
     };
-    const url = `https://ami.monconstat.tech/api/detail-commande-dechets`
+    const url = `http://127.0.0.1:8000/api/detail-commande-dechets`
     const columnDefs = [
       { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
       { headerName: "id commande_dechet", field: "id_commande_dechet"},

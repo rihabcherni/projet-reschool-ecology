@@ -26,7 +26,7 @@ export default function FournisseurTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/fournisseurs`
+  const url = `http://127.0.0.1:8000/api/fournisseurs`
   const columnDefs = [
     { headerName: "ID", field: "id", width:100,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>

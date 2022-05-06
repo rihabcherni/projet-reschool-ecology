@@ -25,7 +25,7 @@ export default function StockPoubelleTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/stock-poubelle`
+  const url = `http://127.0.0.1:8000/api/stock-poubelle`
   const columnDefs = [
     { headerName: "ID", field: "id" },
     { headerName: "capacite_poubelle", field: "capacite_poubelle", },

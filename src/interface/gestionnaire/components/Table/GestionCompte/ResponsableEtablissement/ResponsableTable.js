@@ -26,12 +26,12 @@ export default function ResponsableTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/gestionnaire`
+  const url = `http://127.0.0.1:8000/api/gestionnaire`
   const columnDefs = [
     { headerName: "ID", field: "id", width:100,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://ami.monconstat.tech/storage/images/gestionnaire/${params.data.photo}`}alt="gestionnaire" />},
+          src={`http://127.0.0.1:8000/storage/images/gestionnaire/${params.data.photo}`}alt="gestionnaire" />},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
     { headerName: "CIN", field: "CIN"},

@@ -26,7 +26,7 @@ export default function ReparationCamionTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/reparation-camion`
+  const url = `http://127.0.0.1:8000/api/reparation-camion`
   const columnDefs = [
     { headerName: "id reparation camion", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "camion_id", field: "camion_id"},

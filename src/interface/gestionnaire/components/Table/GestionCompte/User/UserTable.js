@@ -30,7 +30,7 @@ function UserTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/user`
+  const url = `http://127.0.0.1:8000/api/user`
   const columnDefs = [
     { headerName: "ID", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
     { headerName: "name", field: "name"},

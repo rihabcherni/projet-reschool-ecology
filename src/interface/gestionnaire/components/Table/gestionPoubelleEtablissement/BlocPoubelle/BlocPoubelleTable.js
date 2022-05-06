@@ -26,7 +26,7 @@ export default function BlocPoubelleTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/bloc-poubelle`
+  const url = `http://127.0.0.1:8000/api/bloc-poubelle`
   const columnDefs = [
     { headerName: "ID", field: "id" },
     { headerName: "id_etablissement", field: "id_etablissement", },

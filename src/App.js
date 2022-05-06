@@ -10,7 +10,7 @@ import './App.css';
 	import InterfaceGestionnaire from './interface/gestionnaire/InterfaceGestionnaire';
 
 	import Dashboard from './interface/gestionnaire/pages/Dashboard';
-	import MapGestionnaire from './interface/gestionnaire/pages/MapGestionnaire';
+	import MapGestionnaire from './interface/gestionnaire/pages/map/MapGestionnaire';
 	import Poubelles from './interface/gestionnaire/pages/GestionPoubelleEtablissement/Poubelles';
 	import Camion from './interface/gestionnaire/pages/TransportDechet/Camion';
 	import Ouvrier from './interface/gestionnaire/pages/personnel/Ouvrier';
@@ -23,6 +23,7 @@ import './App.css';
 	import CommandePoubelle from './interface/gestionnaire/pages/commande/CommandePoubelle';
 	import CalendrierGestionnaire from './interface/gestionnaire/pages/CalendrierGestionnaire';
 	import LoginGestionnaire from './interface/gestionnaire/pages/LoginGestionnaire';
+	import ContactUs from './interface/gestionnaire/pages/ContactUs/ContactUs';
 /**** ----------------------gestionnaire ------------------------ ****/
 /**** ----------------------responsable Etablissement ------------------------ ****/
 	import InterfaceResponsableEtablissement from './interface/responsable-etablissements/InterfaceResponsableEtablissement';
@@ -41,6 +42,7 @@ import './App.css';
 import axios from 'axios';
 import PannePoubelle from './interface/gestionnaire/pages/pannes/PannePoubelle';
 import PanneCamion from './interface/gestionnaire/pages/pannes/PanneCamion';
+import Gestionnaire from './interface/gestionnaire/pages/Gestionnaire';
 
 const PageNotFound=()=><div>page not found</div>
 
@@ -134,6 +136,8 @@ function App() {
 						<Route path='pannes-camions' element={<PanneCamion/>}/>
 					
 						<Route path='calendrier' element={<CalendrierGestionnaire/>}/>
+						<Route path='/gestionnaire/liste-gestionnaire' element={<Gestionnaire/>}/>
+						<Route path='/gestionnaire/contact-us' element={<ContactUs/>}/>
 					
 					</Route>
 					<Route path="/responsable-etablissement/login" element={!ResponsableAuth?<LoginResponsable/>:<div><Navigate replace to="/responsable-etablissement" /><InterfaceResponsableEtablissement/></div>}/>

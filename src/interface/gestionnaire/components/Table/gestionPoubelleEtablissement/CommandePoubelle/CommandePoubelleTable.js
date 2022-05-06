@@ -25,7 +25,7 @@ export default function CommandePoubelleTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `https://ami.monconstat.tech/api/commande-poubelle`
+  const url = `http://127.0.0.1:8000/api/commande-poubelle`
   const columnDefs = [
     { headerName: "ID", field: "id" },
     { headerName: "id_responsable_etablissement", field: "id_responsable_etablissement", },

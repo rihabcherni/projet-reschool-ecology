@@ -73,7 +73,7 @@ const MapRegion = () => {
 //     setStyle("regionstyle2");
 //   };
   function showMapData(stateRegion) {
-    fetch("https://ami.monconstat.tech/api/region-map")
+    fetch("http://127.0.0.1:8000/api/region-map")
       .then((e) => {
         return e.json();
       })
@@ -215,7 +215,7 @@ const MapRegion = () => {
                                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                                     <CardContent>
                                       <div className="scroller" style={{height:'340px'}}>                        
-                                          {etablissements.length!=0?(etablissements.map(etb =>
+                                          {etablissements.length!==0?(etablissements.map(etb =>
                                             <div key={etb.id} style={{ marginBottom:"0px"}}>
                                                 <p> {`${etb.nom_etablissement}`} : {`${etb.type_etablissement}`},  {`${etb.nbr_personnes}`} personnes</p>
                                                 <p>quantité dechets collectés :</p>
@@ -240,7 +240,7 @@ const MapRegion = () => {
                                               
                                               <div style={{margin:"0 15px 0 10px"}} component="nav" aria-labelledby="nested-list-subheader">   
                                                
-                                              {etb.bloc_etablissements.length!=0?(etb.bloc_etablissements.map(blocsEtb =>
+                                              {etb.bloc_etablissements.length!==0?(etb.bloc_etablissements.map(blocsEtb =>
                                                 <Accordion sx={{backgroundColor:'#D3D3D3'}}>
                                                         <AccordionSummary   expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                                                                 <ListItemIcon>
@@ -249,7 +249,7 @@ const MapRegion = () => {
                                                                 <Typography>{blocsEtb.nom_bloc_etablissement}</Typography>
                                                         </AccordionSummary>
                                                         <AccordionDetails>
-                                                                {blocsEtb.etage_etablissements.length!=0?(blocsEtb.etage_etablissements.map(etageEtb =>
+                                                                {blocsEtb.etage_etablissements.length!==0?(blocsEtb.etage_etablissements.map(etageEtb =>
                                                                     <Accordion>
                                                                             <AccordionSummary   expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#E0E0E0"}}>
                                                                                     <ListItemIcon>
@@ -258,7 +258,7 @@ const MapRegion = () => {
                                                                                         <span>{etageEtb.nom_etage_etablissement}</span>
                                                                             </AccordionSummary>
                                                                             <AccordionDetails  sx={{backgroundColor:"#E8E8E8"}}>
-                                                                                    {etageEtb.bloc_poubelles.length!=0?(etageEtb.bloc_poubelles.map(blocPoubelle =>
+                                                                                    {etageEtb.bloc_poubelles.length!==0?(etageEtb.bloc_poubelles.map(blocPoubelle =>
                                                                                         <Accordion>
                                                                                             <AccordionSummary   expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#F0F0F0"}}>
                                                                                                     <ListItemIcon>
@@ -268,7 +268,7 @@ const MapRegion = () => {
                                                                                             </AccordionSummary>
                                                                                             <AccordionDetails  sx={{backgroundColor:"#F0F0E0"}}>                 
                                                                                                     <AwesomeSlider >
-                                                                                                        {blocPoubelle.poubelles.length!=0?(blocPoubelle.poubelles.map(poubelle =>
+                                                                                                        {blocPoubelle.poubelles.length!==0?(blocPoubelle.poubelles.map(poubelle =>
                                                                                                             <div>
                                                                                                             <p>poubelle: {poubelle.type} </p>
                                                                                                             <p>{poubelle.nom}</p>

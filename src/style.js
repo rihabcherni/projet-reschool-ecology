@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import Button  from '@mui/material/Button';
+import Card  from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 
 export const baseTheme = createTheme({
@@ -105,5 +106,18 @@ export const theme1 = {
 export const ButtonTable = styled(Button)(({ theme }) => ({
   maxWidth:"10px !important",
   minWidth:"10px !important",
-  width: "10px"
+  width: "10px",
+  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
+}));
+
+export const CardMapDetails = styled(Card)(({ theme }) => ({
+  textAlign:"center",
+  minWidth:354, 
+  maxWidth: 354,
+  maxHeight:605, 
+  minHeight:605,
+  marginLeft:"5px", 
+  backgroundColor:"white", 
+  border:"2px solid #f0f0f0", 
+  boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
 }));
