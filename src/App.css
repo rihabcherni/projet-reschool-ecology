@@ -142,4 +142,7 @@
   .card-template-1 .right-part:hover *{
     color: white !important;
 }
-  
+
+  .Group-table .MuiToolbar-root , .MuiTable-root, .table-zone .MuiList-root {
+    background-color: white;
+  }

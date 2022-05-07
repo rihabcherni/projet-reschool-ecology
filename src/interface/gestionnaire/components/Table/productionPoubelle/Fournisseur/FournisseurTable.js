@@ -10,8 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogFournisseur from './DialogFournisseur';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
- 
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table' 
  const initialValue = { nom: "", prenom: "",CIN: "", photo: "",numero_telephone:"",email:"",adresse:""}
 export default function FournisseurTable() {
   const gridRef = useRef();

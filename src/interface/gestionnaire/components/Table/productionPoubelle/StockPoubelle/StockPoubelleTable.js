@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogStockPoubelle from './DialogStockPoubelle';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = {capacite_poubelle:"", quantite_disponible_plastique: "", quantite_disponible_canette: "",quantite_disponible_composte: "", quantite_disponible_papier: ""}
 export default function StockPoubelleTable() {
   const gridRef = useRef();

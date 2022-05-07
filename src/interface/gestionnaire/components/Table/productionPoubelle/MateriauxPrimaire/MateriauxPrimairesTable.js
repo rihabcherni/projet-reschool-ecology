@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogMateriauxPrimaires from './DialogMateriauxPrimaires';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table' 
 const initialValue = { id_fournisseur: "", nom_materiel: "",prix_unitaire: "", quantite: "",prix_total:""}
 export default function MateriauxPrimairesTable() {
   const gridRef = useRef();

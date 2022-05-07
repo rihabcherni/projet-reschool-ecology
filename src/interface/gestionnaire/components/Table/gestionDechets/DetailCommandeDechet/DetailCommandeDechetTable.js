@@ -10,8 +10,8 @@ import React, { useState, useCallback, useEffect , useRef} from 'react';
   import FileDownloadIcon from '@mui/icons-material/FileDownload';
   import ManageSearchIcon from '@mui/icons-material/ManageSearch';
   import DialogDetailCommandeDechet from './DialogDetailCommandeDechet';
-   import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
-  const initialValue = { commande_dechet_id:"", dechet_id:"", quantite:"",created_at:"", updated_at:""}
+   import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'  
+   const initialValue = { commande_dechet_id:"", dechet_id:"", quantite:"",created_at:"", updated_at:""}
   export default function DetailCommandeDechetTable() {
     const gridRef = useRef();
     const [gridApi, setGridApi] = useState(null)

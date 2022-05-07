@@ -10,7 +10,7 @@ import React, { useState,   useCallback, useEffect , useRef} from 'react';
   import FileDownloadIcon from '@mui/icons-material/FileDownload';
   import ManageSearchIcon from '@mui/icons-material/ManageSearch';
   import DialogDepot from './DialogDepot';
- import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+  import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
   const initialValue = { id_zone_depot:"", camion_id:"", date_depot:"", quantite_depose_plastique:"", quantite_depose_papier:"", quantite_depose_canette:"", quantite_depose_composte:"", prix_total:"",created_at:"", updated_at:""}
   export default function DepotTableTable() {
     const gridRef = useRef();

@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogResponsableEtablissement from './DialogResponsableEtablissement';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = { nom:"", prenom:"",CIN:"",photo:"", numero_telephone:"", email:"",mot_de_passe:"",created_at:"", updated_at:""}
 export default function ResponsableTable() {
   const gridRef = useRef();

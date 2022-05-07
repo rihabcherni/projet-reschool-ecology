@@ -10,7 +10,7 @@
   import FileDownloadIcon from '@mui/icons-material/FileDownload';
   import ManageSearchIcon from '@mui/icons-material/ManageSearch';  
   import DialogZoneDepot from './DialogZoneDepot';
-  import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table' 
+  import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
   const initialValue = { adresse:"" ,longitude:"" ,latitude:"", quantite_depot_maximale:"",quantite_depot_actuelle_plastique:"",
   quantite_depot_actuelle_papier:"",quantite_depot_actuelle_composte:"",quantite_depot_actuelle_canette:"",created_at:"", updated_at:""}
   export default function ZoneDepots() {

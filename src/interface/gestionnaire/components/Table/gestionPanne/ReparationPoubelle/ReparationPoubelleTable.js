@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogReparationPoubelle from './DialogReparationPoubelle';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = { id_poubelle:"", id_reparateur_poubelle:"", description_panne:"", cout:"",date_debut_reparation:"",date_fin_reparation:"",created_at:"", updated_at:""}
 export default function ReparationPoubelleTable() {
   const gridRef = useRef();

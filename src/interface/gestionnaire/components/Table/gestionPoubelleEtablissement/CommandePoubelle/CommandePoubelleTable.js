@@ -10,8 +10,8 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogCommandePoubelle from './DialogCommandePoubelle';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
- const initialValue = { id_responsable_etablissement: "", quantite: "",montant_total: "", date_commande: "",date_livraison:""}
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table' 
+const initialValue = { id_responsable_etablissement: "", quantite: "",montant_total: "", date_commande: "",date_livraison:""}
 export default function CommandePoubelleTable() {
   const gridRef = useRef();
   const [gridApi, setGridApi] = useState(null)

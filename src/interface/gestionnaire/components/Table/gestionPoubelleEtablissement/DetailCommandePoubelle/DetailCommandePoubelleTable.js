@@ -10,8 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogDetailCommandePoubelle from './DialogDetailCommandePoubelle';
-import {Item , columnTypes , rowHeight , defaultColDef} from '../../Table'
- 
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table' 
  const initialValue = { id_commande_poubelle: "", id_stock_poubelle: "",quantite: "", prix_unitaires: ""}
 export default function DetailCommandePoubelleTable() {
   const gridRef = useRef();

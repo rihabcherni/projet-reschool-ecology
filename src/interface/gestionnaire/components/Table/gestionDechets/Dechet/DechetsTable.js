@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogDechet from './DialogDechet';
- import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = { type_dechet:"", prix_unitaire:""}
 export default function DechetsTable() {
   const gridRef = useRef();

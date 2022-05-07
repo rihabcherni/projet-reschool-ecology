@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogBlocPoubelle from './DialogBlocPoueblle';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = { id_etablissement: "", emplacement: ""}
 export default function BlocPoubelleTable() {
   const gridRef = useRef();

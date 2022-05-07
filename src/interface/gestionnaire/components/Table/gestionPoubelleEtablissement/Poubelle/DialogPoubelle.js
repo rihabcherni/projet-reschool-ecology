@@ -7,7 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { TextField } from '@mui/material';
 
 export default function DialogPoubelle({open,handleClose,data,onChange,handleFormSubmit}) {
- const {id,bloc_poubelle_id,compteur,nom,qrcode,capacite_poubelle,type,Etat,temps_remplissage}=data
+ const {id,bloc_poubelle_id,compteur,nom,qrcode,capacite_poubelle,type,Etat,temps_remplissage,error_list}=data
 
   return (
     <div>

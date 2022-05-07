@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogEtablissement from './DialogEtablissement';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
  const initialValue = { zone_travail_id:"",id_responsable_etablissement:"",nom_etablissement:"", nbr_personnes:"",adresse:"",longitude:"",latitude:""
 ,quantite_dechets_plastique:"",quantite_dechets_composte:"",quantite_dechets_papier:"",quantite_dechets_canette:"",created_at:"", updated_at:""}
 export default function EtablissementTable() {

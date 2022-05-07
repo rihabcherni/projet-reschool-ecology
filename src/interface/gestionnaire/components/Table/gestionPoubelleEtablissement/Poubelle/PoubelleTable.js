@@ -10,8 +10,8 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogPoubelle from './DialogPoubelle';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
-const initialValue = { bloc_poubelle_id:"", nom:"",qrcode:"", capacite_poubelle:"", type:"",Etat:"",temps_remplissage:"",created_at:"", updated_at:""}
+import {Item , columnTypes , rowHeight, defaultColDef} from '../../ComponentsTable/Table'
+const initialValue = { bloc_poubelle_id:"", nom:"",qrcode:"", capacite_poubelle:"", type:"",Etat:"",temps_remplissage:"",created_at:"", updated_at:"",error_list:[]}
 export default function PoubelleTable() {
   const gridRef = useRef();
   const [gridApi, setGridApi] = useState(null)

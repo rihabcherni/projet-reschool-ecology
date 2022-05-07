@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogReparationCamion from './DialogReparationCamion';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../../Table'
+import {Item , columnTypes , rowHeight , defaultColDef} from '../../ComponentsTable/Table'
 const initialValue = { camion_id:"", id_mecanicien:"", description_panne:"", cout:"",date_debut_reparation:"",date_fin_reparation:"",created_at:"", updated_at:""}
 export default function ReparationCamionTable() {
   const gridRef = useRef();

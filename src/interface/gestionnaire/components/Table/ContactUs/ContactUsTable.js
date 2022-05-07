@@ -10,7 +10,7 @@ import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogContactUsShow from './DialogContactUsShow';
 import {ButtonTable} from '../../../../../style'
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../Table'
+import {Item , columnTypes , rowHeight, defaultColDef} from '../ComponentsTable/Table'
 const initialValue = { nom:"", prenom:"", numero_telephone:"", email:"",message:"",created_at:"", updated_at:""}
 export default function ContactUsable() {
   const gridRef = useRef();  
@@ -61,7 +61,6 @@ export default function ContactUsable() {
     const confirm = window.confirm("Êtes-vous sûr de vouloir supprimer cette ligne", oldData.id)
     if (confirm) {
       fetch(url + `/${oldData.id}`, { method: "DELETE" }).then(resp => resp.json()).then(resp => getData())
-
     }
   }
   const handleShow = (oldData) => {
