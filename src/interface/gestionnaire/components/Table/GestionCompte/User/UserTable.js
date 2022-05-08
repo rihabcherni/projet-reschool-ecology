@@ -7,7 +7,8 @@ import Grid from '@mui/material/Grid';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogUser from './DialogUser';
- import {Item , columnTypes , rowHeight} from '../../Table'import './style.css'
+ import {Item , columnTypes , rowHeight} from '../../Table'
+ import './style.css'
 
 const initialValue = { name:"", email:"", password:"",remember_token:"",email_verified_at:"",created_at:"", updated_at:""}
 function UserTable() {
@@ -32,7 +33,7 @@ function UserTable() {
   };
   const url = `http://127.0.0.1:8000/api/user`
   const columnDefs = [
-    { headerName: "ID", field: "id"  },
+    { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "name", field: "name"},
     { headerName: "email", field: "email"},
     { headerName: "password", field: "password" },

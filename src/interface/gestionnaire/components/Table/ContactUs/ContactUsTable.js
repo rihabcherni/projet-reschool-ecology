@@ -28,7 +28,7 @@ export default function ContactUsable() {
 
   const url = `http://127.0.0.1:8000/api/contact-us`
   const columnDefs = [
-    { headerName: "ID", field: "id", width:100},
+    { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
     { headerName: "numero_telephone", field: "numero_telephone" },

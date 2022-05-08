@@ -1,5 +1,5 @@
 import React from 'react';
-import ResponsableTable from '../../components/Table/GestionCompte/ResponsableEtablissement/ResponsableTable';
+import ResponsableTable from '../../components/Table/GestionCompte/ResponsableTable';
 export default function ResponsableEtablissement() {
   return (
     <>

@@ -107,13 +107,14 @@ export default function Api({initialValue, url, columnDefs, show}) {
     let tableColumn;
     if(columnDefs[0].field==='id'){
         tableColumn=  columnDefs.concat(
-            {
-                headerName: "Actions",sortable:false,filter:false,maxWidth: 180, cellRenderer: (params) => <div>
+          { headerName: "created_at", field: "created_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135, minWidth:50 },
+          { headerName: "updated_at", field: "updated_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135, minWidth:50 },
+          { headerName: "Actions",sortable:false,filter:false,maxWidth: 180,pinned: 'right', cellRenderer: (params) => <div>
                   <ButtonTable variant="outlined" className='tableIcon' color="warning" onClick={() => handleShow(params.data)} style={{marginRight:"2px"}}><VisibilityIcon/></ButtonTable>
                   <ButtonTable variant="outlined" className='tableIcon' color="primary" onClick={() => handleUpdate(params.data)} style={{marginRight:"2px"}}><EditIcon/></ButtonTable>
                   <ButtonTable variant="outlined" className='tableIcon' color="error" onClick={() => handleDelete(params.data)}><DeleteIcon/></ButtonTable>
                 </div>
-        })
+          })
   return (
     <div style={{width:"100%"}}>
         <Table handleClickOpen={handleClickOpen} columnDefs={tableColumn} tableData={tableData}/>

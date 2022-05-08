@@ -79,6 +79,7 @@ export  function Table({handleClickOpen ,tableData, columnDefs}) {
     );
   }, []);
   const onPaginationChange=(pageSize)=>{gridApi.api.paginationSetPageSize(Number(pageSize)) }
+  
   const defaultColDef ={resizable: true,sortable: true, flex: 1, filter: true }
    const rowHeight = 60;
    const columnTypes =  {    
@@ -123,8 +124,8 @@ return (
                 <Button variant="contained" color="success" onClick={handleClickOpen}><AddIcon/></Button>
           </Item>
       </Grid>
-      <div className="ag-theme-material" style={{ height: '415px'}}>
-          <AgGridReact className="ag-theme-alpine-dark" ref={gridRef} rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
+      <div className="ag-theme-material" style={{ height: '415px',width:"100%"}}>
+          <AgGridReact ref={gridRef} debounceVerticalScrollbar='true' rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
               onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight} pagination={true} paginationPageSize={5}/>
       </div>
   </div>

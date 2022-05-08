@@ -1,5 +1,5 @@
 import React from 'react'
-import GestionnaireTable from '../components/Table/GestionCompte/Gestionnaire/GestionnaireTable'
+import GestionnaireTable from '../components/Table/GestionCompte/GestionnaireTable'
 export default function Gestionnaire() {
   return (
     <>
