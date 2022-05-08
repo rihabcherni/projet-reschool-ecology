@@ -20,7 +20,7 @@ export default function ClientTable() {
   const initialValue = { photo:"",nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",created_at:"", updated_at:"", error_list:[]};
   const url = `http://127.0.0.1:8000/api/client`
   const columnDefs = [
-    { headerName: "ID", field: "id", maxWidth:50,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "ID", field: "id", maxWidth:50},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
           src={`http://127.0.0.1:8000/storage/images/client/${params.data.photo}`} alt="client"/>},

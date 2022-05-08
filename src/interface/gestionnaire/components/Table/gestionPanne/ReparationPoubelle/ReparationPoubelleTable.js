@@ -28,7 +28,7 @@ export default function ReparationPoubelleTable() {
   };
   const url = `http://127.0.0.1:8000/api/reparation-poubelle`
   const columnDefs = [
-    { headerName: "id reparation poubelle", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id reparation poubelle", field: "id"  },
     { headerName: "id_poubelle", field: "id_poubelle"},
     { headerName: "id_reparateur_poubelle", field: "id_reparateur_poubelle"},
     { headerName: "description_panne", field: "description_panne" },

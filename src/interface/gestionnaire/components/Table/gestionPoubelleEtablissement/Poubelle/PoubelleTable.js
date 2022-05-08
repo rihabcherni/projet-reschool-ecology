@@ -28,7 +28,7 @@ export default function PoubelleTable() {
   };
   const url = `http://127.0.0.1:8000/api/poubelle`
   const columnDefs = [
-    { headerName: "id poubelle", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id poubelle", field: "id"  },
     { headerName: "id bloc poubelle", field: "bloc_poubelle_id"},
     { headerName: "nom", field: "nom"},
     { headerName: "compteur", field: "compteur"},

@@ -27,7 +27,7 @@ export default function FournisseurTable() {
   };
   const url = `http://127.0.0.1:8000/api/fournisseurs`
   const columnDefs = [
-    { headerName: "ID", field: "id", width:100,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "ID", field: "id", width:100 },
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
           src={`http://127.0.0.1:8000/storage/images/fournisseur/${params.data.photo}`} alt="fournisseur"/>},

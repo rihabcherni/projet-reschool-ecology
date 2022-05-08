@@ -28,7 +28,7 @@ export default function DechetsTable() {
   };
   const url = `http://127.0.0.1:8000/api/dechets`
   const columnDefs = [
-    { headerName: "id dechets", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id dechets", field: "id"  },
     { headerName: "type_dechet", field: "type_dechet"},
     { headerName: "prix_unitaire (Kg)", field: "prix_unitaire"},
     { headerName: "date de creation ", field: "created_at", type: ['dateColumn', 'nonEditableColumn']},

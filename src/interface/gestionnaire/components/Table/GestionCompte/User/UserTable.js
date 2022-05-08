@@ -32,7 +32,7 @@ function UserTable() {
   };
   const url = `http://127.0.0.1:8000/api/user`
   const columnDefs = [
-    { headerName: "ID", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "ID", field: "id"  },
     { headerName: "name", field: "name"},
     { headerName: "email", field: "email"},
     { headerName: "password", field: "password" },

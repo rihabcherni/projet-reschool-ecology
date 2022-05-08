@@ -24,7 +24,7 @@ export default function OuvrierTable() {
   const initialValue = { zone_travail_id:"", camion_id:"",photo:"",qrcode:"", qrcode:"", nom:"",prenom:"",CIN:"",numero_telephone:"",email:"",mot_de_passe:"",created_at:"", updated_at:"",error_list:[]};
   const url = `http://127.0.0.1:8000/api/ouvrier`
   const columnDefs = [
-    { headerName: "ID", field: "id", width:"100",headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "ID", field: "id", maxWidth:50},
     { headerName: "zone_travail_id", field: "zone_travail_id"},
     { headerName: "camion_id", field: "camion_id"},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>

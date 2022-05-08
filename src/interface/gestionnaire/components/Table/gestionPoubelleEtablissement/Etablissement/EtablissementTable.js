@@ -28,7 +28,7 @@ export default function EtablissementTable() {
   };
   const url = `http://127.0.0.1:8000/api/etablissement`
   const columnDefs = [
-    { headerName: "ID", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true, maxWidth: 105},
+    { headerName: "ID", field: "id"  , maxWidth: 105},
     { headerName: "zone travail", field: "zone_travail_id", maxWidth: 135 },
     { headerName: "responsable etablissement", field: "id_responsable_etablissement", maxWidth: 240 },
     { headerName: "nom etablissement", field: "nom_etablissement", maxWidth: 195 },

@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import React, { useState, useCallback , useRef} from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import Grid from '@mui/material/Grid';
 import AddIcon from '@mui/icons-material/Add';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -124,7 +124,7 @@ return (
           </Item>
       </Grid>
       <div className="ag-theme-material" style={{ height: '415px'}}>
-          <AgGridReact ref={gridRef} rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
+          <AgGridReact className="ag-theme-alpine-dark" ref={gridRef} rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
               onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight} pagination={true} paginationPageSize={5}/>
       </div>
   </div>

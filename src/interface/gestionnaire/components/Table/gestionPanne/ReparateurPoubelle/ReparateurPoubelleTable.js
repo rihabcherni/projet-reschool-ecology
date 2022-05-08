@@ -28,7 +28,7 @@ export default function ReparateurPoubelleTable() {
   };
   const url = `http://127.0.0.1:8000/api/reparateur-poubelle`
   const columnDefs = [
-    { headerName: "id mecanicien", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id mecanicien", field: "id"  },
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
           src={`http://127.0.0.1:8000/storage/images/reparateur_poubelle/${params.data.photo}`}alt="reparateur-poubelle" />},

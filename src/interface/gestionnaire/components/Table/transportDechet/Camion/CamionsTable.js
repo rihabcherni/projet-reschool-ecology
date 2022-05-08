@@ -28,7 +28,7 @@ export default function CamionsTable() {
   };
   const url = `http://127.0.0.1:8000/api/camion`
   const columnDefs = [
-    { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id", field: "id"  },
     { headerName: "zone de travil", field: "zone_travail_id"},
     { headerName: "qrcode", field: "qrcode"},
     { headerName: "matricule", field: "matricule"},

@@ -28,7 +28,7 @@ import React, { useState, useCallback, useEffect , useRef} from 'react';
     };
     const url = `http://127.0.0.1:8000/api/detail-commande-dechets`
     const columnDefs = [
-      { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+      { headerName: "id", field: "id"  },
       { headerName: "id commande_dechet", field: "id_commande_dechet"},
       { headerName: "dechet_id", field: "dechet_id"},
       { headerName: "quantite", field: "quantite"},

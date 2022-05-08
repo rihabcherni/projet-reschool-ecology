@@ -28,7 +28,7 @@ export default function ReparationCamionTable() {
   };
   const url = `http://127.0.0.1:8000/api/reparation-camion`
   const columnDefs = [
-    { headerName: "id reparation camion", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+    { headerName: "id reparation camion", field: "id"  },
     { headerName: "camion_id", field: "camion_id"},
     { headerName: "id_mecanicien", field: "id_mecanicien"},
     { headerName: "description_panne", field: "description_panne" },

@@ -28,7 +28,7 @@ import React, { useState,   useCallback, useEffect , useRef} from 'react';
     };
     const url = `http://127.0.0.1:8000/api/depot`
     const columnDefs = [
-      { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+      { headerName: "id", field: "id"  },
       { headerName: "id zone depot", field: "id_zone_depot"},
       { headerName: "camion_id", field: "camion_id"},
       { headerName: "date_depot", field: "date_depot"},

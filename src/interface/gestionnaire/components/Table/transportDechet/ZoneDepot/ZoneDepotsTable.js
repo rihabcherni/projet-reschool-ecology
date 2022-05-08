@@ -28,7 +28,7 @@
     };
     const url = `http://127.0.0.1:8000/api/zone-depot`
     const columnDefs = [
-      { headerName: "id", field: "id" ,headerCheckboxSelection: true,headerCheckboxSelectionFilteredOnly: true, checkboxSelection: true},
+      { headerName: "id", field: "id"  },
       { headerName: "adresse", field: "adresse"},
       { headerName: "longitude", field: "longitude"},
       { headerName: "latitude", field: "latitude"},
