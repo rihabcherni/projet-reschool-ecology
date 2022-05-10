@@ -35,7 +35,7 @@ export default function DialogCrudUpdate({open,handleClose,data,onChange,handleF
                   
                     ((sh[1]!="id" && sh[1]!="created_at" && sh[1]!="updated_at" && sh[1]!="photo")?(
                         <>
-                                <TextField id={sh[1]} value={data[sh[1]]} onChange={e=>onChange(e)} placeholder={sh[0]}  error={!!validation[sh[1]]} label={sh[0]} variant="outlined" margin="dense" fullWidth />
+                                <TextField id={sh[1]} value={data[sh[1]]}  onChange={e=>onChange(e)} placeholder={sh[0]}  error={!!validation[sh[1]]} label={sh[0]} variant="outlined" margin="dense" fullWidth />
                                 <FormHelperText error={true}>
                                 {validation[sh[1]]}        
                                 </FormHelperText> 
@@ -49,7 +49,7 @@ export default function DialogCrudUpdate({open,handleClose,data,onChange,handleF
           <Button sx={{color:"green"}} color="primary" onClick={handleClose}  variant="outlined">
           Annuler
           </Button>
-          <Button sx={{color:"white"}} color="primary" onClick={()=>handleFormSubmit()} variant="contained">
+          <Button sx={{color:"white"}} color="success" onClick={()=>handleFormSubmit()} variant="contained">
           {id?"modifier":"envoyer"}
           </Button>
         </DialogActions>

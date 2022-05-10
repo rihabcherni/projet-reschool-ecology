@@ -140,8 +140,14 @@ function App() {
 						<Route path='/gestionnaire/contact-us' element={<ContactUs/>}/>
 					
 					</Route>
+					{/*
 					<Route path="/responsable-etablissement/login" element={!ResponsableAuth?<LoginResponsable/>:<div><Navigate replace to="/responsable-etablissement" /><InterfaceResponsableEtablissement/></div>}/>
-					<Route path='/responsable-etablissement' element={ResponsableAuth?<InterfaceResponsableEtablissement/>:<div><Navigate replace to="/responsable-etablissement/login"/></div>}>
+				
+				<Route path='/responsable-etablissement' element={ResponsableAuth?<InterfaceResponsableEtablissement/>:<div><Navigate replace to="/responsable-etablissement/login"/></div>}>
+				*/}
+				
+					<Route path="/responsable-etablissement/login" element={!ResponsableAuth?<LoginResponsable/>:<div><Navigate replace to="/responsable-etablissement" /><InterfaceResponsableEtablissement/></div>}/>
+					<Route path='/responsable-etablissement' element={<InterfaceResponsableEtablissement/>}>	
 						<Route index element={<DashboardResponsable/>}/>
 						<Route path='map' element={<MapResponsable/>}/>
 						<Route path='poubelle' element={<PoubelleEtablissement/>}/>

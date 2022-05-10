@@ -10,7 +10,7 @@ import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import DialogContactUsShow from './DialogContactUsShow';
 import {ButtonTable} from '../../../../../style'
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import {Item , columnTypes , rowHeight, defaultColDef} from '../ComponentsTable/Table'
+import {Item , columnTypes , rowHeight, defaultColDef} from '../../../../../Global/ComponentsTable/Table'
 const initialValue = { nom:"", prenom:"", numero_telephone:"", email:"",message:"",created_at:"", updated_at:""}
 export default function ContactUsable() {
   const gridRef = useRef();  
@@ -28,18 +28,18 @@ export default function ContactUsable() {
 
   const url = `http://127.0.0.1:8000/api/contact-us`
   const columnDefs = [
-    { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
-    { headerName: "nom", field: "nom"},
-    { headerName: "prenom", field: "prenom"},
-    { headerName: "numero_telephone", field: "numero_telephone" },
-    { headerName: "email", field: "email" },
+    { headerName: "Idetifiant", field: "id", maxWidth:150, minWidth:120, pinned: 'left',cellStyle: {color: 'gray',textAlign:"center",'background-color': '#DCDCDC'}},
+    { headerName: "nom", field: "nom" , maxWidth:150, minWidth:120},
+    { headerName: "prenom", field: "prenom", maxWidth:150, minWidth:120},
+    { headerName: "numero_telephone", field: "numero_telephone", maxWidth:150, minWidth:120 },
+    { headerName: "email", field: "email", maxWidth:250, minWidth:180 },
     { headerName: "message", field: "message"},
     { headerName: "created_at", field: "created_at", type: ['dateColumn', 'nonEditableColumn']},
     { headerName: "updated_at", field: "updated_at", type: ['dateColumn', 'nonEditableColumn']},
     {
-      headerName: "Actions",sortable:false,filter:false,maxWidth: 180, cellRenderer: (params) => <div>
+      headerName: "Actions",sortable:false,filter:false,maxWidth: 110, pinned: 'right', cellRenderer: (params) => <div>
       <ButtonTable variant="outlined" className='tableIcon' color="warning" onClick={() => handleShow(params.data)} style={{marginRight:"2px"}}><VisibilityIcon/></ButtonTable>
-        <Button variant="outlined" color="error" onClick={() => handleDelete(params.data)}><DeleteIcon/></Button>
+      <ButtonTable variant="outlined" color="error" onClick={() => handleDelete(params.data)}><DeleteIcon/></ButtonTable>
       </div>
     }
   ]
@@ -79,10 +79,10 @@ export default function ContactUsable() {
     gridApi.api.paginationSetPageSize(Number(pageSize))
   }
   return (
-    <div style={{width:"100%"}}>
-      <h2 align="center">Contact Us</h2>
+    <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+        <h2 align="center">Contact Us</h2>
         <Grid  container direction="row" justifyContent="space-between" alignItems="flex-start" >
-        <Item  style={{marginBottom:'8px'}}>
+        <Item  style={{margin:"20px 20px 0",backgroundColor:'#DCDCDC'}}>
           <ManageSearchIcon variant="contained" color="success"  style={{marginBottom:"-7px"}} />
           <input type="text"  onInput={onQuickFilterChanged}  id="quickFilter"  placeholder="recherche..."  style={{backgroundColor:'#DCDCDC', border:'none',padding:"8px" }}/>
         </Item>
@@ -97,7 +97,7 @@ export default function ContactUsable() {
         </Item>
       
     </Grid>
-    <div  className="ag-theme-material" style={{height:"350px"}}>
+    <div  className="ag-theme-material" style={{height:"350px", margin:"5px", border:"1px solid #DCDCDC"}}>
           <AgGridReact ref={gridRef} rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
                       onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight}
                       pagination={true} paginationPageSize={5}/>

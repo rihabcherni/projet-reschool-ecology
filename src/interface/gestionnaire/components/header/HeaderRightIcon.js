@@ -7,15 +7,12 @@ const Head = styled.div`
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-end;
-
   transition: all .5s ease;
-
   &:focus {
       outline: none;
   } 
 `
-
-export default function Header() {
+export default function HeaderRightIcon() {
   return (
     <Head>
       <BadgeAvatars/>

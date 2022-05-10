@@ -79,7 +79,7 @@ const Chartline = () => {
 
     return (
       <>
-        <Card sx={{backgroundColor:"white"}}>
+        <Card>
           <Container>
               <Typography>
                 <h4 id="traffic" className="card-title mb-0" align="center">

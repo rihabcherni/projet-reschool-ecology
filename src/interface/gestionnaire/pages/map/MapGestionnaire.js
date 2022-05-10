@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import { Marker, InfoWindow ,TrafficLayer,Autocomplete} from '@react-google-maps/api';
+import { Marker, InfoWindow ,Traf} from '@react-google-maps/api';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -185,7 +185,7 @@ export default function MapGestionnaire() {
       
       { (uniqueEtablissements!==null)&&(showUniqueEtablissement===true)?
           <div style={{alignSelf: 'center'}}>
-                    <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+                    <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605,  border:"1px solid #f0f0f0"}}>
                         <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}>{uniqueEtablissements[0].type_etablissement}: {uniqueEtablissements[0].nom_etablissement} </h3>
                            <ul>
                                 <li><b>adresse:</b> {uniqueEtablissements[0].adresse}</li>
@@ -436,10 +436,10 @@ export default function MapGestionnaire() {
                   </CardMapDetails>)}
           </div>       
       }
-      <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+      <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605, border:"1px solid #f0f0f0"}}>
             {(uniquecamions!==null)&&(showUniqueCamion===true)?
                 <div style={{alignSelf: 'center'}}>
-                              <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:705, minHeight:605, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+                              <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:705, minHeight:605,  border:"1px solid #f0f0f0"}}>
                                 <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> <b>Camion de matricule:</b> {uniquecamions[0].camion.matricule}</h3>
                                 <ul style={{marginTop:"0px", textAlign:"left"}}>
                                   <li><b>region:</b> {uniquecamions[0].camion.region[0].region}</li>
@@ -495,7 +495,7 @@ export default function MapGestionnaire() {
                 :
                 <div style={{alignSelf: 'center'}}>
                       {etablissements.length!==0?(
-                        <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+                        <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300,  border:"1px solid #f0f0f0"}}>
                         <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
                           <h3 style={{color:'red', padding:" 0 24%"}}>Détails des camions :</h3>
                         </CardActions>
@@ -569,7 +569,7 @@ export default function MapGestionnaire() {
 
             { (uniqueZoneDepot!==null)&&(showUniqueZoneDepot===true)?
                 <div style={{alignSelf: 'center'}}>
-                        <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:250, minHeight:250, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+                        <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:250, minHeight:250, border:"1px solid #f0f0f0"}}>
                           <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> zone depot : {uniqueZoneDepot.id}</h3>
                           <ul style={{marginTop:"0px", textAlign:"left"}}>
                               <li><b>adresse:</b> {uniqueZoneDepot.adresse}</li>
@@ -602,7 +602,7 @@ export default function MapGestionnaire() {
                 :
                 <div style={{alignSelf: 'center'}}>
                 {etablissements.length!==0?(
-                  <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300, backgroundColor:"white", border:"1px solid #f0f0f0"}}>
+                  <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300, border:"1px solid #f0f0f0"}}>
                   <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
                     <h3 style={{color:'red', padding:" 0 22%"}}>Détails zones depots :</h3>
                   </CardActions>

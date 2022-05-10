@@ -4,9 +4,9 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import '../../../../../App.css'
+import '../../App.css'
 import { Table} from './Table'
-import {ButtonTable} from '../../../../../style'
+import {ButtonTable} from '../../style'
 import DialogCrudUpdate from './DialogCrudUpdate';
 import DialogShow from './DialogShow';
 
@@ -107,8 +107,8 @@ export default function Api({initialValue, url, columnDefs, show}) {
     let tableColumn;
     if(columnDefs[0].field==='id'){
         tableColumn=  columnDefs.concat(
-          { headerName: "created_at", field: "created_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135, minWidth:50 },
-          { headerName: "updated_at", field: "updated_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 135, minWidth:50 },
+          { headerName: "date d'ajout", field: "created_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 160, minWidth:150 },
+          { headerName: "date modification", field: "updated_at", type: ['dateColumn', 'nonEditableColumn'], maxWidth: 200, minWidth:180  },
           { headerName: "Actions",sortable:false,filter:false,maxWidth: 180,pinned: 'right', cellRenderer: (params) => <div>
                   <ButtonTable variant="outlined" className='tableIcon' color="warning" onClick={() => handleShow(params.data)} style={{marginRight:"2px"}}><VisibilityIcon/></ButtonTable>
                   <ButtonTable variant="outlined" className='tableIcon' color="primary" onClick={() => handleUpdate(params.data)} style={{marginRight:"2px"}}><EditIcon/></ButtonTable>

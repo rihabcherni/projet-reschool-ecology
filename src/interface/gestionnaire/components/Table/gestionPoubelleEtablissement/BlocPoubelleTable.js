@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../../../App.css'
-import Api from '../ComponentsTable/Api';   
+import Api from '../../../../../Global/ComponentsTable/Api';
   const show=[
             ["Identifiant","id"],
             ["etage_etablissement_id","etage_etablissement_id"],

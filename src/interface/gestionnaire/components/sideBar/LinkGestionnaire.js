@@ -16,7 +16,7 @@ export const linkDetailsGestionnaire = [
     {id: 3, name: "Poubelles", path:"/gestionnaire/poubelles", icon: <BsTrashFill/>},
     {id: 4, name: "Camions", path:"/gestionnaire/camions", icon: <FaTruckMoving/>},
    
-    {id: 5, name: "Production poubelle", icon: <FaTrash/>,
+    {id: 5, name: "Production poubelle", icon: <FaTrash color="primary"/>,
       items: [
         {id: 1, name: "Fournisseurs", path:"/gestionnaire/production/fournisseurs", icon: <FaUserTie/>},
         {id: 2,name: "Stock poubelles", path:"/gestionnaire/production/stock-poubelles", icon: <VscTrash/>},

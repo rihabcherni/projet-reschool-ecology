@@ -36,7 +36,7 @@ export default function Counter() {
 
     return (
     <>
-        <Container sx={{backgroundColor:"white"}}>
+        <Container>
              {/* <Card sx={{backgroundColor:"#321fdb"}}  className='text-white mb-3' style={{ maxWidth: '18rem' }}>
                 <Typography>Quantité Totale Plastique</Typography>
                 <Typography>
@@ -65,74 +65,74 @@ export default function Counter() {
                 <Statistic color='green'>
                     <Statistic.Value>
                         <Icon name='trash' />
-                        {dechets.nbr_bloc_poubelle}
+                        <Typography color="primary">{dechets.nbr_bloc_poubelle}</Typography> 
                     </Statistic.Value>
-                    <Statistic.Label>Bloc Poubelle</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Bloc Poubelle</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='yellow'>
                     <Statistic.Value>
                         <Icon name='building' />
-                        {dechets.nbr_etablissement}
+                        <Typography color="primary">{dechets.nbr_etablissement}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Etablissement</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Etablissement</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='orange'>
                     <Statistic.Value>
                         <Icon name='map marker alternate' />
-                        {dechets.nbr_zone_travail}
+                        <Typography color="primary">{dechets.nbr_zone_travail}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Zone de Travail</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Zone de Travail</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='blue'>
                     <Statistic.Value>
                         <Icon name='truck' />
-                        {dechets.nbr_camion}
+                        <Typography color="primary">{dechets.nbr_camion}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Camion</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Camion</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='teal'>
                     <Statistic.Value>
                         <Icon name='user' />
-                        {dechets.nbr_ouvrier}
+                        <Typography color="primary">{dechets.nbr_ouvrier}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Ouvriers</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Ouvriers</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic  color='red'>
                     <Statistic.Value>
                         <Icon name='user' />
-                        {dechets.nbr_fournisseur}
+                        <Typography color="primary">{dechets.nbr_fournisseur}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Fournisseurs</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Fournisseurs</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic  color='violet'>
                     <Statistic.Value>
                         <Icon name='trash alternate' />
-                        {dechets.nbr_poubelle_vendus}
+                        <Typography color="primary">{dechets.nbr_poubelle_vendus}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Poubelle vendue</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Poubelle vendue</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='brown'>
                     <Statistic.Value>
                         <Icon name='trash alternate' />
-                        {dechets.nbr_poubelle_stock}
+                        <Typography color="primary">{dechets.nbr_poubelle_stock}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Poubelle en Stock</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Poubelle en Stock</Typography></Statistic.Label>
                 </Statistic>
             </Statistic.Group>
             <Statistic.Group>
                 <Statistic color='olive'> 
                     <Statistic.Value>
                         <Icon name='recycle' />
-                        {dechets.nbr_commande_dechet}
+                        <Typography color="primary">{dechets.nbr_commande_dechet}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Commande Dechet</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Commande Dechet</Typography></Statistic.Label>
                 </Statistic>
                 <Statistic color='orange'>
                     <Statistic.Value>
                         <Icon name='shopping basket'/>
-                        {dechets.nbr_commande_poubelle}
+                        <Typography color="primary">{dechets.nbr_commande_poubelle}</Typography>
                     </Statistic.Value>
-                    <Statistic.Label>Commande Poubelle</Statistic.Label>
+                    <Statistic.Label><Typography color="primary">Commande Poubelle</Typography></Statistic.Label>
                 </Statistic>
             </Statistic.Group>
         </Container>

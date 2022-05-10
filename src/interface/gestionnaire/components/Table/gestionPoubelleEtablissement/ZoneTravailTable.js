@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../../../App.css';
-import Api from '../ComponentsTable/Api';
+import Api from '../../../../../Global/ComponentsTable/Api';
+
  const show=[
   ["Identifiant","id"],
   ["Region","region"],
@@ -16,15 +17,13 @@ export default function ZoneTravailTable() {
   const initialValue = { region: "",quantite_total_collecte_plastique: "" ,quantite_total_collecte_composte: "",quantite_total_collecte_papier: "",quantite_total_collecte_canette: "", created_at: "", updated_at: "", error_list:[]};
   const url = `http://127.0.0.1:8000/api/zone-travail`
   const columnDefs = [
-    { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
-      { headerName: "region", field: "region", maxWidth: 100},
-      { headerName: "Quantité plastique", field: "quantite_total_collecte_plastique",maxWidth: 250 },
-      { headerName: "Quantité composte", field: "quantite_total_collecte_composte", maxWidth: 250},
-      { headerName: "Quantité papier", field: "quantite_total_collecte_papier",maxWidth: 250 },
-      { headerName: "Quantité canette", field: "quantite_total_collecte_canette",maxWidth: 250 },
-      { headerName: "Date d'ajout", field: "created_at", type: ['dateColumn', 'nonEditableColumn'],maxWidth: 135},
-      { headerName: "Date de mise à jour", field: "updated_at", type: ['dateColumn', 'nonEditableColumn'],maxWidth: 210},
-]
+      { headerName: "Idetifiant", field: "id", maxWidth:100, minWidth:50, pinned: 'left'  },
+      { headerName: "region", field: "region",  minWidth:50, },
+      { headerName: "Quantité plastique", field: "quantite_total_collecte_plastique" ,cellStyle: {textAlign:"center",color: 'rgb(18, 102, 241)', 'fontSize':"18px"}},
+      { headerName: "Quantité composte", field: "quantite_total_collecte_composte",cellStyle: {textAlign:"center",color:  'rgb(0, 183, 74)', 'fontSize':"18px"}},
+      { headerName: "Quantité papier", field: "quantite_total_collecte_papier",cellStyle: {textAlign:"center",color:'rgb(255, 173, 13)', 'fontSize':"18px"}},
+      { headerName: "Quantité canette", field: "quantite_total_collecte_canette",cellStyle: {textAlign:"center",color:'rgb(249, 49, 84)', 'fontSize':"18px"}},
+  ]
 
   return (
     <div style={{width:"100%"}}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../../../App.css'
-import Api from '../ComponentsTable/Api';   
+import Api from '../../../../../Global/ComponentsTable/Api';
   const show=[
             ["Identifiant","id"],
             ["etablissement","bloc_etablissement_id"],
@@ -29,7 +29,7 @@ export default function CamionsTable() {
   ]
   return (
     <div style={{width:"100%"}}>
-      <h2 align="center">  Materiaux Primaires</h2>
+      <h2 align="center">Camions</h2>
       <Api url={url} initialValue={initialValue} columnDefs={columnDefs} show={show}/>  
     </div>
   );

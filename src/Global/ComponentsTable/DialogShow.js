@@ -39,7 +39,7 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
                 </ul>     
         </DialogContent>
         <DialogActions sx={{backgroundColor: 'white'}}>
-          <Button onClick={handleClose} sx={{color:"white"}} color="primary" variant="contained">
+          <Button onClick={handleClose} sx={{color:"white"}} color="success" variant="contained">
           Annuler
           </Button>
 

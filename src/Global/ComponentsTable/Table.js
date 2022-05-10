@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import React, { useState, useCallback , useRef} from 'react';
+import React, { useState, useCallback , useRef ,useMemo} from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
@@ -21,49 +21,32 @@ export const Item = styled(Paper)(({ theme }) =>
     }
   )
 );
-export const defaultColDef ={
-  resizable: true,sortable: true, flex: 1, filter: true 
-}
-export const rowHeight = 100;
+export const defaultColDef ={resizable: true,sortable: true, flex: 1, filter: true}
+export const rowHeight = 60;
 export const columnTypes =  {    
-  numberColumn: { width: 50, filter: 'agNumberColumnFilter' },
-  medalColumn: { width: 50, columnGroupShow: 'open', filter: false },
-  nonEditableColumn: { editable: false },
-  dateColumn: {
-    filter: 'agDateColumnFilter',
-    filterParams: {
-      comparator: (filterLocalDateAtMidnight, cellValue) => {
-        const dateParts = cellValue.split('/');
-        const day = Number(dateParts[0]);
-        const month = Number(dateParts[1]) - 1;
-        const year = Number(dateParts[2]);
-        const cellDate = new Date(year, month, day);
-        if (cellDate < filterLocalDateAtMidnight) {
-          return -1;
-        } else if (cellDate > filterLocalDateAtMidnight) {
-          return 1;
-        } else {
-          return 0;
-        }
-      },
-    },
-  },
+ numberColumn: { width: 50, filter: 'agNumberColumnFilter' },
+ medalColumn: { width: 50, columnGroupShow: 'open', filter: false },
+ nonEditableColumn: { editable: false },
+ dateColumn: {
+   filter: 'agDateColumnFilter',
+   filterParams: {
+     comparator: (filterLocalDateAtMidnight, cellValue) => {
+       const dateParts = cellValue.split('/');
+       const day = Number(dateParts[0]);
+       const month = Number(dateParts[1]) - 1;
+       const year = Number(dateParts[2]);
+       const cellDate = new Date(year, month, day);
+       if (cellDate < filterLocalDateAtMidnight) {
+         return -1;
+       } else if (cellDate > filterLocalDateAtMidnight) {
+         return 1;
+       } else {
+         return 0;
+       }
+     },
+   },
+ },
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export  function Table({handleClickOpen ,tableData, columnDefs}) {
   const gridRef = useRef();
   const [gridApi, setGridApi] = useState(null)
@@ -79,33 +62,6 @@ export  function Table({handleClickOpen ,tableData, columnDefs}) {
     );
   }, []);
   const onPaginationChange=(pageSize)=>{gridApi.api.paginationSetPageSize(Number(pageSize)) }
-  
-  const defaultColDef ={resizable: true,sortable: true, flex: 1, filter: true }
-   const rowHeight = 60;
-   const columnTypes =  {    
-    numberColumn: { width: 50, filter: 'agNumberColumnFilter' },
-    medalColumn: { width: 50, columnGroupShow: 'open', filter: false },
-    nonEditableColumn: { editable: false },
-    dateColumn: {
-      filter: 'agDateColumnFilter',
-      filterParams: {
-        comparator: (filterLocalDateAtMidnight, cellValue) => {
-          const dateParts = cellValue.split('/');
-          const day = Number(dateParts[0]);
-          const month = Number(dateParts[1]) - 1;
-          const year = Number(dateParts[2]);
-          const cellDate = new Date(year, month, day);
-          if (cellDate < filterLocalDateAtMidnight) {
-            return -1;
-          } else if (cellDate > filterLocalDateAtMidnight) {
-            return 1;
-          } else {
-            return 0;
-          }
-        },
-      },
-    },
-  }
 return (
   <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
       <Grid  container direction="row" justifyContent="space-between" alignItems="flex-start" >
@@ -126,9 +82,8 @@ return (
       </Grid>
       <div className="ag-theme-material" style={{ height: '415px',width:"100%"}}>
           <AgGridReact ref={gridRef} debounceVerticalScrollbar='true' rowData={tableData} columnDefs={columnDefs}  defaultColDef={defaultColDef}
-              onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight} pagination={true} paginationPageSize={5}/>
+            onGridReady={onGridReady} columnTypes={columnTypes} rowHeight={rowHeight} pagination={true} paginationPageSize={5}/>
       </div>
   </div>
-)
-
+  )
 }

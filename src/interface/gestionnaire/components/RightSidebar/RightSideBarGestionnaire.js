@@ -74,8 +74,12 @@ export default function RightSideBarGestionnaire() {
           <Button onClick={toggleDrawer}><CloseIcon /></Button>
           <Box sx={{ width: '100%' }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-              <Tab icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
+            <Tabs primaryTypographyProps={{
+              color: 'primary',
+              fontWeight: 'medium',
+              variant: 'body2',
+            }} value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab  icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
               <Tab  icon={<NotificationsActiveIcon />}  aria-label="notifications"  {...a11yProps(1)} />
               <Tab icon={<SettingsIcon />}  aria-label="paramétres"  {...a11yProps(2)} />
               <Tab icon={<PersonPinIcon />}  aria-label="profile"  {...a11yProps(3)} />

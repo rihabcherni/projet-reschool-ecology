@@ -117,7 +117,6 @@ export const CardMapDetails = styled(Card)(({ theme }) => ({
   maxHeight:605, 
   minHeight:605,
   marginLeft:"5px", 
-  backgroundColor:"white", 
   border:"2px solid #f0f0f0", 
   boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
 }));
