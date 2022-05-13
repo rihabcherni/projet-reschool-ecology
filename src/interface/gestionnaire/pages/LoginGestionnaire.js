@@ -13,8 +13,8 @@ import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
 axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-gestionnaire";
 let token='';
-if(localStorage.getItem('auth_token_gestionnaire')!==''){
-	 token=localStorage.getItem('auth_token_gestionnaire');
+if(localStorage.getItem('auth_token')!==''){
+	 token=localStorage.getItem('auth_token');
 	 axios.interceptors.request.use(function(config){
 		config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
 		return config;
@@ -44,8 +44,13 @@ const LoginGestionnaire=()=>{
       axios.get('sanctum/csrf-cookie').then(response => {
         axios.post(`api/auth-gestionnaire/login`,data).then(res =>{
           if(res.data.status === 200){
-            localStorage.setItem('auth_token_gestionnaire',res.data.token);
-            localStorage.setItem('auth_email_gestionnaire',res.data.email);
+            localStorage.setItem('auth_token',res.data.token);
+            localStorage.setItem('auth_email',res.data.gestionnaire.email);
+            localStorage.setItem('auth_nom',res.data.gestionnaire.nom);
+            localStorage.setItem('auth_prenom',res.data.gestionnaire.prenom);
+            localStorage.setItem('auth_adresse',res.data.gestionnaire.adresse);
+            localStorage.setItem('auth_CIN',res.data.gestionnaire.CIN);
+            localStorage.setItem('auth_numero_telephone',res.data.gestionnaire.numero_telephone);
             window.location.reload();   
             navigate("/gestionnaire");  
             Swal('Success',res.data.message,"success");

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
+import { Badge } from '@mui/material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,43 +8,41 @@ import Fade from '@mui/material/Fade';
 import MailIcon from '@mui/icons-material/Mail';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import Divider from '@mui/material/Divider';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { ListItemIcon } from '@mui/material';
 import { IconButton } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    backgroundColor: '#44b700',
-    color: '#44b700',
-    // boxShadow: 0 0 0 2px ${theme.palette.background.paper},
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.😎',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}));
+
+import { Link  , Outlet,useNavigate} from 'react-router-dom';
+import Swal from "sweetalert";
+import axios from "axios";
+import {StyledBadge} from '../../../../style'
+
 
 export default function BadgeAvatars() {
+/**                logout                   */
+
+  const logoutSubmit= (e)=>{
+    e.preventDefault();
+    axios.post(`api/auth-responsable-etablissement/logout`).then(res=>{
+      if(res.data.status===200){
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_email');
+        Swal('Success',res.data.message,"success")
+        navigate("/")   
+      }
+    })
+  }
+  var AuthButtons='';
+    if(localStorage.getItem('auth_token')){
+      AuthButtons=( <li onClick={logoutSubmit}>Se Déconnecter</li> )
+  }
+  const navigate = useNavigate();
+
+ 
+
   const [count, setCount] = React.useState(1);
   const [invisible, setInvisible] = React.useState(false);
   const handleBadgeVisibility = () => {
@@ -116,10 +113,14 @@ export default function BadgeAvatars() {
               </Button>
             </Tooltip>
             <Menu  id="fade-menu" MenuListProps={{ 'aria-labelledby': 'fade-button'}} anchorEl={anchorEl} open={open}  onClose={handleClose} TransitionComponent={Fade}>
-                <MenuItem onClick={handleClose}> <Avatar />Mon Profile  </MenuItem>
-                <MenuItem onClick={handleClose}>Se Déconnecter</MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link to ="/responsable-etablissement/profile">
+                        <ListItemIcon > <Avatar sx={{width:"20px",height:"20px"}}/></ListItemIcon>
+                        Mon Profile 
+                    </Link> 
+                </MenuItem>
                 <MenuItem> <ListItemIcon> <Settings fontSize="small" /> </ListItemIcon> Settings </MenuItem>
-                <MenuItem> <ListItemIcon> <Logout   fontSize="small" /> </ListItemIcon>  Logout  </MenuItem>
+                <MenuItem onClick={handleClose}> <ListItemIcon> <Logout   fontSize="small" /> </ListItemIcon>  {AuthButtons}  </MenuItem>
             </Menu>
     </Box>
   );

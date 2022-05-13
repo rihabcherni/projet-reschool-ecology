@@ -14,8 +14,8 @@ import Swal from "sweetalert"
 axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-responsable-etablissement";
 
 let token='';
-if(localStorage.getItem('auth_token_responsable')!==''){
-	 token=localStorage.getItem('auth_token_responsable');
+if(localStorage.getItem('auth_token')!==''){
+	 token=localStorage.getItem('auth_token');
 	 axios.interceptors.request.use(function(config){
 		config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
 		return config;
@@ -45,8 +45,8 @@ const LoginResponsable=()=>{
       axios.get('sanctum/csrf-cookie').then(response => {
         axios.post(`api/auth-responsable-etablissement/login`,data).then(res =>{
           if(res.data.status === 200){
-            localStorage.setItem('auth_token_responsable',res.data.token);
-            localStorage.setItem('auth_email_responsable',res.data.email);
+            localStorage.setItem('auth_token',res.data.token);
+            localStorage.setItem('auth_email',res.data.email);
             window.location.reload();   
             navigate("/responsable-etablissement");  
             Swal('Success',res.data.message,"success");
@@ -79,7 +79,7 @@ const LoginResponsable=()=>{
                 </Grid>
                 <form onSubmit={loginSubmit}>
                       <FormControl fullWidth variant="outlined" color="success">
-                          <InputLabel htmlFor="mot_de_passe" >email</InputLabel>
+                          <InputLabel htmlFor="email" >email</InputLabel>
                           <OutlinedInput 
                             id="outlined-adornment-email"
                             type='text'

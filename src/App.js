@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes ,Navigate} from 'react-router-dom';
-
+import axios from 'axios';
 import './App.css';
 /**** ---------------------internaute ------------------------ ****/
 	import InterfaceInternaute from './interface/internaute/InterfaceInternaute';
@@ -35,14 +35,17 @@ import './App.css';
 	import PannePoubelleEtablissement from './interface/responsable-etablissements/pages/PannePoubelleEtablissement';
 	import PoubelleEtablissement from './interface/responsable-etablissements/pages/PoubelleEtablissement';
 	import PanierResponsable from './interface/responsable-etablissements/pages/PanierResponsable';
+	import ProfileResponsable from './interface/responsable-etablissements/pages/ProfileResponsable';
 	import LoginResponsable from './interface/responsable-etablissements/pages/LoginResponsable';
 	import StockPoubelle from './interface/gestionnaire/pages/productionPoubelle/StockPoubelle';
 	import MateriauxPrimaire from './interface/gestionnaire/pages/productionPoubelle/MateriauxPrimaire';
 /**** ----------------------responsable Etablissement ------------------------ ****/
-import axios from 'axios';
 import PannePoubelle from './interface/gestionnaire/pages/pannes/PannePoubelle';
 import PanneCamion from './interface/gestionnaire/pages/pannes/PanneCamion';
 import Gestionnaire from './interface/gestionnaire/pages/Gestionnaire';
+import ProfileGestionnaire from './interface/gestionnaire/pages/ProfileGestionnaire';
+
+
 
 const PageNotFound=()=><div>page not found</div>
 
@@ -50,39 +53,6 @@ axios.defaults.baseURL= "http://127.0.0.1:8000/";
 axios.defaults.headers.post['Content-type']="application/json";
 axios.defaults.headers.post['Accept']="application/json";
 
-// axios.defaults.withCredentials = true;
-// let token='';
-// if(localStorage.getItem('auth_token_responsable')!==''){
-// 	 token=localStorage.getItem('auth_token_responsable');
-// 	 axios.interceptors.request.use(function(config){
-// 		config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
-// 		return config;
-//     });
-// }
-// else if(localStorage.getItem('auth_token_gestionnaire')!==''){
-// 	token=localStorage.getItem('auth_token_gestionnaire');
-// 	axios.interceptors.request.use(function(config){
-// 	   config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
-// 	   return config;
-//    });
-// }else {
-//    token='';
-// }
-//  if(localStorage.getItem('auth_token_gestionnaire')!==''){
-// 	 token=localStorage.getItem('auth_token_gestionnaire');
-// }
-//  axios.interceptors.request.use(function(config){
-// 			config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
-// 			return config;
-// 	});
-
-	// axios.interceptors.request.use(function(config){
-	// 		if(tokengestionnaire!==''){	
-	// 			config.headers.Authorization = tokengestionnaire ? `Bearer ${tokengestionnaire}` : '' ; 
-	// 			console.log(config.headers.Authorization)
-	// 		}
-	// 		return config;
-	// 	});
 function App() {
 	const [GestionnaireAuth, setGestionnaireAuth]=useState(false);
 	const [ResponsableAuth, setResponsableAuth]=useState(false);
@@ -138,6 +108,8 @@ function App() {
 						<Route path='calendrier' element={<CalendrierGestionnaire/>}/>
 						<Route path='/gestionnaire/liste-gestionnaire' element={<Gestionnaire/>}/>
 						<Route path='/gestionnaire/contact-us' element={<ContactUs/>}/>
+						<Route path='profile' element={<ProfileGestionnaire/>}/>				
+
 					
 					</Route>
 					{/*
@@ -155,6 +127,7 @@ function App() {
 						<Route path='calendrier' element={<CalendrierResponsable/>}/>
 						<Route path='commander' element={<CommanderResponsable/>}/>
 						<Route path='panier' element={<PanierResponsable/>}/>
+						<Route path='profile' element={<ProfileResponsable/>}/>				
 					</Route>
 					<Route path="*" element={<PageNotFound />} />
 				</Routes>

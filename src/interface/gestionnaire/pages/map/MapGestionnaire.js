@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import etage from '../../../../Global/images/etage.svg'
+import Camion from '../../../../Global/images/camion.svg'
 import ZoneDepotImage from '../../../../Global/images/zoneDepot.svg'
 import '../../../../../src/App.css';
 import Box from '@mui/material/Box';
@@ -141,12 +142,11 @@ export default function MapGestionnaire() {
               {etablissements.length!==0?(etablissements.map((etb, id) =>
                   <>
                       <Marker key={id} onClick={() => handleActiveMarkerEtablissement(id)}
-                          icon={{ path: "M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z",
-                                  fillColor: "green", fillOpacity: 1, scale: 1,  strokeColor: "green", strokeWeight: 2,}}
+                              icon={ EtablissementIcon}
                           position={ {lat:etb.latitude, lng:etb.longitude} }>                                                   
                       </Marker>     
                       {activeMarkerEtablissement === id ? ( 
-                      <InfoWindow onCloseClick={() => setActiveMarkerEtablissement(null)}  position={ {lat:etb.latitude, lng:etb.longitude}}>
+                      <InfoWindow onCloseClick={() => setActiveMarkerEtablissement(null)}  position={ {lat:etb.latitude+0.025, lng:etb.longitude}}>
                         <div style={divStyle}> <p>{etb.nom_etablissement}</p> </div>
                       </InfoWindow>
                      ) : null}
@@ -156,12 +156,11 @@ export default function MapGestionnaire() {
               {  camions.length!==0?(camions.map((camion, id) =>
                 <>
                     <Marker key={id} onClick={() => handleActiveMarkerCamion(camion.camion.id)}
-                        icon={{ path: "M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z",
-                                fillColor: "red", fillOpacity: 1, scale: 1,  strokeColor: "red", strokeWeight: 2,}}
+                        icon={Camion}
                         position={ {lat:camion.camion.latitude, lng:camion.camion.longitude} }>                                                   
                     </Marker>     
                   {activeMarkerCamion === camion.camion.id ? ( 
-                    <InfoWindow onCloseClick={() => setActiveMarkerCamion(null)} position={ {lat:camion.camion.latitude, lng:camion.camion.longitude}} >
+                    <InfoWindow onCloseClick={() => setActiveMarkerCamion(null)} position={ {lat:camion.camion.latitude+0.025, lng:camion.camion.longitude}} >
                       <div style={divStyle}> <p>{camion.camion.matricule}</p> </div>
                     </InfoWindow>
                    ) : null}
@@ -170,12 +169,11 @@ export default function MapGestionnaire() {
               { zoneDepots.length!==0?(zoneDepots.map((zone, id) =>
                   <>
                       <Marker key={id} onClick={() => handleActiveMarkerZoneDepot(zone.id)}
-                          icon={{ path: "M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z",
-                                  fillColor: "yellow", fillOpacity: 1, scale: 1,  strokeColor: "red", strokeWeight: 2,}}
+                          icon={ZoneDepotImage}
                           position={ {lat:zone.latitude, lng:zone.longitude} }>                                                   
                       </Marker>     
                     {activeMarkerZoneDepot === zone.id ? ( 
-                      <InfoWindow onCloseClick={() => setActiveMarkerZoneDepot(null)} position={ {lat:zone.latitude, lng:zone.longitude}} >
+                      <InfoWindow onCloseClick={() => setActiveMarkerZoneDepot(null)} position={ {lat:zone.latitude+0.025, lng:zone.longitude}} >
                         <div style={divStyle}> <p>{zone.adresse}</p> </div>
                       </InfoWindow>
                      ) : null}

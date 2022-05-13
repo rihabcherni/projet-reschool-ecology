@@ -89,29 +89,6 @@ export default function InterfaceGestionnaire() {
   };
 
 
-  const navigate = useNavigate();
-
-  const logoutSubmit= (e)=>{
-    e.preventDefault();
-    axios.post(`api/auth-gestionnaire/logout`).then(res=>{
-      if(res.data.status===200){
-        localStorage.removeItem('auth_token_gestionnaire');
-        localStorage.removeItem('auth_email_gestionnaire');
-        Swal('Success',res.data.message,"success")
-        navigate("/")   
-      }
-    })
-  }
-
-  var AuthButtons='';
-  if(!localStorage.getItem('auth_token_gestionnaire')){
-    AuthButtons=(
-      <>
-        <Link to="/gestionnaire/login">Register Gestionnaire</Link>
-        <Link to="/register-gestionnaire">Login Gestionnaire</Link>
-      </>   )
-  }else{  AuthButtons=( <li><button onClick={logoutSubmit}>LogoutGestionnaire</button></li> )
-  }
   const liens = linkDetailsGestionnaire.map((lien, key)=> <><MenuItem key={key} item={lien} open={open}/></>);     
   return (
       <div id="css-vars-custom-theme">

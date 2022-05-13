@@ -89,29 +89,6 @@ export default function InterfaceResponsableEtablissement() {
   };
 
 
-  const navigate = useNavigate();
-
-  const logoutSubmit= (e)=>{
-    e.preventDefault();
-    axios.post(`api/auth-responsable-etablissement/logout`).then(res=>{
-      if(res.data.status===200){
-        localStorage.removeItem('auth_token_responsable');
-        localStorage.removeItem('auth_email_responsable');
-        Swal('Success',res.data.message,"success")
-        navigate("/")   
-      }
-    })
-  }
-
-  var AuthButtons='';
-  if(!localStorage.getItem('auth_token_responsable')){
-    AuthButtons=(
-      <>
-        <Link to="/responsable-etablissement/login">Login responsable-etablissement</Link>
-        <Link to="/register-responsable-etablissement">register responsable-etablissement</Link>
-      </>   )
-  }else{  AuthButtons=( <li><button onClick={logoutSubmit}>Logout responsable etablissement</button></li> )
-}
   const liens = LinkResponsableEtablissement.map((lien, key)=> <><MenuItem key={key} item={lien} open={open}/></>);     
   return (
       <div id="css-vars-custom-theme">

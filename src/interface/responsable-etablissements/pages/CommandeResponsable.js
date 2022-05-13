@@ -24,7 +24,7 @@ export default function CommandeResponsable() {
 
 
 var myHeaders = new Headers();
-myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
+myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
 
 var requestOptions = {
   method: 'GET',
@@ -45,13 +45,13 @@ fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-respons
   console.log(tableData)
   var commande=[];
 //   axios.interceptors.request.use(function(config){
-//   if(localStorage.getItem('auth_token_responsable')){
-//       			config.headers.Authorization = localStorage.getItem('auth_token_responsable') ? `Bearer ${localStorage.getItem('auth_token_responsable')}` : '' ; 
+//   if(localStorage.getItem('auth_token')){
+//       			config.headers.Authorization = localStorage.getItem('auth_token') ? `Bearer ${localStorage.getItem('auth_token')}` : '' ; 
 //       			console.log(config.headers.Authorization)
 //     commande=(
 //       <> <h2 align="center">Commande responsable</h2>
 //          <Api url={url} initialValue={initialValue} columnDefs={columnDefs} show={show}/>  
-//          <p>{localStorage.getItem('auth_token_responsable')}</p>
+//          <p>{localStorage.getItem('auth_token')}</p>
 
 //       </>   )
 //   }else{  commande=( <p>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>) }

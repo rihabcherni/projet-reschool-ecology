@@ -13,6 +13,7 @@ const Head = styled.div`
   } 
 `
 export default function HeaderRightIcon() {
+  
   return (
     <Head>
       <BadgeAvatars/>
