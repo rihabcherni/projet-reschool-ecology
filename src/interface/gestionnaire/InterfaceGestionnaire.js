@@ -45,7 +45,7 @@ const theme = experimental_extendTheme({
           main: '#4bae4f',
         },
         secondary: {
-          main: '#a5d6a7',
+          main: '#fff',
         },
         text: {
           primary: grey[900],

@@ -9,7 +9,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
 export default function EtablissementTable() {
   const initialValue = { zone_travail_id:"",responsable_etablissement_id:"",nom_etablissement:"", nbr_personnes:"",adresse:"",longitude:"",latitude:""
  ,quantite_dechets_plastique:"",quantite_dechets_composte:"",quantite_dechets_papier:"",quantite_dechets_canette:"",created_at:"", updated_at:"",error_list:[]};    
-  const url = `https://reschoolecology.tech/api/etablissement`
+  const url = `http://127.0.0.1:8000/api/etablissement`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "zone travail", field: "zone_travail_id", maxWidth: 135 },

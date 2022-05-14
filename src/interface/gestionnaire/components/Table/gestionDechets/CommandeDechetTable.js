@@ -16,7 +16,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
  export default function CommandeDechetTable() {
   const initialValue = { client_dechet_id:"", quantite:"", montant_total:"", date_commande:"", date_livraison:"",created_at:"", updated_at:"", error_list:[]};
 
-  const url = `https://reschoolecology.tech/api/commande-dechet`
+  const url = `http://127.0.0.1:8000/api/commande-dechet`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "client", field: "client_dechet_id"},

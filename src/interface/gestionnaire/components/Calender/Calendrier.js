@@ -101,7 +101,7 @@ const ButtonsWrapper = styled('div')`
   justify-content: flex-end;
 `;
 
-const url = "https://reschoolecology.tech/api";
+const url = "http://127.0.0.1:8000/api";
 const totalDays = 42;
 const defaultEvent = {
   title: '',

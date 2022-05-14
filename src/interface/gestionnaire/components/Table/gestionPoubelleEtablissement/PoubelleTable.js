@@ -70,7 +70,7 @@ const show=[
   ];    
 export default function PoubelleTable() {
   const initialValue = { bloc_poubelle_id:"", nom:"",qrcode:"", capacite_poubelle:"", type:"",Etat:"",temps_remplissage:"",created_at:"", updated_at:"",error_list:[]}
-  const url = `https://reschoolecology.tech/api/poubelle`
+  const url = `http://127.0.0.1:8000/api/poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "bloc poubelle", field: "bloc_poubelle_id"},

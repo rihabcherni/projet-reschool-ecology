@@ -25,7 +25,7 @@ const Barchart = () => {
     const [quantitemois, setQuantiteMois] = React.useState([])
     useEffect(() => {
         ;(async function getStatus() {
-        const response = await fetch('https://reschoolecology.tech/api/somme-dechets-par-mois')
+        const response = await fetch('http://127.0.0.1:8000/api/somme-dechets-par-mois')
         const json = await response.json()
 
         setTimeout(getStatus, 60000)

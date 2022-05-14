@@ -11,7 +11,7 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
     if(show[i][0]==="photo"){
       rows.push(
         <img  style={{height:"100px", width:"100px", borderRadius:"50%"}} 
-        src={`https://reschoolecology.tech/storage/images/gestionnaire/${data[show[i][0]]}`} alt="gestionnaire"/>
+        src={`http://127.0.0.1:8000/storage/images/gestionnaire/${data[show[i][0]]}`} alt="gestionnaire"/>
       );
     }
     }

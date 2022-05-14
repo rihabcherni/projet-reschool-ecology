@@ -8,13 +8,13 @@ import Api from '../../../../../Global/ComponentsTable/Api';
        ];    
 export default function ReparateurPoubelleTable() {
   const initialValue = {photo:"",nom:"", prenom:"",CIN:"", numero_telephone:"", email:"",adresse:"",mot_de_passe:"",created_at:"", updated_at:"",error_list:[]};    
-  const url = `https://reschoolecology.tech/api/reparateur-poubelle`
+  const url = `http://127.0.0.1:8000/api/reparateur-poubelle`
 
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
     <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://reschoolecology.tech/storage/images/reparateur_poubelle/${params.data.photo}`}alt="reparateur-poubelle" />},
+          src={`http://127.0.0.1:8000/storage/images/reparateur_poubelle/${params.data.photo}`}alt="reparateur-poubelle" />},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},
     { headerName: "CIN", field: "CIN"},

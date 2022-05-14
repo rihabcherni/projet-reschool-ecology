@@ -22,14 +22,14 @@ import Api from '../../../../../Global/ComponentsTable/Api';
 
 export default function OuvrierTable() {
   const initialValue = { zone_travail_id:"", camion_id:"",photo:"",qrcode:"", qrcode:"", nom:"",prenom:"",CIN:"",numero_telephone:"",email:"",mot_de_passe:"",created_at:"", updated_at:"",error_list:[]};
-  const url = `https://reschoolecology.tech/api/ouvrier`
+  const url = `http://127.0.0.1:8000/api/ouvrier`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "zone_travail_id", field: "zone_travail_id"},
     { headerName: "camion_id", field: "camion_id"},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
       <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-          src={`https://reschoolecology.tech/storage/images/ouvrier/${params.data.photo}`} alt="ouvrier" />},
+          src={`http://127.0.0.1:8000/storage/images/ouvrier/${params.data.photo}`} alt="ouvrier" />},
     { headerName: "poste", field: "poste"},
     { headerName: "nom", field: "nom"},
     { headerName: "prenom", field: "prenom"},

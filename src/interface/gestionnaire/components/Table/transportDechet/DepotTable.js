@@ -8,7 +8,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
            ];    
 export default function DepotTable() {
   const initialValue = { id_zone_depot:"", camion_id:"", date_depot:"", quantite_depose_plastique:"", quantite_depose_papier:"", quantite_depose_canette:"", quantite_depose_composte:"", prix_total:"",created_at:"", updated_at:"",error_list:[]};    
-  const url = `https://reschoolecology.tech/api/depot`
+  const url = `http://127.0.0.1:8000/api/depot`
     const columnDefs = [
       { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
       { headerName: "zone depot", field: "zone_depot_id"},

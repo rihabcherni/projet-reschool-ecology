@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone  , faBuilding, faUser, faAt, faAddressCard ,faBriefcase, faTruck} from '@fortawesome/free-solid-svg-icons'
 export default function Carte2() {
   const [ouvriers, setOuvrier] = useState('');
-  const url= 'https://reschoolecology.tech/api/'
+  const url= 'http://127.0.0.1:8000/api/'
   useEffect(()=>{
     getALLOuvrier();
   },[])
@@ -30,7 +30,7 @@ export default function Carte2() {
               <Col key={index}>
                         <div className="card-template card-template-1">
                             <div className="left-part">
-                                <img src={`https://reschoolecology.tech/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
+                                <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
                                 <h5> <i>{ouvrier.poste}</i></h5>    
                             </div>
                             <div className="right-part">

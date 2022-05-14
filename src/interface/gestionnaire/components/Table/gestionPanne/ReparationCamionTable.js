@@ -8,7 +8,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
        ];    
 export default function ReparationCamionTable() {
   const initialValue = { camion_id:"", id_mecanicien:"", description_panne:"", cout:"",date_debut_reparation:"",date_fin_reparation:"",created_at:"" ,error_list:[]};    
-  const url = `https://reschoolecology.tech/api/reparation-camion`
+  const url = `http://127.0.0.1:8000/api/reparation-camion`
 
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },

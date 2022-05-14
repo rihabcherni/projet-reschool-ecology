@@ -73,7 +73,7 @@ const MapRegion = () => {
 //     setStyle("regionstyle2");
 //   };
   function showMapData(stateRegion) {
-    fetch("https://reschoolecology.tech/api/region-map")
+    fetch("http://127.0.0.1:8000/api/region-map")
       .then((e) => {
         return e.json();
       })
@@ -201,13 +201,14 @@ const MapRegion = () => {
                         <br/>
                                 {etablissements.length!==0?(
                                     <Card sx={{minWidth:354, maxWidth: 345 , minHeight:50 , backgroundColor:"white", border:"1px solid #383838"}} style={{textAlign:"center"}}>
-                                    <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
-                                      <h4 style={{marginLeft:'17%'}}>nombre des établissements :{etablissements.length} </h4>
+                                    <CardActions disableSpacing sx={{margin:"0px 18% 0"}}>
+                                      <Typography variant="h5" color="primary">{etablissements.length} établissements</Typography>
                                       <MoreExpand
                                         expand={expanded}
                                         onClick={handleExpandClick}
                                         aria-expanded={expanded}
                                         aria-label="show more"
+                                        color="primary"
                                       >
                                         <ExpandMoreIcon />
                                       </MoreExpand>
@@ -300,7 +301,7 @@ const MapRegion = () => {
                                     </CardContent>
                                   </Collapse>
                                   </Card>
-                                ):(<div>pas des etablissement</div>)}
+                                ):(  <Typography variant="h6" color="primary">aucun établissement dans cette region</Typography>)}
                       </CardContent>
                   </Card>              
             </div>

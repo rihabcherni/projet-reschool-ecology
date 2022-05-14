@@ -12,7 +12,7 @@ var requestOptions = {
 };
 const [tableData, setTableData] = useState(null)
 const getData = () => {
-fetch("https://reschoolecology.tech/api/auth-responsable-etablissement/profile", requestOptions)
+fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/profile", requestOptions)
   .then(response => response.json())
   .then(result => setTableData(result))
   .catch(error => console.log('error', error));

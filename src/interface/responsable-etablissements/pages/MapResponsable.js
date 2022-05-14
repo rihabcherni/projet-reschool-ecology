@@ -54,14 +54,14 @@ const divStyle = {
 //   const [showUniqueCamion, setShowUniqueCamion] = useState(null);
   
 //   useEffect(() => {
-//     fetch("https://reschoolecology.tech/api/google-map")
+//     fetch("http://127.0.0.1:8000/api/google-map")
 //       .then((e) => {
 //         return e.json();
 //       })
 //       .then((data) => {
 //           setEtablissements(data);
 //       });
-//     fetch("https://reschoolecology.tech/api/google-map-camion")
+//     fetch("http://127.0.0.1:8000/api/google-map-camion")
 //       .then((e) => {
 //         return e.json();
 //       })
@@ -78,7 +78,7 @@ const divStyle = {
 //         setActiveMarkerEtablissement(marker);
 //           if(marker!==null){
 
-//           await fetch(`https://reschoolecology.tech/api/google-map/${marker+1}`)
+//           await fetch(`http://127.0.0.1:8000/api/google-map/${marker+1}`)
 //           .then((e) => {
 //             return e.json();
 //           })
@@ -94,7 +94,7 @@ const divStyle = {
 //       }
 //       setActiveMarkerCamion(marker);
 //           if(marker!==null){
-//           await fetch(`https://reschoolecology.tech/api/google-map-camion/${marker}`)
+//           await fetch(`http://127.0.0.1:8000/api/google-map-camion/${marker}`)
 //           .then((e) => {
 //             return e.json();
 //           })
@@ -153,7 +153,7 @@ const divStyle = {
 //                             <Col>
 //                               <div className="card-template card-template-1">
 //                                 <div className="left-part">
-//                                          <img src={`https://reschoolecology.tech/storage/images/ouvrier/${uniqueEtablissements[5].photo}`}  alt="Avatar"/>
+//                                          <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${uniqueEtablissements[5].photo}`}  alt="Avatar"/>
 //                                      </div>
 //                                      <div className="right-part">
 //                                          <h3 style={{textAlign:'center'}}><i>{uniqueEtablissements[5].nom +" " + uniqueEtablissements[5].prenom}</i></h3>
@@ -432,7 +432,7 @@ const divStyle = {
 //                                 <Col>
 //                                     <div className="card-template card-template-1">
 //                                         <div className="left-part">
-//                                                   <img src={`https://reschoolecology.tech/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
+//                                                   <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
 //                                                   <h3> <i>{ouvrier.poste}</i></h3>    
 //                                               </div>
 //                                               <div className="right-part">

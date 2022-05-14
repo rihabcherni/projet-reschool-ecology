@@ -15,7 +15,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
 
 export default function ResponsableTable() {
   const initialValue = { photo:"",nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",created_at:"", updated_at:"", error_list:[]};
-  const url = `https://reschoolecology.tech/api/responsable-etablissement`
+  const url = `http://127.0.0.1:8000/api/responsable-etablissement`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "nom_etablissement", field: "nom_etablissement", maxWidth: 135 },

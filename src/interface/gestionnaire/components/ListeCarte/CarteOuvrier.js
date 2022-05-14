@@ -21,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function CarteOuvrier() {
   const [ouvriers, setOuvrier] = useState('');
-  const url= 'https://reschoolecology.tech/'
+  const url= 'http://127.0.0.1:8000/'
   useEffect(()=>{
     getALLOuvrier();
   },[])

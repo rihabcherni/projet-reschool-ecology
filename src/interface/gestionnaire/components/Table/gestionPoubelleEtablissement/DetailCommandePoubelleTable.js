@@ -11,7 +11,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
   ];    
 export default function DetailCommandePoubelleTable() {
   const initialValue = { id_commande_poubelle: "", id_stock_poubelle: "",quantite: "", prix_unitaires: "",error_list:[]};    
-  const url = `https://reschoolecology.tech/api/detail-commande-poubelle`
+  const url = `http://127.0.0.1:8000/api/detail-commande-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "commande poubelle", field: "commande_poubelle_id", },

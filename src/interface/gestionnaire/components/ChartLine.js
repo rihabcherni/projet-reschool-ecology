@@ -27,7 +27,7 @@ const Chartline = () => {
   const [ventes, setVentes] = React.useState([])
   useEffect(() => {
     ;(async function getStatus() {
-      const vdata = await fetch('https://reschoolecology.tech/api/somme-dechets-vendus')
+      const vdata = await fetch('http://127.0.0.1:8000/api/somme-dechets-vendus')
       const vjson = await vdata.json()
 
       setTimeout(getStatus, 60000)

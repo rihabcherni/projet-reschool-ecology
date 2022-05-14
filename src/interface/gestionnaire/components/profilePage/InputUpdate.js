@@ -23,7 +23,7 @@ export default function InputUpdate() {
         ["adresse","adresse"],
        ];
     const handleFormSubmit= (e) =>  {
-              fetch("https://reschoolecology.tech/api/auth-gestionnaire/modifier-profile-gestionnaire", {
+              fetch("http://127.0.0.1:8000/api/auth-gestionnaire/modifier-profile-gestionnaire", {
                 method: "PUT", 
                 body: JSON.stringify(data), 
                 headers: {

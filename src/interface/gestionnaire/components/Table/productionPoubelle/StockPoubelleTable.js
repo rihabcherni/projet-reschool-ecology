@@ -8,7 +8,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
            ];    
 export default function StockPoubelleTable() {
   const initialValue = {capacite_poubelle:"", quantite_disponible_plastique: "", quantite_disponible_canette: "",quantite_disponible_composte: "", quantite_disponible_papier: "",error_list:[]};    
-  const url = `https://reschoolecology.tech/api/stock-poubelle`
+  const url = `http://127.0.0.1:8000/api/stock-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "capacite poubelle", field: "capacite_poubelle", },
