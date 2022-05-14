@@ -11,7 +11,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
   ];    
 export default function CommandePoubelleTable() {
   const initialValue = { responsable_etablissement_id: "", quantite: "",montant_total: "", date_commande: "",date_livraison:"",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/commande-poubelle`
+  const url = `https://reschoolecology.tech/api/commande-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "responsable etablissement", field: "responsable_etablissement_id", },

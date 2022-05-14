@@ -19,9 +19,9 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Carte1() {
+export default function CarteOuvrier() {
   const [ouvriers, setOuvrier] = useState('');
-  const url= 'http://127.0.0.1:8000/'
+  const url= 'https://reschoolecology.tech/'
   useEffect(()=>{
     getALLOuvrier();
   },[])
@@ -45,7 +45,7 @@ export default function Carte1() {
             <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src={`${url}storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar" className='img-card'/>
+              {ouvrier.photo!==null ?<img src={`${url}storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar" className='img-card'/> :<img src={Client} alt="" id="img" className='img-card' />}
               </div>
               <div class="flip-card-back">
                   <h4 style={{textAlign:"center"}}>{ouvrier.nom +' '+ ouvrier.prenom}</h4>

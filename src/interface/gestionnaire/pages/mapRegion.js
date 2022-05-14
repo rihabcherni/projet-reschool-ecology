@@ -73,7 +73,7 @@ const MapRegion = () => {
 //     setStyle("regionstyle2");
 //   };
   function showMapData(stateRegion) {
-    fetch("http://127.0.0.1:8000/api/region-map")
+    fetch("https://reschoolecology.tech/api/region-map")
       .then((e) => {
         return e.json();
       })

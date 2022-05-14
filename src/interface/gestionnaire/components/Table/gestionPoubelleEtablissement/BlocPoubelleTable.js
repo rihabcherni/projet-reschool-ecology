@@ -7,7 +7,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
   ];    
 export default function BlocPoubelleTable() {
   const initialValue = {id:"", etage_etablissement_id: "",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/bloc-poubelle`
+  const url = `https://reschoolecology.tech/api/bloc-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "etage etablissement", field: "etage_etablissement_id", },

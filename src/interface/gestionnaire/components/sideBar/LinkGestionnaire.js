@@ -13,8 +13,8 @@ export const linkDetailsGestionnaire = [
     {id: 1, name: "Dashboard",  path:"/gestionnaire", icon: <ImStatsDots/>},
     {id: 2, name: "Map",  path:"/gestionnaire/map", icon: <FaMapMarkedAlt/>},
 
-    {id: 3, name: "Poubelles", path:"/gestionnaire/poubelles", icon: <BsTrashFill/>},
-    {id: 4, name: "Camions", path:"/gestionnaire/camions", icon: <FaTruckMoving/>},
+    {id: 3, name: "Gestion poubelles", path:"/gestionnaire/poubelles", icon: <BsTrashFill/>},
+    {id: 4, name: "Gestion camions", path:"/gestionnaire/camions", icon: <FaTruckMoving/>},
    
     {id: 5, name: "Production poubelle", icon: <FaTrash color="primary"/>,
       items: [

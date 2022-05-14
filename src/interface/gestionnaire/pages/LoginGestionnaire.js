@@ -11,7 +11,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
-axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-gestionnaire";
+axios.defaults.baseURL= "https://reschoolecology.tech/api/auth-gestionnaire";
 let token='';
 if(localStorage.getItem('auth_token')!==''){
 	 token=localStorage.getItem('auth_token');

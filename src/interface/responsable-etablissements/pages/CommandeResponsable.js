@@ -10,7 +10,7 @@ const show=[
            ];    
 export default function CommandeResponsable() {
   const initialValue = { responsable_etablissement_id:"", type_paiment:"", montant_total:"", date_commande:"", date_livraison:"",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-responsable`
+  const url = `https://reschoolecology.tech/api/auth-responsable-etablissement/commande-responsable`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "responsable etablissement", field: "responsable_etablissement_id"},
@@ -33,7 +33,7 @@ var requestOptions = {
 };
 const [tableData, setTableData] = useState(null)
 const getData = () => {
-fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-responsable", requestOptions)
+fetch("https://reschoolecology.tech/api/auth-responsable-etablissement/commande-responsable", requestOptions)
   .then(response => response.json())
   .then(result => setTableData(result))
   .catch(error => console.log('error', error));

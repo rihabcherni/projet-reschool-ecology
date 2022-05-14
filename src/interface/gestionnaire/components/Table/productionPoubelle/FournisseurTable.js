@@ -8,12 +8,12 @@ import Api from '../../../../../Global/ComponentsTable/Api';
            ];    
 export default function FournisseurTable() {
   const initialValue = { nom: "", prenom: "",CIN: "", photo: "",numero_telephone:"",email:"",adresse:"",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/fournisseurs`
+  const url = `https://reschoolecology.tech/api/fournisseurs`
   const columnDefs = [
         { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
         { headerName: "photo", field: "photo", cellRenderer: (params) =>
         <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
-              src={`http://127.0.0.1:8000/storage/images/fournisseur/${params.data.photo}`} alt="fournisseur"/>},
+              src={`https://reschoolecology.tech/storage/images/fournisseur/${params.data.photo}`} alt="fournisseur"/>},
         { headerName: "nom", field: "nom"},
         { headerName: "prenom", field: "prenom"},
         { headerName: "CIN", field: "CIN"},

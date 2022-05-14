@@ -8,7 +8,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
            ];    
 export default function BlocEtablissementTable() {
   const initialValue = {capacite_poubelle:"", quantite_disponible_plastique: "", quantite_disponible_canette: "",quantite_disponible_composte: "", quantite_disponible_papier: "",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/bloc-etablissement`
+  const url = `https://reschoolecology.tech/api/bloc-etablissement`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "etablissement", field: "etablissement_id", },

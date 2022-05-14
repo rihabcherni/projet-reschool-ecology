@@ -23,7 +23,7 @@ export default function InputUpdate() {
         ["adresse","adresse"],
        ];
     const handleFormSubmit= (e) =>  {
-              fetch("http://127.0.0.1:8000/api/auth-gestionnaire/modifier-profile-gestionnaire", {
+              fetch("https://reschoolecology.tech/api/auth-gestionnaire/modifier-profile-gestionnaire", {
                 method: "PUT", 
                 body: JSON.stringify(data), 
                 headers: {
@@ -68,7 +68,7 @@ export default function InputUpdate() {
     <>
     {show.length!==0 ?(show.map(sh => 
                   
-        ((sh[1]!="id" && sh[1]!="created_at" && sh[1]!="updated_at" && sh[1]!="photo")?(
+        ((sh[1]!=="id" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo")?(
             <>
                     <TextField id={sh[1]}  onChange={e=>onChange(e)} focused placeholder={localStorage.getItem("auth_"+`${sh[1]}`)}  error={!!validation[sh[1]]} label={sh[0]} variant="outlined" margin="dense" fullWidth />
                     <FormHelperText error={true}>

@@ -8,7 +8,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
            ];    
 export default function MateriauxPrimairesTable() {
   const initialValue = { id_fournisseur: "", nom_materiel: "",prix_unitaire: "", quantite: "",prix_total:"",error_list:[]};    
-  const url = `http://127.0.0.1:8000/api/materiaux-primaires`
+  const url = `https://reschoolecology.tech/api/materiaux-primaires`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "fournisseur", field: "fournisseur_id", },

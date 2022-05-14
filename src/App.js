@@ -49,7 +49,7 @@ import ProfileGestionnaire from './interface/gestionnaire/pages/ProfileGestionna
 
 const PageNotFound=()=><div>page not found</div>
 
-axios.defaults.baseURL= "http://127.0.0.1:8000/";
+axios.defaults.baseURL= "https://reschoolecology.tech/";
 axios.defaults.headers.post['Content-type']="application/json";
 axios.defaults.headers.post['Accept']="application/json";
 

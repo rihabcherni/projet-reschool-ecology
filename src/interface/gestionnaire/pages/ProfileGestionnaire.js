@@ -29,7 +29,7 @@ export default function ProfileGestionnaire() {
   }; 
   
   const getStatus =()=> {
-   fetch("http://127.0.0.1:8000/api/auth-gestionnaire/profile", requestOptions)
+   fetch("https://reschoolecology.tech/api/auth-gestionnaire/profile", requestOptions)
    .then(response => response.json())
    .then(result => {
      setProfile(result) 
@@ -60,7 +60,7 @@ export default function ProfileGestionnaire() {
       redirect: 'follow'
     };
   
-    fetch("http://127.0.0.1:8000/api/auth-gestionnaire/updateImage", requestOptions)
+    fetch("https://reschoolecology.tech/api/auth-gestionnaire/updateImage", requestOptions)
       .then(response => response.json())
       .then(result =>     
         { 
@@ -73,7 +73,7 @@ export default function ProfileGestionnaire() {
   useEffect(() => {
     ;(async function getStatus() {
 
-       await fetch("http://127.0.0.1:8000/api/auth-gestionnaire/profile", requestOptions)
+       await fetch("https://reschoolecology.tech/api/auth-gestionnaire/profile", requestOptions)
       .then(response => response.json())
       .then(result => {
         setProfile(result) 
@@ -100,7 +100,7 @@ export default function ProfileGestionnaire() {
                           </div>
                           
                           <div className="avatar-preview">
-                           {profileImg!==null ? <img src={`http://127.0.0.1:8000/storage/images/gestionnaire/${profile.photo}`} className="img"   alt="Avatar"/> :<img src={profileImg} alt="" id="img" className="img" />}
+                           {profileImg!==null ? <img src={`https://reschoolecology.tech/storage/images/gestionnaire/${profile.photo}`} className="img"   alt="Avatar"/> :<img src={profileImg} alt="" id="img" className="img" />}
                               
                           </div>
                       </div>  

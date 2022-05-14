@@ -31,7 +31,7 @@ function UserTable() {
     setOpen(false);
     setFormData(initialValue)
   };
-  const url = `http://127.0.0.1:8000/api/user`
+  const url = `https://reschoolecology.tech/api/user`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
     { headerName: "name", field: "name"},

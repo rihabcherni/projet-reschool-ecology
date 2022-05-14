@@ -11,7 +11,7 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
     if(show[i][0]==="photo"){
       rows.push(
         <img  style={{height:"100px", width:"100px", borderRadius:"50%"}} 
-        src={`http://127.0.0.1:8000/storage/images/gestionnaire/${data[show[i][0]]}`} alt="gestionnaire"/>
+        src={`https://reschoolecology.tech/storage/images/gestionnaire/${data[show[i][0]]}`} alt="gestionnaire"/>
       );
     }
     }
@@ -30,7 +30,7 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
         {rows}
                 <ul>
                     {show.length!==0?(show.map(sh =>   
-                      ((sh[1]!="created_at" && sh[1]!="updated_at" && sh[1]!="photo" && sh[1]!="qrcode"  && sh[1]!="mot_de_passe")?(
+                      ((sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo" && sh[1]!=="qrcode"  && sh[1]!=="mot_de_passe")?(
 
                         <li><b>{sh[0]}:</b>{data[sh[1]]}</li>
                         ): null)

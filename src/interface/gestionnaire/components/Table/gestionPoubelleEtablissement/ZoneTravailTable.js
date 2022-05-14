@@ -15,7 +15,7 @@ import Api from '../../../../../Global/ComponentsTable/Api';
 
 export default function ZoneTravailTable() {
   const initialValue = { region: "",quantite_total_collecte_plastique: "" ,quantite_total_collecte_composte: "",quantite_total_collecte_papier: "",quantite_total_collecte_canette: "", created_at: "", updated_at: "", error_list:[]};
-  const url = `http://127.0.0.1:8000/api/zone-travail`
+  const url = `https://reschoolecology.tech/api/zone-travail`
   const columnDefs = [
       { headerName: "Idetifiant", field: "id", maxWidth:100, minWidth:50, pinned: 'left'  },
       { headerName: "region", field: "region",  minWidth:50, },

@@ -59,14 +59,14 @@ export default function MapGestionnaire() {
   const [showUniqueZoneDepot, setShowUniqueZoneDepot] = useState(null);
   
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/google-map")
+    fetch("https://reschoolecology.tech/api/google-map")
       .then((e) => {
         return e.json();
       })
       .then((data) => {
           setEtablissements(data);
       });
-    fetch("http://127.0.0.1:8000/api/google-map-camion")
+    fetch("https://reschoolecology.tech/api/google-map-camion")
       .then((e) => {
         return e.json();
       })
@@ -75,7 +75,7 @@ export default function MapGestionnaire() {
         console.log(data)
       });
 
-      fetch("http://127.0.0.1:8000/api/zone-depot")
+      fetch("https://reschoolecology.tech/api/zone-depot")
       .then((e) => {
         return e.json();
       })
@@ -92,7 +92,7 @@ export default function MapGestionnaire() {
         setActiveMarkerEtablissement(marker);
           if(marker!==null){
 
-          await fetch(`http://127.0.0.1:8000/api/google-map/${marker+1}`)
+          await fetch(`https://reschoolecology.tech/api/google-map/${marker+1}`)
           .then((e) => {
             return e.json();
           })
@@ -108,7 +108,7 @@ export default function MapGestionnaire() {
       }
       setActiveMarkerCamion(marker);
           if(marker!==null){
-          await fetch(`http://127.0.0.1:8000/api/google-map-camion/${marker}`)
+          await fetch(`https://reschoolecology.tech/api/google-map-camion/${marker}`)
           .then((e) => {
             return e.json();
           })
@@ -124,7 +124,7 @@ export default function MapGestionnaire() {
       }
       setActiveMarkerZoneDepot(marker);
           if(marker!==null){
-          await fetch(`http://127.0.0.1:8000/api/zone-depot/${marker}`)
+          await fetch(`https://reschoolecology.tech/api/zone-depot/${marker}`)
           .then((e) => {
             return e.json();
           })
@@ -138,7 +138,7 @@ export default function MapGestionnaire() {
   if (!isLoaded) return <div><Skeleton sx={{ height:500 }} animation="wave" variant="rectangular" /></div>;
   return (
     <div style={{display:"flex", justifyContent:"space-between"}}>    
-      <GoogleMap mapContainerStyle={containerStyle} onClick={() =>{ setActiveMarkerEtablissement(null); setUniqueEtablissements(null) ;setShowUniqueEtablissement(true);setActiveMarkerCamion(null); setUniqueCamions(null) ;setShowUniqueCamion(true);setActiveMarkerZoneDepot(null); setUniqueZoneDepot(null) ;setShowUniqueZoneDepot(true);}} center={center} zoom={10}>                  
+      <GoogleMap mapContainerStyle={containerStyle} onClick={() =>{ setActiveMarkerEtablissement(null); setUniqueEtablissements(null) ;setShowUniqueEtablissement(true);setActiveMarkerCamion(null); setUniqueCamions(null) ;setShowUniqueCamion(true);setActiveMarkerZoneDepot(null); setUniqueZoneDepot(null) ;setShowUniqueZoneDepot(true);}} center={center} zoom={11.2}>                  
               {etablissements.length!==0?(etablissements.map((etb, id) =>
                   <>
                       <Marker key={id} onClick={() => handleActiveMarkerEtablissement(id)}
@@ -195,7 +195,7 @@ export default function MapGestionnaire() {
                             <Col>
                               <div className="card-template card-template-1">
                                 <div className="left-part">
-                                         <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${uniqueEtablissements[5].photo}`}  alt="Avatar"/>
+                                         <img src={`https://reschoolecology.tech/storage/images/ouvrier/${uniqueEtablissements[5].photo}`}  alt="Avatar"/>
                                      </div>
                                      <div className="right-part">
                                          <h3 style={{textAlign:'center'}}><i>{uniqueEtablissements[5].nom +" " + uniqueEtablissements[5].prenom}</i></h3>
@@ -474,7 +474,7 @@ export default function MapGestionnaire() {
                                 <Col>
                                     <div className="card-template card-template-1">
                                         <div className="left-part">
-                                                  <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
+                                                  <img src={`https://reschoolecology.tech/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
                                                   <h3> <i>{ouvrier.poste}</i></h3>    
                                               </div>
                                               <div className="right-part">
