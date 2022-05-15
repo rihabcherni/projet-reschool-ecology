@@ -21,11 +21,11 @@ ChartJS.register(
     Legend
 );
 
-const Barchart = () => {
+const TotalDechetCollectéMois = () => {
     const [quantitemois, setQuantiteMois] = React.useState([])
     useEffect(() => {
         ;(async function getStatus() {
-        const response = await fetch('http://127.0.0.1:8000/api/somme-dechets-par-mois')
+        const response = await fetch('http://127.0.0.1:8000/api/somme-dechets-depot-par-mois')
         const json = await response.json()
 
         setTimeout(getStatus, 60000)
@@ -81,7 +81,7 @@ const Barchart = () => {
                 <Container>
                     <Typography>
                         <h4 id="traffic" className="card-title mb-0" align="center">
-                        Quantitées collectées totales par mois/année
+                        Quantitées collectées dechtes totales par mois/année
                         </h4>
                     </Typography>
                     <Grid container sm={15} >
@@ -140,4 +140,4 @@ const Barchart = () => {
     );
 }
 
-export default Barchart;
+export default TotalDechetCollectéMois;

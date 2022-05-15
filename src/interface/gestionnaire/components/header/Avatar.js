@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React , {useState , useEffect} from 'react'
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,7 +13,7 @@ import Logout from '@mui/icons-material/Logout';
 import { ListItemIcon } from '@mui/material';
 import { IconButton } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-
+import ProfilePhoto from "../../../../Global/images/default_profile_image.jpg"
 import { Link  , Outlet,useNavigate} from 'react-router-dom';
 import Swal from "sweetalert";
 import axios from "axios";
@@ -75,6 +75,46 @@ const navigate = useNavigate();
   const closeNotification = () => {
     setNotification(null);
   };
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+/*------------- image avatar --------------*/
+
+  const [profile, setProfile] = useState(null)
+  const getData = () => {
+    fetch("http://127.0.0.1:8000/api/auth-gestionnaire/profile", requestOptions)
+    .then(response => response.json())
+    .then(result => setProfile(result))
+    .catch(error => console.log('error', error));
+  }
+    useEffect(() => {
+      getData()
+    }, [])
+    let image = [];
+    if(profile!==null ){
+        if(profile.photo!==null){
+          image.push(
+            <>        
+              <Avatar alt={profile.nom} src={`http://127.0.0.1:8000/storage/images/gestionnaire/${profile.photo}`} />
+            </>);
+        }{
+          image.push(
+            <>  
+              <Avatar alt="gestionniare" src={ProfilePhoto} />
+            </>);
+        } 
+      }else{
+          image.push(
+            <>  
+              <Avatar alt="gestionniare" src={ProfilePhoto} />
+            </>);
+        } 
+    
   return (
      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
@@ -107,8 +147,8 @@ const navigate = useNavigate();
 
             <Tooltip title="Account settings">
               <Button id="fade-button" aria-controls={open?'fade-menu':undefined} aria-haspopup="true" aria-expanded={open ?'true':undefined} onClick={handleClick} color='secondary'>
-                <StyledBadge overlap="circular" anchorOrigin={{vertical:'bottom',horizontal:'right'}} variant="dot">
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <StyledBadge overlap="circular" anchorOrigin={{vertical:'bottom',horizontal:'right'}} variant="dot">  
+                     {image}
                 </StyledBadge>    
               </Button>
             </Tooltip>
@@ -123,5 +163,5 @@ const navigate = useNavigate();
                 <MenuItem onClick={handleClose}> <ListItemIcon> <Logout   fontSize="small" /> </ListItemIcon>  {AuthButtons}  </MenuItem>
             </Menu>
     </Box>
-  );
+  ) 
 }

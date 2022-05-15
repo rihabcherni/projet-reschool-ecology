@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const Chartline = () => {
+const ChartVendsMois = () => {
 
   const [ventes, setVentes] = React.useState([])
   useEffect(() => {
@@ -148,4 +148,4 @@ const Chartline = () => {
     );
 }
 
-export default Chartline;
+export default ChartVendsMois;
