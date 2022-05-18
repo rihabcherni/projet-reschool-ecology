@@ -3,19 +3,23 @@ import '../../../../../App.css'
 import Api from '../../../../../Global/ComponentsTable/Api';
   const show=[
             ["Identifiant","id"],
-            ["type dechet","type_dechet"],
-            ["prix unitaire (Kg)","prix_unitaire"],
+            ["type_poubelle","type_poubelle"],
+            ["capacite_poubelle","capacite_poubelle"],
+            ["quantite_disponible","quantite_disponible"],
+            ["pourcentage_remise","pourcentage_remise"],
            ];    
 export default function StockPoubelleTable() {
-  const initialValue = {capacite_poubelle:"", quantite_disponible_plastique: "", quantite_disponible_canette: "",quantite_disponible_composte: "", quantite_disponible_papier: "",error_list:[]};    
+  const initialValue = {type_poubelle: "", capacite_poubelle: "",quantite_disponible: "", pourcentage_remise: "",error_list:[]};    
   const url = `http://127.0.0.1:8000/api/stock-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
-    { headerName: "capacite poubelle", field: "capacite_poubelle", },
-    { headerName: "quantite disponible plastique", field: "quantite_disponible_plastique", },
-    { headerName: "quantite disponible canette", field: "quantite_disponible_canette", },
-    { headerName: "quantite disponible composte", field: "quantite_disponible_composte", },
-    { headerName: "quantite disponible papier", field: "quantite_disponible_papier", }
+    { headerName: "image produit", field: "photo", cellRenderer: (params) =>
+    <img  style={{height:"57px", width:"77px"}} 
+      src={`http://127.0.0.1:8000/storage/images/stock_poubelle/${params.data.photo}`}alt="poubelle stock" />},
+    { headerName: "type poubelle", field: "type_poubelle" },
+    { headerName: "capacité poubelle", field: "capacite_poubelle", },
+    { headerName: "quantité disponible", field: "quantite_disponible", },
+    { headerName: "pourcentage remise", field: "pourcentage_remise", },
   ]
   return (
     <div style={{width:"100%"}}>

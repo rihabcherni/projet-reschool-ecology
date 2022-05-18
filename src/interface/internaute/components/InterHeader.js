@@ -49,7 +49,7 @@ export default class InterHeader extends Component {
                             <Menu.Item as='a' href='#contact'>Contact</Menu.Item>
                             <Menu.Item position='right'>
                                 <Button as={Link} to="/responsable-etablissement/login" inverted={!fixed} color='green'>
-                                    Espace Client
+                                Se connecter
                                 </Button>
                             </Menu.Item>
                         </Container>

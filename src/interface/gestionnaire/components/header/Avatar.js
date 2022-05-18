@@ -18,7 +18,7 @@ import { Link  , Outlet,useNavigate} from 'react-router-dom';
 import Swal from "sweetalert";
 import axios from "axios";
 import {StyledBadge} from '../../../../style'
-
+import HttpsIcon from '@mui/icons-material/Https';
 export default function BadgeAvatars() {
 
 /**                logout                   */
@@ -35,7 +35,7 @@ const logoutSubmit= (e)=>{
 }
 var AuthButtons='';
   if(localStorage.getItem('auth_token')){
-    AuthButtons=( <li onClick={logoutSubmit}>Se Déconnecter</li> )
+    AuthButtons=( <li onClick={logoutSubmit} style={{color:"green"}}>Se Déconnecter</li> )
 }
 const navigate = useNavigate();
 
@@ -102,16 +102,16 @@ const navigate = useNavigate();
             <>        
               <Avatar alt={profile.nom} src={`http://127.0.0.1:8000/storage/images/gestionnaire/${profile.photo}`} />
             </>);
-        }{
+        }else{
           image.push(
             <>  
-              <Avatar alt="gestionniare" src={ProfilePhoto} />
+              <Avatar alt="gestionnaire" src={ProfilePhoto} />
             </>);
         } 
       }else{
           image.push(
             <>  
-              <Avatar alt="gestionniare" src={ProfilePhoto} />
+              <Avatar alt="gestionnaire" src={ProfilePhoto} />
             </>);
         } 
     
@@ -153,13 +153,22 @@ const navigate = useNavigate();
               </Button>
             </Tooltip>
             <Menu  id="fade-menu" MenuListProps={{ 'aria-labelledby': 'fade-button'}} anchorEl={anchorEl} open={open}  onClose={handleClose} TransitionComponent={Fade}>
-                <MenuItem onClick={handleClose}>
-                    <Link to ="/gestionnaire/profile">
+                <MenuItem onClick={handleClose} sx={{color:"green"}}>
+                    <Link to ="/gestionnaire/profile" >
                       <ListItemIcon > <Avatar sx={{width:"20px",height:"20px"}}/></ListItemIcon>
-                      Mon Profile  
+                      <span style={{color:"green"}}> Mon Profile  </span>
                     </Link> 
-                </MenuItem>                
-                <MenuItem> <ListItemIcon> <Settings fontSize="small" /> </ListItemIcon> Settings </MenuItem>
+                </MenuItem>    
+                
+                <MenuItem onClick={handleClose} >
+                    <Link to ="/gestionnaire/modifier-mot-de-passe">
+                
+                        <ListItemIcon> <HttpsIcon   fontSize="small" /> </ListItemIcon>
+                         <li style={{color:"green", display:"inline"}}>Changer mot de passe </li>  
+               
+                    </Link> 
+                </MenuItem>     
+                
                 <MenuItem onClick={handleClose}> <ListItemIcon> <Logout   fontSize="small" /> </ListItemIcon>  {AuthButtons}  </MenuItem>
             </Menu>
     </Box>

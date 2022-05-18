@@ -59,30 +59,9 @@ export default function MapGestionnaire() {
   const [showUniqueZoneDepot, setShowUniqueZoneDepot] = useState(null);
   
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/google-map")
-      .then((e) => {
-        return e.json();
-      })
-      .then((data) => {
-          setEtablissements(data);
-      });
-    fetch("http://127.0.0.1:8000/api/google-map-camion")
-      .then((e) => {
-        return e.json();
-      })
-      .then((data) => {
-        setCamions(data);
-        console.log(data)
-      });
-
-      fetch("http://127.0.0.1:8000/api/zone-depot")
-      .then((e) => {
-        return e.json();
-      })
-      .then((data) => {
-        setZoneDepots(data.data);
-        console.log(data.data)
-      });
+    fetch("http://127.0.0.1:8000/api/google-map").then((e) => {return e.json();}).then((data) => { setEtablissements(data);  });
+    fetch("http://127.0.0.1:8000/api/google-map-camion").then((e) => { return e.json(); }).then((data) => {setCamions(data);});
+    fetch("http://127.0.0.1:8000/api/zone-depot").then((e) => { return e.json();}).then((data) => {setZoneDepots(data.data); });
     },[])
     const [activeMarkerEtablissement, setActiveMarkerEtablissement] = useState(null);
     async function handleActiveMarkerEtablissement  (marker) {
@@ -91,7 +70,6 @@ export default function MapGestionnaire() {
       }
         setActiveMarkerEtablissement(marker);
           if(marker!==null){
-
           await fetch(`http://127.0.0.1:8000/api/google-map/${marker+1}`)
           .then((e) => {
             return e.json();
@@ -100,7 +78,6 @@ export default function MapGestionnaire() {
             setUniqueEtablissements(data);
           })}
     };
-
     const [activeMarkerCamion, setActiveMarkerCamion] = useState(null);
     async function handleActiveMarkerCamion  (marker) {
       if (marker === activeMarkerCamion) {
@@ -137,37 +114,36 @@ export default function MapGestionnaire() {
 
   if (!isLoaded) return <div><Skeleton sx={{ height:500 }} animation="wave" variant="rectangular" /></div>;
   return (
-    <div style={{display:"flex", justifyContent:"space-between"}}>    
-      <GoogleMap mapContainerStyle={containerStyle} onMouseOver={() =>{ setActiveMarkerEtablissement(null); setUniqueEtablissements(null) ;setShowUniqueEtablissement(true);setActiveMarkerCamion(null); setUniqueCamions(null) ;setShowUniqueCamion(true);setActiveMarkerZoneDepot(null); setUniqueZoneDepot(null) ;setShowUniqueZoneDepot(true);}} center={center} zoom={11.2}>                  
-              {etablissements.length!==0?(etablissements.map((etb, id) =>
-                  <>
-                      <Marker key={id} onClick={() => handleActiveMarkerEtablissement(id)}
-                              icon={ EtablissementIcon}
-                          position={ {lat:etb.latitude, lng:etb.longitude} }>                                                   
-                      </Marker>     
-                      {activeMarkerEtablissement === id ? ( 
-                      <InfoWindow onCloseClick={() => setActiveMarkerEtablissement(null)}  position={ {lat:etb.latitude+0.025, lng:etb.longitude}}>
-                        <div style={divStyle}> <p>{etb.nom_etablissement}</p> </div>
-                      </InfoWindow>
-                     ) : null}
-                  </>             
-              )):(<div style={{color:"red"}}>pas des etablissements</div>)}
+   <div style={{display:"flex", justifyContent:"space-between"}}> 
+     <GoogleMap mapContainerStyle={containerStyle} onMouseOver={() =>{ setActiveMarkerEtablissement(null); 
+         setUniqueEtablissements(null) ;setShowUniqueEtablissement(true);
+         setActiveMarkerCamion(null); setUniqueCamions(null) ;setShowUniqueCamion(true);
+         setActiveMarkerZoneDepot(null); setUniqueZoneDepot(null) ;setShowUniqueZoneDepot(true);}} center={center} zoom={11.2}>                  
+        {etablissements.length!==0?(etablissements.map((etb, id) =>
+           <>
+             <Marker key={id} onClick={() => handleActiveMarkerEtablissement(id)} 
+             icon={ EtablissementIcon} position={ {lat:etb.latitude, lng:etb.longitude} }> </Marker>     
+                {activeMarkerEtablissement === id ? ( 
+                  <InfoWindow onCloseClick={() => setActiveMarkerEtablissement(null)} 
+                     position={ {lat:etb.latitude+0.025, lng:etb.longitude}}>
+                    <div style={divStyle}> <p>{etb.nom_etablissement}</p> </div>
+                  </InfoWindow>
+                ) : null}
+            </>)):(<div style={{color:"red"}}>pas des etablissements</div>)}
 
-              {  camions.length!==0?(camions.map((camion, id) =>
-                <>
-                    <Marker key={id} onClick={() => handleActiveMarkerCamion(camion.camion.id)}
-                        icon={Camion}
-                        position={ {lat:camion.camion.latitude, lng:camion.camion.longitude} }>                                                   
-                    </Marker>     
-                  {activeMarkerCamion === camion.camion.id ? ( 
-                    <InfoWindow onCloseClick={() => setActiveMarkerCamion(null)} position={ {lat:camion.camion.latitude+0.025, lng:camion.camion.longitude}} >
-                      <div style={divStyle}> <p>{camion.camion.matricule}</p> </div>
-                    </InfoWindow>
-                   ) : null}
-                </> ) ):(<div style={{color:"red"}}>pas des camions</div>) }
+        {camions.length!==0?(camions.map((camion, id) =>
+          <>
+            <Marker key={id} onClick={() => handleActiveMarkerCamion(camion.camion.id)} icon={Camion} position={ {lat:camion.camion.latitude, lng:camion.camion.longitude} }>  </Marker>     
+              {activeMarkerCamion === camion.camion.id ? ( 
+                <InfoWindow onCloseClick={() => setActiveMarkerCamion(null)} position={ {lat:camion.camion.latitude+0.025, lng:camion.camion.longitude}} >
+                  <div style={divStyle}> <p>{camion.camion.matricule}</p> </div>
+                </InfoWindow>
+              ) : null}
+          </> ) ):(<div style={{color:"red"}}>pas des camions</div>) 
+        }
               
-              { zoneDepots.length!==0?(zoneDepots.map((zone, id) =>
-                  <>
+        { zoneDepots.length!==0?(zoneDepots.map((zone, id) =>
+            <>
                       <Marker key={id} onClick={() => handleActiveMarkerZoneDepot(zone.id)}
                           icon={ZoneDepotImage}
                           position={ {lat:zone.latitude, lng:zone.longitude} }>                                                   
@@ -177,10 +153,16 @@ export default function MapGestionnaire() {
                         <div style={divStyle}> <p>{zone.adresse}</p> </div>
                       </InfoWindow>
                      ) : null}
-                  </> ) ):(<div style={{color:"red"}}>pas des zones</div>) }
-             
+          </> ) ):(<div style={{color:"red"}}>pas des zones</div>) 
+        }    
       </GoogleMap>   
       
+
+
+
+
+
+
       { (uniqueEtablissements!==null)&&(showUniqueEtablissement===true)?
           <div style={{alignSelf: 'center'}}>
                     <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605,  border:"1px solid #f0f0f0"}}>
@@ -606,7 +588,7 @@ export default function MapGestionnaire() {
                   </CardActions>
                   <CardContent>
                           <div className="scroller" style={{height:'260px', padding:"10px 20px"}}> 
-                              <h4 style={{color:"green"}}>nombre des camions :{camions.length} </h4>                       
+                              <h4 style={{color:"green"}}>nombre des zone de depot :{camions.length} </h4>                       
                               {zoneDepots.length!==0?(zoneDepots.map(zone =>    
                                 <div key={zone.id} style={{ marginBottom:"0px"}}>
                                     <Accordion sx={{ border:"0.5px solid #C8C8C8"}}>

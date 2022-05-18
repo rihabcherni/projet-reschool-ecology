@@ -123,7 +123,6 @@ export default function Pannes() {
     getData()
   }, [])
 
-  console.log(tableData)
   if(tableData!==null){
  return (<>
         <Box>

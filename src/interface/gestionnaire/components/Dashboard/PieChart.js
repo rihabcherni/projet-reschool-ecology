@@ -18,11 +18,9 @@ const Piechart = () => {
         })()
     }, [])
 
-    console.log(zones)
 
     const regions = zones.map((x) => x.region )
     const nb_etab = zones.map((x) => x.region )
-    console.log(regions)
     
     const data = {
         labels: regions,

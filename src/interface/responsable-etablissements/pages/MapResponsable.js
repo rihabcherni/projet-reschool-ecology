@@ -67,7 +67,6 @@ const divStyle = {
 //       })
 //       .then((data) => {
 //         setCamions(data);
-//         console.log(data)
 //       });
 //     },[])
 //     const [activeMarkerEtablissement, setActiveMarkerEtablissement] = useState(null);

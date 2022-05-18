@@ -4,17 +4,14 @@ import Api from '../../../../../Global/ComponentsTable/Api';
 
  const show=[
   ["Identifiant","id"],
-  ["zone_travail_id","zone_travail_id"],
   ["camion_id","camion_id"],
-  ["qrcode","qrcode"],
   ["poste","poste"],
   ["Nom","nom"],
   ["Prénom","prenom"],
   ["CIN","CIN"],
   ["numero_telephone","numero_telephone"],
-  ["email","email"],
+  ["email","email"],  ["adresse","adresse"],
   ["mot de passe","mot_de_passe"],
-  ["adresse","adresse"],
   ["photo","photo"],
   ["Date de création","created_at"],
   ["Date de mise à jour","updated_at"],
@@ -25,10 +22,9 @@ export default function OuvrierTable() {
   const url = `http://127.0.0.1:8000/api/ouvrier`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
-    { headerName: "zone_travail_id", field: "zone_travail_id"},
     { headerName: "camion_id", field: "camion_id"},
     { headerName: "photo", field: "photo", cellRenderer: (params) =>
-      <img  style={{height:"47px", width:"47px", borderRadius:"50%"}} 
+      <img  style={{height:"400px", width:"500px", borderRadius:"50%"}} 
           src={`http://127.0.0.1:8000/storage/images/ouvrier/${params.data.photo}`} alt="ouvrier" />},
     { headerName: "poste", field: "poste"},
     { headerName: "nom", field: "nom"},

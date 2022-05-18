@@ -5,7 +5,7 @@ import TotalDechetCollectéMois from "../components/Dashboard/TotalDechetCollect
 import Piechart from "../components/Dashboard/PieChart"
 import DechetCollecteDepot from "../components/Dashboard/Gestion Dechets/collectes/DechetCollecteDepot"
 import '../css/Dashboard.css'
-import { Grid, Typography , Paper} from '@mui/material'
+import { Grid, Typography , Paper, Container} from '@mui/material'
 import { styled } from '@mui/material/styles';
 import Pannes from '../components/Dashboard/Gestion pannes/Pannes';
 import GlobalStatistiques from '../components/Dashboard/GlobalStatistiques';
@@ -25,15 +25,13 @@ export const Item = styled(Paper)(({ theme }) =>
 const Dashboard = () => {
     return (
       <div className="container_dashboard">
-    
-      
-      <Typography variant='h3' sx={{color:"green"}}>Tableau de bord</Typography>
-      <Typography variant='h6' sx={{color:"gray"}}>Bonjour, <b style={{color:"green"}}> {localStorage.getItem("auth_nom")} {localStorage.getItem("auth_prenom")} </b> bienvenue dans votre tableau de bord</Typography>
-      
+          <Typography variant='h3' sx={{color:"green"}}>Tableau de bord</Typography>
+          <Typography variant='h6' sx={{color:"gray"}}>Bonjour, <b style={{color:"green"}}> {localStorage.getItem("auth_nom")} {localStorage.getItem("auth_prenom")} </b> bienvenue dans votre tableau de bord</Typography>
+          
         <Grid  container spacing={1}  > 
             <Grid item sx={{width:"100%"}}>
                 <Item>
-                    <Typography variant='h5'>Statistiques générale </Typography>
+                    <Typography variant='h5' color="primary">Statistiques générales </Typography>
                     <GlobalStatistiques/>                
                 </Item>
             </Grid>
@@ -85,6 +83,7 @@ const Dashboard = () => {
                       <Item>
                           <Typography variant='h6' color="primary">Gestion des poubelle dans les etablissements</Typography>
                           <MapRegion/>
+                          <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>
                       </Item>
                       <Grid  container spacing={5}  > 
                           <Grid  item  sx={{width:"50%"}}>

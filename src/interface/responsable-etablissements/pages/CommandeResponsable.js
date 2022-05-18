@@ -47,7 +47,6 @@ fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-respons
 //   axios.interceptors.request.use(function(config){
 //   if(localStorage.getItem('auth_token')){
 //       			config.headers.Authorization = localStorage.getItem('auth_token') ? `Bearer ${localStorage.getItem('auth_token')}` : '' ; 
-//       			console.log(config.headers.Authorization)
 //     commande=(
 //       <> <h2 align="center">Commande responsable</h2>
 //          <Api url={url} initialValue={initialValue} columnDefs={columnDefs} show={show}/>  

@@ -16,7 +16,6 @@ export default function Carte2() {
     .then((response)=>{
       const allOuvrier = response.data.data;
       setOuvrier(allOuvrier);
-      console.log(allOuvrier);
     })
     .catch(error=> console.error(`Error: ${error}`))
   }

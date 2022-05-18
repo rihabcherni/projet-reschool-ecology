@@ -23,6 +23,7 @@ import './App.css';
 	import CommandePoubelle from './interface/gestionnaire/pages/commande/CommandePoubelle';
 	import CalendrierGestionnaire from './interface/gestionnaire/pages/CalendrierGestionnaire';
 	import LoginGestionnaire from './interface/gestionnaire/pages/LoginGestionnaire';
+	import ModiferMotDePasse from './interface/gestionnaire/pages/ModiferMotDePasse';
 	import ContactUs from './interface/gestionnaire/pages/ContactUs/ContactUs';
 /**** ----------------------gestionnaire ------------------------ ****/
 /**** ----------------------responsable Etablissement ------------------------ ****/
@@ -37,6 +38,10 @@ import './App.css';
 	import PanierResponsable from './interface/responsable-etablissements/pages/PanierResponsable';
 	import ProfileResponsable from './interface/responsable-etablissements/pages/ProfileResponsable';
 	import LoginResponsable from './interface/responsable-etablissements/pages/LoginResponsable';
+	import ListeProduitsPoubelle from './interface/responsable-etablissements/pages/ListeProduitsPoubelle';
+	import ShowDetailsProduit from './interface/responsable-etablissements/pages/ShowDetailsProduit';
+	
+
 	import StockPoubelle from './interface/gestionnaire/pages/productionPoubelle/StockPoubelle';
 	import MateriauxPrimaire from './interface/gestionnaire/pages/productionPoubelle/MateriauxPrimaire';
 /**** ----------------------responsable Etablissement ------------------------ ****/
@@ -81,6 +86,7 @@ function App() {
 		<>
 				<Routes>
 					<Route path='/' element={<InterfaceInternaute/>}></Route>
+					<Route path='/gestionnaire/modifier-mot-de-passe' element={<ModiferMotDePasse/>}></Route>
 					<Route path="/gestionnaire/login" element={!GestionnaireAuth?<LoginGestionnaire/>:<div><Navigate replace to="/gestionnaire" /><InterfaceGestionnaire/></div>}/>
 					<Route path='/gestionnaire' element={<InterfaceGestionnaire/>}>
 						<Route index element={<Dashboard/>}/>
@@ -127,6 +133,10 @@ function App() {
 						<Route path='calendrier' element={<CalendrierResponsable/>}/>
 						<Route path='commander' element={<CommanderResponsable/>}/>
 						<Route path='panier' element={<PanierResponsable/>}/>
+						<Route path='produit-poubelle' element={<ListeProduitsPoubelle/>}/>
+						<Route path='produit-poubelle/:id' element={<ShowDetailsProduit/>}/>
+
+						
 						<Route path='profile' element={<ProfileResponsable/>}/>				
 					</Route>
 					<Route path="*" element={<PageNotFound />} />

@@ -7,8 +7,9 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import '../../App.css'
 import { Table} from './Table'
 import {ButtonTable} from '../../style'
-import DialogCrudUpdate from './DialogCrudUpdate';
+import DialogAddUpdate from './DialogAddUpdate';
 import DialogShow from './DialogShow';
+import Swal from 'sweetalert';
 
 export default function Api({initialValue, url, columnDefs, show}) {
   const [tableData, setTableData] = useState(null)
@@ -56,6 +57,7 @@ export default function Api({initialValue, url, columnDefs, show}) {
   const handleDelete = (oldData) => {
     console.log(oldData.id)
     const confirm = window.confirm("Êtes-vous sûr de vouloir supprimer cette ligne", oldData.id)
+    Swal("Suppression", "ligne supprimer avec succés" ,"success")
     if (confirm) {
       fetch(url + `/${oldData.id}`, { method: "DELETE" }).then(resp => resp.json()).then(resp => getData())
     }
@@ -118,7 +120,7 @@ export default function Api({initialValue, url, columnDefs, show}) {
   return (
     <div style={{width:"100%"}}>
         <Table handleClickOpen={handleClickOpen} columnDefs={tableColumn} tableData={tableData}/>
-        <DialogCrudUpdate open={open} handleClose={handleClose} show={show}
+        <DialogAddUpdate open={open} handleClose={handleClose} show={show}
           data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit}  validation={validation} />
        
         <DialogShow open={openShow} handleClose={handleCloseShow}  show={show}

@@ -31,7 +31,7 @@ export default function ProfileGestionnaire({toggleDrawer}) {
         <>    
             {profile.photo===null?
               <img src={ProfilePhoto} alt="default images profile" style={{margin:"2% 18%" , borderRadius:"50%", width:"200px", height:"200px"}}/>: 
-              <img src={`http://127.0.0.1:8000/storage/images/gestionnaire/${profile.photo}`} style={{margin:"2% 18%" , borderRadius:"50%", width:"200px", height:"200px"}} alt="gestionniare image"/>
+              <img src={`http://127.0.0.1:8000/storage/images/gestionnaire/${profile.photo}`} style={{margin:"2% 18%" , borderRadius:"50%", width:"200px", height:"200px"}} alt="gestionnaire image"/>
             } 
             <div style={{fontSize:"16px", margin:"20px"}}>
                 <li><b>Nom :</b> {profile.nom}</li>

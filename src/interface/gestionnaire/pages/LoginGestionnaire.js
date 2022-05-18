@@ -11,6 +11,19 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
+import styled from 'styled-components'
+import {Image} from "semantic-ui-react"
+import LogoImage from '../../../Global/images/reschool.png'
+const Logo= styled.div`
+  // padding-top: 30px;  
+  padding-left: 40px;  
+  font-size: 20px;
+  font-weight: bold;
+  font-family: berlin;
+  color: #21BA45;
+  weight: 10%;
+  height: 10px;
+`
 axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-gestionnaire";
 let token='';
 if(localStorage.getItem('auth_token')!==''){
@@ -25,11 +38,7 @@ const LoginGestionnaire=()=>{
     console.log("Captcha value:", value);
   }
     const navigate = useNavigate();
-    const [loginInput, setLoginInput] = React.useState({
-      email: '',
-      mot_de_passe: '',
-      showPassword: false,   
-      error_list:[],
+    const [loginInput, setLoginInput] = React.useState({email: '',mot_de_passe: '',showPassword: false,error_list:[],
     });
     const handleInput =  (e) => {
       e.persist();
@@ -55,8 +64,8 @@ const LoginGestionnaire=()=>{
             navigate("/gestionnaire");  
             Swal('Success',res.data.message,"success");
           }else if(res.data.status === 401){
-            Swal ( "Oops" ,  res.data.validation_credentials,  "error" )
-          }else{
+            console.log(res.data.validation_errors)
+            Swal ( 'Oops' ,  res.data.validation_errors ,"error" )
             setLoginInput({...loginInput,error_list:res.data.validation_errors});
           }
         }) 
@@ -70,44 +79,42 @@ const LoginGestionnaire=()=>{
     };
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
-    };
-    const paperStyle={padding :40,height:500,width:350, margin:"5% auto"}
-    const avatarStyle={backgroundColor:'#1bbd7e',width:60,height:60}
-    const btnstyle={margin:'8px 0'}
+    };    
+    const paperStyle={
+      padding :40,height:550,width:400, margin:"5% auto"
+    }
+    const avatarStyle={
+      backgroundColor:'#21BA45',width:60,height:60
+    } //#338037
+    const btnstyle={
+      backgroundColor:'#21BA45',
+      margin:'8px 0'
+    }
     return(
         <Grid>
+            <Logo>  <img width='100px' src={LogoImage} /> </Logo>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
-                    <h2>Admin Login</h2>
+                     <h2 style={{paddingBottom:"30px", marginTop:"5px"}}>Espace Gestionnaire</h2>
                 </Grid>
                 <form onSubmit={loginSubmit}>
                       <FormControl fullWidth variant="outlined" color="success">
-                          <InputLabel htmlFor="mot_de_passe" >email</InputLabel>
-                          <OutlinedInput 
-                            id="outlined-adornment-email"
-                            type='text'
-                            name="email"
-                            value={loginInput.email}
-                            onChange={handleInput}
-                            placeholder='Entrer votre email'
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <PersonIcon/>
-                              </InputAdornment>
-                            }  
-                            error={!!loginInput.error_list.email}
-      
-                            label="email" />
+                          <InputLabel htmlFor="Email" sx={{width:"200px"}} >Adresse Email</InputLabel>
+                          <OutlinedInput id="email" type='email' name="email" value={loginInput.email}
+                            onChange={handleInput} placeholder='Entrer votre email'
+                            startAdornment={<InputAdornment position="start"><PersonIcon/></InputAdornment> }  
+                            error={!!loginInput.error_list.email}  label="Adresse Email" 
+                          />
                             <FormHelperText error={true}>
                             {loginInput.error_list.email}           
                           </FormHelperText> 
                       </FormControl>
                       
                       <FormControl fullWidth sx={{ marginTop: 2 }} variant="outlined" color="success" >
-                          <InputLabel htmlFor="outlined-adornment-password" >mot de passe</InputLabel>
+                          <InputLabel htmlFor="mot_de_passe" >Mot de passe</InputLabel>
                           <OutlinedInput 
-                            id="outlined-adornment-password"
+                            id="mot_de_passe"
                             type={loginInput.showPassword ? 'text' : 'password'}
                             value={loginInput.mot_de_passe}
                             name="mot_de_passe"
@@ -137,18 +144,18 @@ const LoginGestionnaire=()=>{
                       </FormControl>
 
 
-                      <FormControlLabel control={ <Checkbox name="rememberme" color="success"/>} label="Remember me" />
+                      <FormControlLabel control={ <Checkbox name="Souvenez de moi" color="success"/>} label="Souvenez de moi" />
                       <ReCAPTCHA
                           sitekey='6LcApHsfAAAAAHz09e3JvjZHKzd-8xV4d3BhmeQH'
                           
                           onChange={onChange}
                         />
                                       
-                      <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                      <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth> Se connecter </Button>
                       <Typography sx={{textAlign:"center"}}>
-                          <Link href="#" >
-                              Forgot password ?
-                      </Link>
+                        <Link href="/gestionnaire/oublier-mot-de-passe" >
+                          Avez-vous oublier votre mot de passe ?
+                        </Link>
                       </Typography>
                 </form>
             </Paper>
