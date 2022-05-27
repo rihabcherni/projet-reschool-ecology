@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import  ChartPanne  from './ChartPanne';
 import { Link } from 'react-router-dom';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import '../../../css/panne.css'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -124,31 +125,31 @@ export default function Pannes() {
   }, [])
 
   if(tableData!==null){
- return (<>
+ return (
+   <>    
+        <div className="card-panne">       
+              <Item> Coût total de panne : {tableData.cout_total_panne} Dinars</Item>
+              <Item> Duréée total de panne : {tableData.duree_total_panne} Heures</Item>
+        </div>
         <Box>
+
             <Grid container spacing={3}>
                 <Grid item xs>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab label="Pannes Poubelles" {...a11yProps(0)} sx={{textTransform:"capitalize"}}/>
                         <Tab label="Pannes Camions " {...a11yProps(1)} sx={{textTransform:"capitalize"}}/>
-                        <Item sx={{marginLeft:"5.6%"}}> Coût total de panne : {tableData.cout_total_panne} Dinars</Item>
                     </Tabs>
                 </Grid>
             </Grid>
         </Box>
-        <TabPanel value={value} index={0}>
-              <Grid container spacing={3}>
-                <Grid item sx={{width:"57%"}}>
-                      <Grid container spacing={1}>
-                          <Grid item sx={{width:"50%"}}>
+            <TabPanel value={value} index={0}>
+            <div className='panne-container'>
+                <div>
+                  <div className="card-panne">
                             <Item> <Typography variant='h6' sx={{color:"green"}}>nombre<br/> </Typography>{tableData.nbr_panne_poubelle}</Item>
-                          </Grid>
-                          <Grid item sx={{width:"50%"}}>
                             <Item> <Typography variant='h6' sx={{color:"green"}}>Pourcentage<br/></Typography> {tableData.pourcentage_panne_poubelle} %</Item>
-                          </Grid>
-                      </Grid>
-                      <Grid container spacing={1}>
-                          <Grid item sx={{width:"50%"}}>
+                  </div>
+                  <div className="card-panne">
                           <Item> 
                               <Typography variant='h6' sx={{color:"red"}}>Coût</Typography> 
                               <Grid container spacing={1} >
@@ -161,12 +162,10 @@ export default function Pannes() {
                                         <Item>Coût minimale:<br/>{tableData.min_cout_panne_poubelles} D</Item>
                                     </Grid>
                               </Grid>
-                            </Item>
-                          </Grid>
-                          <Grid item sx={{width:"50%"}}>
-                              <Item> 
-                                  <Typography variant='h6' sx={{color:"red"}}>Durée</Typography> 
-                                    <Grid container spacing={1}>
+                          </Item>
+                          <Item> 
+                              <Typography variant='h6' sx={{color:"red"}}>Durée</Typography> 
+                                 <Grid container spacing={1}>
                                           <Grid item sx={{width:"50%"}}>
                                             <Item>Durée maximale :<br/> {tableData.max_duree_panne_poubelle} Jours</Item>
                                             <Item>Durée minimale :<br/> {tableData.min_duree_panne_poubelle} Jours</Item>
@@ -175,65 +174,62 @@ export default function Pannes() {
                                             <Item>Durée total :<br/>{tableData.sum_duree_poubelles} Jours</Item>
                                             <Item>Durée moyenne :<br/> {tableData.moy_duree_poubelles} Jours</Item>
                                           </Grid>
-                                    </Grid>
-                              </Item>
-                          </Grid>
-                      </Grid>
-                </Grid>
-                <Grid item  sx={{width:"43%"}}>          
-                     <Right tableData={tableData} type='poubelle'/> 
-                </Grid>  
-              </Grid>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Grid container spacing={3}>
-                <Grid item sx={{width:"57%"}}>
-                      <Grid container spacing={1}>
-                          <Grid item sx={{width:"50%"}}>
+                                 </Grid>
+                          </Item>
+                  </div>
+                </div>
+                <div className="right">          
+                    <Right tableData={tableData} type='poubelle'/> 
+                </div>  
+            </div>
+            </TabPanel>
+            
+            <TabPanel value={value} index={1}>
+              <div className='panne-container'>
+                    <div>
+                          <div className="card-panne">
                             <Item> <Typography variant='h6' sx={{color:"green"}}>nombre<br/> </Typography>{tableData.nbr_panne_camion}</Item>
-                          </Grid>
-                          <Grid item sx={{width:"50%"}}>
                             <Item> <Typography variant='h6' sx={{color:"green"}}>Pourcentage<br/></Typography> {tableData.pourcentage_panne_camion} %</Item>
-                          </Grid>
-                      </Grid>
-                      <Grid container spacing={1}>
-                          <Grid item sx={{width:"50%"}}>
-                          <Item> 
-                              <Typography variant='h6' sx={{color:"red"}}>Coût</Typography> 
-                              <Grid container spacing={1} >
-                                    <Grid item sx={{width:"50%"}}>
-                                        <Item> Coût total:<br/>{tableData.cout_panne_camions} D</Item>
-                                        <Item> Coût moyenne:<br/>{tableData.moy_cout_panne_camions} D</Item>
-                                    </Grid>
-                                    <Grid item sx={{width:"50%"}}>
-                                        <Item>Coût maximale:<br/>{tableData.max_cout_panne_camions} D</Item>
-                                        <Item>Coût minimale:<br/>{tableData.min_cout_panne_camions} D</Item>
-                                    </Grid>
-                              </Grid>
-                            </Item>
-                          </Grid>
-                          <Grid item sx={{width:"50%"}}>
+                          </div>
+                          <div className="card-panne">
+                              <Grid item>
                               <Item> 
-                                  <Typography variant='h6' sx={{color:"red"}}>Durée</Typography> 
-                                    <Grid container spacing={1}>
-                                          <Grid item sx={{width:"50%"}}>
-                                            <Item>Durée maximale :<br/> {tableData.max_duree_panne_camion} Jours</Item>
-                                            <Item>Durée minimale :<br/> {tableData.min_duree_panne_camion} Jours</Item>
-                                          </Grid>
-                                          <Grid item sx={{width:"50%"}}>
-                                            <Item>Durée total :<br/>{tableData.sum_duree_camion} Jours</Item>
-                                            <Item>Durée moyenne :<br/> {tableData.moy_duree_camion} Jours</Item>
-                                          </Grid>
-                                    </Grid>
-                              </Item>
-                          </Grid>
-                      </Grid>
-                </Grid>
-                <Grid item  sx={{width:"43%"}}>  
-                      <Right tableData={tableData} type='camion' /> 
-                </Grid>  
-          </Grid>
-        </TabPanel> 
+                                  <Typography variant='h6' sx={{color:"red"}}>Coût</Typography> 
+                                  <Grid container spacing={1} >
+                                        <Grid item sx={{width:"50%"}}>
+                                            <Item> Coût total:<br/>{tableData.cout_panne_camions} D</Item>
+                                            <Item> Coût moyenne:<br/>{tableData.moy_cout_panne_camions} D</Item>
+                                        </Grid>
+                                        <Grid item sx={{width:"50%"}}>
+                                            <Item>Coût maximale:<br/>{tableData.max_cout_panne_camions} D</Item>
+                                            <Item>Coût minimale:<br/>{tableData.min_cout_panne_camions} D</Item>
+                                        </Grid>
+                                  </Grid>
+                                </Item>
+                              </Grid>
+                              <Grid item>
+                                  <Item> 
+                                      <Typography variant='h6' sx={{color:"red"}}>Durée</Typography> 
+                                        <Grid container spacing={1}>
+                                              <Grid item sx={{width:"50%"}}>
+                                                <Item>Durée maximale :<br/> {tableData.max_duree_panne_camion} Jours</Item>
+                                                <Item>Durée minimale :<br/> {tableData.min_duree_panne_camion} Jours</Item>
+                                              </Grid>
+                                              <Grid item sx={{width:"50%"}}>
+                                                <Item>Durée total :<br/>{tableData.sum_duree_camion} Jours</Item>
+                                                <Item>Durée moyenne :<br/> {tableData.moy_duree_camion} Jours</Item>
+                                              </Grid>
+                                        </Grid>
+                                  </Item>
+                              </Grid>
+                          </div>
+                    </div>
+                    <div className="right">  
+                          <Right tableData={tableData} type='camion' /> 
+                    </div>  
+              </div>
+            </TabPanel> 
+   
   </>)
 }else{
     return (

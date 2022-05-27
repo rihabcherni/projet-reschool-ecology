@@ -53,10 +53,8 @@ const Piechart = () => {
         <div>
             <Card>
                 <Container>
-                    <Typography>
-                        <h4 id="traffic" className="card-title mb-0" align="center">
-                            Quantitées collectées totales par mois/année
-                        </h4>
+                    <Typography variant="h6" id="traffic" align="center">
+                       Quantitées collectées totales par mois/année
                     </Typography>
                 </Container>
                 <Pie 

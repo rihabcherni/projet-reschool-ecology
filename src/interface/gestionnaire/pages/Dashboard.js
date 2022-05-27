@@ -5,7 +5,7 @@ import TotalDechetCollectéMois from "../components/Dashboard/TotalDechetCollect
 import Piechart from "../components/Dashboard/PieChart"
 import DechetCollecteDepot from "../components/Dashboard/Gestion Dechets/collectes/DechetCollecteDepot"
 import '../css/Dashboard.css'
-import { Grid, Typography , Paper, Container} from '@mui/material'
+import {Typography , Paper} from '@mui/material'
 import { styled } from '@mui/material/styles';
 import Pannes from '../components/Dashboard/Gestion pannes/Pannes';
 import GlobalStatistiques from '../components/Dashboard/GlobalStatistiques';
@@ -28,49 +28,51 @@ const Dashboard = () => {
           <Typography variant='h3' sx={{color:"green"}}>Tableau de bord</Typography>
           <Typography variant='h6' sx={{color:"gray"}}>Bonjour, <b style={{color:"green"}}> {localStorage.getItem("auth_nom")} {localStorage.getItem("auth_prenom")} </b> bienvenue dans votre tableau de bord</Typography>
           
-        <Grid  container spacing={1}  > 
-            <Grid item sx={{width:"100%"}}>
+        <div > 
+            <div>
                 <Item>
                     <Typography variant='h5' color="primary">Statistiques générales </Typography>
                     <GlobalStatistiques/>                
                 </Item>
-            </Grid>
-            <Grid  item  sx={{width:"100%"}} >
+            </div>
+            <div>
                 <Item>
-                    <Grid  container spacing={5}>
-                        <Grid  item  sx={{width:"100%"}}>
+                    <div>
+                        <div>
                           <Typography variant='h5' sx={{color:"red"}}>Gestion des ventes </Typography>
-                        </Grid>
-                        <Grid  item  sx={{width:"50%"}}>
+                        </div>
+                        <div  >
                             <Item><Typography variant='h6' color="primary">Gestion des ventes et clients des poubelles </Typography></Item>
-                        </Grid>
-                        <Grid  item  sx={{width:"50%"}}>
+                        </div>
+                        <div >
                             <Item>
                                 <Typography variant='h6' color="primary">Gestion des ventes et clients des dechets </Typography>
                                 <ChartVendsMois/> 
 
                                 
                             </Item>           
-                        </Grid>
-                    </Grid>
+                        </div>
+                    </div>
                       
                       
 
-                    <Grid  container spacing={5}  > 
-                        <Grid  item  sx={{width:"100%"}}>
+                    <div> 
+                        <div>
                             <Typography variant='h5' sx={{color:"red"}}>Gestion des stocks </Typography>
-                        </Grid>
-                        <Grid  item  sx={{width:"50%"}}>
+                        </div>
+
+                        <div>
                             <Item><Typography variant='h6' color="primary">Gestion du stocks poubelles</Typography></Item>
-                        </Grid>
-                        <Grid  item  sx={{width:"50%"}}>
+                        </div>
+
+                        <div>
                             <Item>
                                 <Typography variant='h6' color="primary">Gestion des dechets collecte</Typography>
                                 <DechetCollecteDepot/>
                                 <TotalDechetCollectéMois/> 
                             </Item>          
-                        </Grid>
-                    </Grid>
+                        </div>
+                    </div>
 
                       
                       
@@ -85,39 +87,34 @@ const Dashboard = () => {
                           <MapRegion/>
                           <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>   <br/>
                       </Item>
-                      <Grid  container spacing={5}  > 
-                          <Grid  item  sx={{width:"50%"}}>
+                      <div> 
+                          <div>
                             <Item><Typography variant='h6' color="primary">Gestion des camions </Typography></Item>
-                          </Grid>
-                          <Grid  item  sx={{width:"50%"}}>
+                          </div>
+                          <div>
                             <Item><Typography variant='h6' color="primary">Gestion des ouvriers </Typography></Item>           
-                          </Grid>
-                      </Grid>
+                          </div>
+                      </div>
                 </Item>
 
 
                
-            </Grid>  
+            </div>  
 
-            <Grid  item  sx={{width:"100%"}}>
+            <div>
                 <Item><Typography variant='h6' color="primary">Gestion des fournisseurs</Typography></Item>
                 <Item>
                           <Typography variant='h6' color="primary">Gestion des pannes</Typography>                      
                           <Pannes/>
                 </Item>
-            </Grid>
-        </Grid>  
+            </div>
+        </div>  
 
 
-  
-          <Grid container>
-  
-          </Grid>
-          <Grid container>
-            <Grid item xs={4}> 
+
+          <div style={{width:"50%"}}>
               <Piechart/> 
-            </Grid>
-          </Grid>
+          </div>
       
 
       </div>

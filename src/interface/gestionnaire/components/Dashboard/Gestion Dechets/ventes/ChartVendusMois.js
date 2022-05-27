@@ -81,12 +81,10 @@ const ChartVendsMois = () => {
       <>
         <Card>
           <Container>
-              <Typography>
-                <h4 id="traffic" className="card-title mb-0" align="center">
-                  Quantités vendus des déchets par mois
-                </h4>
-              </Typography>
-              <Grid container sm={15}>
+            <Typography variant="h6" id="traffic" align="center">
+              Quantités vendus des déchets par mois
+            </Typography>
+            <Grid container>
                 <Select
                   className="float-end me-3"
                   onChange={onchangeSelectV}
@@ -96,7 +94,7 @@ const ChartVendsMois = () => {
                   getOptionLabel={(option) => option.value}
                   placeholder={vAnnee}
                 />
-              </Grid>
+            </Grid>
             <Container>
               <Line 
               options={{ 

@@ -1,0 +1,22 @@
+.panne-container{
+   display: grid;
+   grid-template-columns: 56% 42%;
+ }
+.card-panne{
+   display: grid;
+   grid-template-columns: repeat(2 ,1fr);   
+}
+
+@media screen and (max-width: 800px) {
+   .panne-container{
+      display: grid;
+      grid-template-columns: 100%;   
+   }
+   .card-panne{
+      display: grid;
+      grid-template-columns:100%;
+   }
+   .right{
+      margin-top: 50px;
+   }
+ }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, FormHelperText,TextField } from '@mui/material';
-export default function InputUpdate() {
+import Swal from 'sweetalert';
+export default function InputUpdateGestionnaire() {
     const initialValue = { nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",created_at:"", updated_at:"", error_list:[]};
     const [validation, setValidation] = useState([])
     const [data, setData] = useState(initialValue)
@@ -40,10 +41,10 @@ export default function InputUpdate() {
     }
   return (
     <>
-        {show.length!==0 ?(show.map(sh =>               
+        {show.length!==0 ?(show.map((sh, key) =>               
             ((sh[1]!=="id" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo")?(
                 <>
-                  <TextField id={sh[1]}  onChange={e=>onChange(e) } focused placeholder={localStorage.getItem("auth_"+`${sh[1]}`)}  
+                  <TextField key={key} id={sh[1]}  onChange={e=>onChange(e) } focused placeholder={localStorage.getItem("auth_"+`${sh[1]}`)}  
                     error={!!validation[sh[1]]} label={sh[0]} variant="outlined" margin="dense" fullWidth />
                   <FormHelperText error={true}>
                     {validation[sh[1]]}        

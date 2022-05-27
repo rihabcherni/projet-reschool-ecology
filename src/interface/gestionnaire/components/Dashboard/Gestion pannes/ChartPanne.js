@@ -65,12 +65,8 @@ const ChartPanne = ({url ,titre, labelNbr ,labelCout }) => {
        
             <Card sx={{width:"98%"}} >
                     <Container>
-                        <Typography>
-                            <h4 id="traffic" className="card-title mb-0" align="center">
-                            {titre}
-                            </h4>
-                        </Typography>
-                        <Grid container sm={15} >
+                       <Typography variant="h6" id="traffic" align="center"> {titre}</Typography>
+                        <Grid container >
                             <Select
                                 className="float-end me-3"
                                 onChange={onchangeSelect}

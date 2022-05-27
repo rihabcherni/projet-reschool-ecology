@@ -4,104 +4,104 @@ import MuiDrawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 import { Link  } from 'react-router-dom';
 import {Tooltip, List, ListItem, IconButton,ListItemButton ,ListItemText,ListItemIcon,Collapse} from "@mui/material";
-
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export const drawerWidth = 270;
+  export const drawerWidth = 270;
 
-export  function hasChildren(item) {
-    const { items: children } = item;
-    if (children === undefined) {
-      return false;
-    }
-    if (children.constructor !== Array) {
-      return false;
-    }
-    if (children.length === 0) {
-      return false;
-    }
-  
-    return true;
-  } 
-export  const openedMixin = (theme) => ({
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    overflowX: 'hidden',
-  });
-export const closedMixin = (theme) => ({
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1px)`,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(${theme.spacing(8)} + 1px)`,
-    },
-  });
-export  const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  }));
-export  const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== 'open',})(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
+  export  function hasChildren(item) {
+      const { items: children } = item;
+      if (children === undefined) {
+        return false;
+      }
+      if (children.constructor !== Array) {
+        return false;
+      }
+      if (children.length === 0) {
+        return false;
+      }
+    
+      return true;
+    } 
+  export  const openedMixin = (theme) => ({
+      width: drawerWidth,
+      transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
-    }),
-  }));
-export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-      boxSizing: 'border-box',
+      overflowX: 'hidden',
+    });
+  export const closedMixin = (theme) => ({
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: 'hidden',
+      width: `calc(${theme.spacing(7)} + 1px)`,
+      [theme.breakpoints.up('sm')]: {
+        width: `calc(${theme.spacing(8)} + 1px)`,
+      },
+    });
+  export  const DrawerHeader = styled('div')(({ theme }) => ({
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      padding: theme.spacing(0, 1),
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+    }));
+  export  const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== 'open',})(({ theme, open }) => ({
+      zIndex: theme.zIndex.drawer + 1,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
       ...(open && {
-        ...openedMixin(theme),
-        '& .MuiDrawer-paper': openedMixin(theme),
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
       }),
-      ...(!open && {
-        ...closedMixin(theme),
-        '& .MuiDrawer-paper': closedMixin(theme),
+    }));
+  export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+      ({ theme, open }) => ({
+        width: drawerWidth,
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
+        boxSizing: 'border-box',
+        ...(open && {
+          ...openedMixin(theme),
+          '& .MuiDrawer-paper': openedMixin(theme),
+        }),
+        ...(!open && {
+          ...closedMixin(theme),
+          '& .MuiDrawer-paper': closedMixin(theme),
+        }),
       }),
-    }),
-  );
+    );
 
-export  const MenuItem = ({ item ,open }) => {
+  export  const MenuItem = ({ item ,open  }) => {
     const Component = hasChildren(item) ? MultiLevel : SingleLevel;
     return <Component item={item}  open={open}/>;
   };
+
   const SingleLevel = ({ item ,open}) => {
     return (
-      <Link key={item.id}   to={item.path}> 
-          <ListItemButton   sx={{ maxHeight:35, justifyContent: open ? 'initial' : 'center',  px: 1}}>
-              <Tooltip title={item.name}  placement="right" arrow sx={{opacity: open ? 1 : 0, textDecoration:"none"}}>
-                  <ListItemIcon sx={{  minWidth: 0, mr: open ? 1 :'auto',  justifyContent: 'center', }}  >
-                    <IconButton color="secondary"  size="medium" >
-                            {item.icon } 
-                    </IconButton>
-                  </ListItemIcon> 
-              </Tooltip>
-                  <ListItemText component="div" sx={{opacity: open ? 1 : 0, textDecoration:"none"}}
-                  primary= {item.name}  primaryTypographyProps={{color: 'secondary', fontSize: '14px', variant: 'body2', }}/>
-          </ListItemButton>
-     </Link>
+        <Link key={item.id}   to={item.path}> 
+            <ListItemButton sx={{ maxHeight:35, justifyContent: open ? 'initial' : 'center',  px: 1}}>
+                <Tooltip title={item.name}  placement="right" arrow sx={{opacity: open ? 1 : 0, textDecoration:"none"}}>
+                    <ListItemIcon sx={{  minWidth: 0, mr: open ? 1 :'auto',  justifyContent: 'center', }}  >
+                      <IconButton color="secondary"  size="medium" >
+                              {item.icon } 
+                      </IconButton>
+                    </ListItemIcon> 
+                </Tooltip>
+                    <ListItemText component="div" sx={{opacity: open ? 1 : 0, textDecoration:"none"}}
+                    primary= {item.name}  primaryTypographyProps={{color: 'secondary', fontSize: '14px', variant: 'body2', }}/>
+            </ListItemButton>
+      </Link>
     );
   };
   const MultiLevel = ({ item ,open}) => {
@@ -124,7 +124,7 @@ export  const MenuItem = ({ item ,open }) => {
           <Collapse in={openSubmenu} timeout="auto" unmountOnExit>
             <List component="div" disablePadding  >
                   {children.map((child, key) => (
-                    <MenuItem key={key} item={child} open={open}/>
+                    <MenuItem key={key}  item={child} open={open}/>
                   ))}
             </List>
           </Collapse>

@@ -20,8 +20,6 @@ const ProgressDone = styled.div`
 	opacity: 0;
 	transition: 1s ease 0.3s;
   `
-
-
 const Progress = ({done}) => {
 	const [style, setStyle] = React.useState({});
 	const [color, setColor] = React.useState("");
@@ -79,7 +77,7 @@ export default function PoubelleTable() {
     { headerName: "capacite de poubelle", field: "capacite_poubelle" },
     { headerName: "type", field: "type" },
     { headerName: "etat de remplissage", field: "Etat", maxWidth:200, minWidth:150, cellRenderer: (params) =>
-    <Progress done={`${params.data.Etat}`} a/>},
+    <Progress done={`${params.data.Etat}`} />},
     { headerName: "temps de remplissage", field: "temps_remplissage", type: ['dateColumn', 'nonEditableColumn'],maxWidth: 135}
   ]
  

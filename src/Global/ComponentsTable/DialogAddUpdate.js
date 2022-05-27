@@ -58,14 +58,14 @@ export default function DialogCrudUpdate({open,handleClose,data,onChange,handleF
       <DialogContent sx={{backgroundColor: 'white'}}>
             <form >  
                 {rows}
-                {show.length!==0?(show.map(sh =>  
+                {show.length!==0?(show.map((sh, key) =>  
                     ((sh[1]!=="id" 
                        && sh[1]!=="quantite_total_collecte_plastique" 
                        && sh[1]!=="quantite_total_collecte_composte" 
                        && sh[1]!=="quantite_total_collecte_papier" 
                        && sh[1]!=="quantite_total_collecte_canette" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo" )?(
                         <>
-                          <TextField id={sh[1]} value={data[sh[1]]}  onChange={e=>onChange(e)} placeholder={sh[1]}  error={!!validation[sh[1]]} label={sh[1]} variant="outlined" margin="dense" fullWidth />
+                          <TextField key={key} id={sh[1]} value={data[sh[1]]}  onChange={e=>onChange(e)} placeholder={sh[1]}  error={!!validation[sh[1]]} label={sh[1]} variant="outlined" margin="dense" fullWidth />
                             <FormHelperText error={true}>
                             {validation[sh[1]]}        
                           </FormHelperText> 

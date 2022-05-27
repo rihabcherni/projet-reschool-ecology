@@ -6,7 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import '../../assets/css/map.css'
+import '../../css/map.css'
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';

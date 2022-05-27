@@ -5,7 +5,7 @@ import { ImUserTie, ImStatsDots } from "react-icons/im";
 import { VscTrash } from "react-icons/vsc";
 import { FaMapMarkedAlt, FaTruckMoving, FaRecycle, FaTrash, FaUser, FaUserTie,FaCalendarDay} from "react-icons/fa";
 import { RiShoppingBasketFill } from "react-icons/ri"
-import { MdReportProblem,MdLogout } from "react-icons/md"
+import { MdReportProblem } from "react-icons/md"
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ContactsIcon from '@mui/icons-material/Contacts';
 

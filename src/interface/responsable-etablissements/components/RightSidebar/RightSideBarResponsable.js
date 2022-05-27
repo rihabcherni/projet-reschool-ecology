@@ -10,10 +10,8 @@ import Box from '@mui/material/Box';
 import { IconButton } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
-import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationResponsable from './NotificationResponsable';
-import SettingsResponsable from './SettingsResponsable';
 import ProfileResponsable from './ProfileResponsable';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MessagesResponsable from './MessageResponsable';
@@ -69,31 +67,25 @@ export default function RightSideBarResponsable() {
                  <MoreVertIcon/>
             </IconButton>
             <Drawer open={isOpen} direction='right' size={350} >
-          <Button onClick={toggleDrawer}><CloseIcon /></Button>
-          <Box sx={{ width: '100%' }}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-              <Tab icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
-              <Tab  icon={<NotificationsActiveIcon />}  aria-label="notifications"  {...a11yProps(1)} />
-              <Tab icon={<SettingsIcon />}  aria-label="paramétres"  {...a11yProps(2)} />
-              <Tab icon={<PersonPinIcon />}  aria-label="profile"  {...a11yProps(3)} />
-            </Tabs>
-          </Box>
-          <TabPanel value={value} index={0} >
-            <MessagesResponsable/>
-          </TabPanel>
-          <TabPanel value={value} index={1} >
-              <NotificationResponsable/>
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-             <SettingsResponsable/>
-          </TabPanel>
-          <TabPanel value={value} index={3} >
-            <ProfileResponsable/>
-          </TabPanel>
-        </Box>
-
-         
+              <Button onClick={toggleDrawer}><CloseIcon /></Button>
+              <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                      <Tab sx={{width:"33%"}}  icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
+                      <Tab  sx={{width:"33%"}}  icon={<NotificationsActiveIcon />}  aria-label="notifications"  {...a11yProps(1)} />
+                      <Tab  sx={{width:"33%"}} icon={<PersonPinIcon />}  aria-label="profile"  {...a11yProps(2)} />
+                    </Tabs>
+                </Box>
+                <TabPanel value={value} index={0} >
+                  <MessagesResponsable/>
+                </TabPanel>
+                <TabPanel value={value} index={1} >
+                    <NotificationResponsable/>
+                </TabPanel>
+                <TabPanel value={value} index={2} >
+                  <ProfileResponsable toggleDrawer={toggleDrawer}/>      
+                </TabPanel>
+              </Box>
             </Drawer>
         </>
   )

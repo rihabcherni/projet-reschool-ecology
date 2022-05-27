@@ -41,13 +41,6 @@ export default function BadgeAvatars() {
   }
   const navigate = useNavigate();
 
- 
-
-  const [count, setCount] = React.useState(1);
-  const [invisible, setInvisible] = React.useState(false);
-  const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-  };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -105,7 +98,7 @@ export default function BadgeAvatars() {
             </Menu> 
 
 
-            <Tooltip title="Account settings">
+            <Tooltip title="Profile">
               <Button id="fade-button" aria-controls={open?'fade-menu':undefined} aria-haspopup="true" aria-expanded={open ?'true':undefined} onClick={handleClick} color='secondary'>
                 <StyledBadge overlap="circular" anchorOrigin={{vertical:'bottom',horizontal:'right'}} variant="dot">
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

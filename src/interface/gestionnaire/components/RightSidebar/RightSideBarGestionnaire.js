@@ -10,11 +10,9 @@ import Box from '@mui/material/Box';
 import { IconButton } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
-import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationGestionnaire from './NotificationGestionnaire';
 import MessagesGestionnaire from './Messages';
-import SettingsGestionnaire from './SettingsGestionnaire';
 import ProfileGestionnaire from './ProfileGestionnaire';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
     function TabPanel(props) {
@@ -60,37 +58,29 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
       };
           return (
             <>
-                  <IconButton color="secondary" size="medium" onClick={toggleDrawer}>
-                        <MoreVertIcon/>
-                  </IconButton>
-                  <Drawer open={isOpen} direction='right' size={350} >
-                  <Button onClick={toggleDrawer}><CloseIcon /></Button>
-                  <Box sx={{ width: '100%' }}>
-                  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs primaryTypographyProps={{
-                      color: 'primary',
-                      fontWeight: 'medium',
-                      variant: 'body2',
-                    }} value={value} onChange={handleChange} aria-label="basic tabs example">
-                      <Tab  icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
-                      <Tab  icon={<NotificationsActiveIcon />}  aria-label="notifications"  {...a11yProps(1)} />
-                      <Tab icon={<SettingsIcon />}  aria-label="paramétres"  {...a11yProps(2)} />
-                      <Tab icon={<PersonPinIcon />}  aria-label="profile"  {...a11yProps(3)} />
+            <IconButton color="secondary" size="medium" onClick={toggleDrawer}>
+                <MoreVertIcon/>
+            </IconButton>
+            <Drawer open={isOpen} direction='right' size={350} >
+              <Button onClick={toggleDrawer}><CloseIcon /></Button>
+              <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                      <Tab sx={{width:"33%"}}  icon={<ChatIcon />}  aria-label="messages"  {...a11yProps(0)} />
+                      <Tab  sx={{width:"33%"}}  icon={<NotificationsActiveIcon />}  aria-label="notifications"  {...a11yProps(1)} />
+                      <Tab  sx={{width:"33%"}} icon={<PersonPinIcon />}  aria-label="profile"  {...a11yProps(2)} />
                     </Tabs>
-                  </Box>
-                  <TabPanel value={value} index={0} >
-                    <MessagesGestionnaire/>
-                  </TabPanel>
-                  <TabPanel value={value} index={1} >
-                      <NotificationGestionnaire/>
-                  </TabPanel>
-                  <TabPanel value={value} index={2}>
-                    <SettingsGestionnaire/>
-                  </TabPanel>
-                  <TabPanel value={value} index={3} >
-                    <ProfileGestionnaire toggleDrawer={toggleDrawer}/>      
-                  </TabPanel>
                 </Box>
+                <TabPanel value={value} index={0} >
+                  <MessagesGestionnaire/>
+                </TabPanel>
+                <TabPanel value={value} index={1} >
+                    <NotificationGestionnaire/>
+                </TabPanel>
+                <TabPanel value={value} index={2} >
+                  <ProfileGestionnaire toggleDrawer={toggleDrawer}/>      
+                </TabPanel>
+              </Box>
             </Drawer>
         </>
           )

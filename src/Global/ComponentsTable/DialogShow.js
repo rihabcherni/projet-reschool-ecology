@@ -22,9 +22,9 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
           <div>{rows}</div> 
           <div><img  src={Camion} width="250px" style={{marginTop:"70px"}}/></div> 
         <ul >
-                    {show.length!==0?(show.map(sh =>   
+                    {show.length!==0?(show.map((sh, key) =>   
                       ((sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo" && sh[1]!=="qrcode"  && sh[1]!=="mot_de_passe")?(
-                        <li><b>{sh[0]}:</b>{data[sh[1]]}</li>
+                        <li key={key}><b>{sh[0]}:</b>{data[sh[1]]}</li>
                         ): null)
                     )):null
                     }

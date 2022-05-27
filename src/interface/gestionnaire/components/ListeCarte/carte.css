@@ -3,6 +3,7 @@
     width: 200px;
     height:200px;
     perspective: 1000px;
+    cursor: pointer;
   }
   .img-card{
    width:200px; height:200px;
@@ -27,12 +28,34 @@
     backface-visibility: hidden;
   }
   .flip-card-front {
-    background-color: #bbb;
     color: black;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   .flip-card-back {
-    background-color: #2980b9;
+    background-color: rgb(10, 205, 30);
     color: white;
     padding:10% 5%;
     transform: rotateY(180deg);
+  }
+
+  .flip-card-back-color-plastique {
+    background-color: rgb(120, 197, 255);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .flip-card-back-color-papier {
+    background-color: rgb(246, 221, 97);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .flip-card-back-color-canette {
+    background-color: rgb(255, 111, 111);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .flip-card-back-color-composte {
+    background-color: rgb(130, 251, 122);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
   }

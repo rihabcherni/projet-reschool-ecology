@@ -3,10 +3,10 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import '../css/profile.css'
+import '../../../Global/CSS/profile.css'
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import Swal from "sweetalert";
-import InputUpdate from '../components/profilePage/InputUpdate';
+import InputUpdateGestionnaire from '../components/profilePage/InputUpdateGestionnaire';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#f2f2f2',
   ...theme.typography.body2,
@@ -73,7 +73,7 @@ export default function ProfileGestionnaire() {
           </Item>  
         </Grid>
         <Grid item xs={8} sx={{alignSelf: 'stretch'}}>
-          <Item> {profileImg!==null ?   <InputUpdate/>:null} </Item>
+          <Item> {profileImg!==null ?   <InputUpdateGestionnaire/>:null} </Item>
         </Grid>
       </Grid>
     </Box>
