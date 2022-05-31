@@ -3,7 +3,7 @@ import { Grid,Paper, Avatar, TextField, Button, Typography,Link,FormControl,Form
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import styled from 'styled-components'
-import LogoImage from '../../../Global/images/reschool.png'
+import LogoImage from '../../../Global/images/reschool-blanc.png'
 
 const paperStyle={
   padding :40,height:400,width:400, margin:"10% auto"
@@ -34,7 +34,7 @@ export default function ModiferMotDePasse() {
    ];
 const handleFormSubmit= (e) =>  {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_gestionnaire')}`);
 
     var requestOptions = {
       method: 'POST',

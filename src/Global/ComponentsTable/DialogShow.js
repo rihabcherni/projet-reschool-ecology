@@ -20,7 +20,7 @@ export default function DialogZoneTravailShow({open,handleClose,data, show}) {
       <DialogTitle id="alert-dialog-title" sx={{backgroundColor: 'white', textAlign:"center", color:"green"}}><h1>affichage des données</h1></DialogTitle>
         <DialogContent  sx={{backgroundColor: 'white',display:"flex" }}>
           <div>{rows}</div> 
-          <div><img  src={Camion} width="250px" style={{marginTop:"70px"}}/></div> 
+          <div><img  src={Camion} alt="camion" width="250px" style={{marginTop:"70px"}}/></div> 
         <ul >
                     {show.length!==0?(show.map((sh, key) =>   
                       ((sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo" && sh[1]!=="qrcode"  && sh[1]!=="mot_de_passe")?(

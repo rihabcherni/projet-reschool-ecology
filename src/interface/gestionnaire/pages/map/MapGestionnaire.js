@@ -129,7 +129,7 @@ export default function MapGestionnaire() {
                     <div style={divStyle}> <p>{etb.nom_etablissement}</p> </div>
                   </InfoWindow>
                 ) : null}
-            </>)):(<div style={{color:"red"}}>pas des etablissements</div>)}
+          </>)):(<div style={{color:"red"}}>pas des etablissements</div>)}
 
         {camions.length!==0?(camions.map((camion, id) =>
           <>
@@ -417,220 +417,220 @@ export default function MapGestionnaire() {
           </div>       
       }
       <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:605, minHeight:605, border:"1px solid #f0f0f0"}}>
-            {(uniquecamions!==null)&&(showUniqueCamion===true)?
-                <div style={{alignSelf: 'center'}}>
-                              <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:705, minHeight:605,  border:"1px solid #f0f0f0"}}>
-                                <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> <b>Camion de matricule:</b> {uniquecamions[0].camion.matricule}</h3>
-                                <ul style={{marginTop:"0px", textAlign:"left"}}>
-                                  <li><b>region:</b> {uniquecamions[0].camion.region[0].region}</li>
-                                  <li><b>longitude:</b> {uniquecamions[0].camion.longitude}</li>
-                                  <li><b>latitude:</b> {uniquecamions[0].camion.latitude}</li>
-                                  <li><b>heure sortie:</b> {uniquecamions[0].camion.heure_sortie}</li>
-                                  <li><b>heure entrer:</b> {uniquecamions[0].camion.heure_entree}</li>
-                                  <li><b>volume maximale camion:</b>  {uniquecamions[0].camion.volume_maximale_camion}</li>
-                                  <li><b>volume carburant consomme:</b>  {uniquecamions[0].camion.volume_carburant_consomme}</li>
-                                  <li><b>Kilometrage:</b>  {uniquecamions[0].camion.Kilometrage}</li>                      
-                                </ul>                
-                              <b  style={{ color:"red", marginLeft:'10%'}}>quantité dechets collectés de cette camion :</b>
-                              <div className='data'>
-                                  <div className='plastique'>
-                                    <div>Plastique</div>
-                                    <div>{`${uniquecamions[0].camion.volume_actuelle_plastique}`}</div>
-                                  </div>
-                                  <div className='papier'>
-                                    <div>Papier</div>
-                                    <div>{`${uniquecamions[0].camion.volume_actuelle_papier}`}</div>
-                                  </div>
-                                  <div className='composte'>
-                                    <div>Composte</div>
-                                    <div> {`${uniquecamions[0].camion.volume_actuelle_composte}`}</div>
-                                  </div>
-                                  <div className='canette'>
-                                    <div >Canette</div>
-                                    <div>{`${uniquecamions[0].camion.volume_actuelle_canette}`}</div>
-                                  </div>
-                              </div>
-                              
-                          <b  style={{ color:"red", margin:"0 25%"}}>ouvriers de cette camion :</b>
-                              {uniquecamions[0].ouvrier.length!==0?(uniquecamions[0].ouvrier.map(ouvrier => 
-                                <Col>
-                                    <div className="card-template card-template-1">
-                                        <div className="left-part">
-                                                  <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
-                                                  <h3> <i>{ouvrier.poste}</i></h3>    
-                                              </div>
-                                              <div className="right-part">
-                                                  <h3 style={{textAlign:'center'}}><i>{ouvrier.nom +' '+ ouvrier.prenom}</i></h3>
-                                                      <li> <FontAwesomeIcon icon={faAddressCard} className="icon-card"/><strong style={{marginLeft:"10px"}}>CIN:</strong>{' '+ouvrier.CIN}  </li> 
-                                                      <li> <FontAwesomeIcon icon={faBuilding} className="icon-card"/><strong  style={{marginLeft:"15px"}}>Adresse:</strong>{' '+ouvrier.adresse} </li> 
-                                                      <li> <FontAwesomeIcon icon={faPhone} className="icon-card"/><strong  style={{marginLeft:"10px"}}>Telephone:</strong>{' '+ouvrier.numero_telephone} </li> 
-                                                      <li> <FontAwesomeIcon icon={faAt} className="icon-card"/><strong  style={{marginLeft:"10px"}}> Email:</strong>{' '+ouvrier.email} </li>    
-                                              </div>
-                                          </div>
-                                </Col>   
-                                )):(<div style={{color:"red"}}>pas des ouvriers</div>)}   
-                          
-                              </div>
-                </div> 
-                :
-                <div style={{alignSelf: 'center'}}>
-                      {etablissements.length!==0?(
-                        <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300,  border:"1px solid #f0f0f0"}}>
-                        <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
-                          <h3 style={{color:'red', padding:" 0 24%"}}>Détails des camions :</h3>
-                        </CardActions>
-                        <CardContent>
-                                <div className="scroller" style={{height:'260px', padding:"10px 20px"}}> 
-                                    <h4 style={{color:"green"}}>nombre des camions :{camions.length} </h4>                       
-                                    {camions.length!==0?(camions.map(camion =>    
-                                      <div key={camion.camion.id} style={{ marginBottom:"0px"}}>
-                                          <Accordion sx={{ border:"0.5px solid #C8C8C8"}}>
-                                              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#F0F0F0"}}>
-                                                  <LocalShippingIcon/>
-                                                  <p style={{marginLeft:"10px",textAlign:"left"}}><b>matricule:</b> {camion.camion.matricule}</p>
-                                              </AccordionSummary>
-                                              <AccordionDetails  sx={{backgroundColor:"#F0F0E0"}}> 
-                                              <ul style={{marginTop:"0px", textAlign:"left"}}>
-                                                  <li><b>region:</b> {camion.camion.region[0].region}</li>
-                                                  <li><b>heure sortie:</b> {camion.camion.heure_sortie}</li>
-                                                  <li><b>heure entrer:</b> {camion.camion.heure_entree}</li>
-                                                  <li><b>volume maximale camion:</b>  {camion.camion.volume_maximale_camion}</li>
-                                                  <li><b>volume carburant consomme:</b>  {camion.camion.volume_carburant_consomme}</li>
-                                                  <li><b>Kilometrage:</b>  {camion.camion.Kilometrage}</li>                      
-                                              </ul>                
-
-                                                  <b  style={{ color:"red"}}>quantité dechets collectés de cette camion :</b>
-                                                  <div className='data'>
-                                                      <div className='plastique'>
-                                                        <div>Plastique</div>
-                                                        <div>{`${camion.camion.volume_actuelle_plastique}`}</div>
-                                                      </div>
-                                                      <div className='papier'>
-                                                        <div>Papier</div>
-                                                        <div>{`${camion.camion.volume_actuelle_papier}`}</div>
-                                                      </div>
-                                                      <div className='composte'>
-                                                        <div>Composte</div>
-                                                        <div> {`${camion.camion.volume_actuelle_composte}`}</div>
-                                                      </div>
-                                                      <div className='canette'>
-                                                        <div >Canette</div>
-                                                        <div>{`${camion.camion.volume_actuelle_canette}`}</div>
-                                                      </div>
-                                                  </div>
-                                                  <b  style={{ color:"red"}}>ouvriers de cette camion :</b>
-                                                  {camion.ouvrier.length!==0?(camion.ouvrier.map(ouvrier => 
-                                                    <div>
-                                                        <span><b style={{color:"green"}}> {ouvrier.poste}:</b></span>  {ouvrier.nom} {ouvrier.prenom}
-                                                    </div>)):(<div style={{color:"red"}}>pas des ouvriers</div>)}   
-                                              </AccordionDetails>
-
-                                          </Accordion>  
-                                      </div>)
-                                    ):(<div style={{color:"red", marginTop:"20%"}}><b>pas encore des camions...</b></div>)}  
-                                    <br/>   <br/> 
+          {(uniquecamions!==null)&&(showUniqueCamion===true)?
+              <div style={{alignSelf: 'center'}}>
+                            <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:705, minHeight:605,  border:"1px solid #f0f0f0"}}>
+                              <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> <b>Camion de matricule:</b> {uniquecamions[0].camion.matricule}</h3>
+                              <ul style={{marginTop:"0px", textAlign:"left"}}>
+                                <li><b>region:</b> {uniquecamions[0].camion.region[0].region}</li>
+                                <li><b>longitude:</b> {uniquecamions[0].camion.longitude}</li>
+                                <li><b>latitude:</b> {uniquecamions[0].camion.latitude}</li>
+                                <li><b>Heure de sortie:</b> {uniquecamions[0].camion.heure_sortie}</li>
+                                <li><b>Heure d'entrée:</b> {uniquecamions[0].camion.heure_entree}</li>
+                                <li><b>volume maximale camion:</b>  {uniquecamions[0].camion.volume_maximale_camion}</li>
+                                <li><b>volume carburant consomme:</b>  {uniquecamions[0].camion.volume_carburant_consomme}</li>
+                                <li><b>Kilometrage:</b>  {uniquecamions[0].camion.Kilometrage}</li>                      
+                              </ul>                
+                            <b  style={{ color:"red", marginLeft:'10%'}}>quantité dechets collectés de cette camion :</b>
+                            <div className='data'>
+                                <div className='plastique'>
+                                  <div>Plastique</div>
+                                  <div>{`${uniquecamions[0].camion.volume_actuelle_plastique}`}</div>
                                 </div>
-                        </CardContent>
-                      </CardMapDetails>
-                    ):(<CardMapDetails>
-                        <Box sx={{padding:3 ,width: 354 }}>
-                            <Skeleton sx={{height:60}} />
-                            <Skeleton animation="wave" sx={{height:60}} />                      
-                            <Skeleton sx={{height:60}} />
-                            <Skeleton animation="wave" sx={{height:60}} />                      
-                            <Skeleton sx={{height:60}} />
-                            <Skeleton animation="wave" sx={{height:60}} />
-                            <Skeleton sx={{height:60}} />
-                            <Skeleton animation="wave" sx={{height:60}} />
-                        </Box>
-                        </CardMapDetails>)}
-                </div>       
-            } 
-
-            { (uniqueZoneDepot!==null)&&(showUniqueZoneDepot===true)?
-                <div style={{alignSelf: 'center'}}>
-                        <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:250, minHeight:250, border:"1px solid #f0f0f0"}}>
-                          <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> zone depot : {uniqueZoneDepot.id}</h3>
-                          <ul style={{marginTop:"0px", textAlign:"left"}}>
-                              <li><b>adresse:</b> {uniqueZoneDepot.adresse}</li>
-                              <li><b>longitude:</b> {uniqueZoneDepot.longitude}</li>
-                              <li><b>latitude:</b> {uniqueZoneDepot.latitude}</li>
-                              <li><b>quantite depot maximale:</b> {uniqueZoneDepot.quantite_depot_maximale}</li>                         
-                          </ul>                
-                        <b  style={{ color:"red", marginLeft:'15%'}}>quantité dechets collectés par type :</b>
-                        <div className='data'>
-                            <div className='plastique'>
-                              <div>Plastique</div>
-                              <div>{`${uniqueZoneDepot.quantite_depot_actuelle_plastique}`}</div>
+                                <div className='papier'>
+                                  <div>Papier</div>
+                                  <div>{`${uniquecamions[0].camion.volume_actuelle_papier}`}</div>
+                                </div>
+                                <div className='composte'>
+                                  <div>Composte</div>
+                                  <div> {`${uniquecamions[0].camion.volume_actuelle_composte}`}</div>
+                                </div>
+                                <div className='canette'>
+                                  <div >Canette</div>
+                                  <div>{`${uniquecamions[0].camion.volume_actuelle_canette}`}</div>
+                                </div>
                             </div>
-                            <div className='papier'>
-                              <div>Papier</div>
-                              <div>{`${uniqueZoneDepot.quantite_depot_actuelle_papier}`}</div>
-                            </div>
-                            <div className='composte'>
-                              <div>Composte</div>
-                              <div> {`${uniqueZoneDepot.quantite_depot_actuelle_composte}`}</div>
-                            </div>
-                            <div className='canette'>
-                              <div >Canette</div>
-                              <div>{`${uniqueZoneDepot.quantite_depot_actuelle_canette}`}</div>
-                            </div>
-                        </div>
-                              
-                        </div>
-                </div> 
-                :
-                <div style={{alignSelf: 'center'}}>
-                {etablissements.length!==0?(
-                  <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300, border:"1px solid #f0f0f0"}}>
-                  <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
-                    <h3 style={{color:'red', padding:" 0 22%"}}>Détails zones depots :</h3>
-                  </CardActions>
-                  <CardContent>
-                          <div className="scroller" style={{height:'260px', padding:"10px 20px"}}> 
-                              <h4 style={{color:"green"}}>nombre des zone de depot :{camions.length} </h4>                       
-                              {zoneDepots.length!==0?(zoneDepots.map(zone =>    
-                                <div key={zone.id} style={{ marginBottom:"0px"}}>
-                                    <Accordion sx={{ border:"0.5px solid #C8C8C8"}}>
-                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#F0F0F0"}}>
-                                            <img style={{width:"30px", height:"30px", marginRight:"10px"}} src={ZoneDepotImage} alt='etablissement-icon'/>
-                                            <p style={{marginLeft:"10px",textAlign:"left"}}><b>zone depot:</b> {zone.id}</p>
-                                        </AccordionSummary>
-                                        <AccordionDetails  sx={{backgroundColor:"#F0F0E0",textAlign:"left"}}> 
-                                            <li><b>adresse:</b> {zone.adresse}</li>
-                                            <li><b>longitude:</b> {zone.longitude}</li>
-                                            <li><b>latitude:</b> {zone.latitude}</li>
-                                            <li><b>quantite depot maximale:</b> {zone.quantite_depot_maximale}</li>                         
-                                        <b  style={{ color:"red", marginLeft:'15%'}}>quantité dechets collectés par type :</b>
-                                        <div className='data'>
-                                            <div className='plastique'>
-                                              <div>Plastique</div>
-                                              <div>{`${zone.quantite_depot_actuelle_plastique}`}</div>
+                            
+                        <b  style={{ color:"red", margin:"0 25%"}}>ouvriers de cette camion :</b>
+                            {uniquecamions[0].ouvrier.length!==0?(uniquecamions[0].ouvrier.map(ouvrier => 
+                              <Col>
+                                  <div className="card-template card-template-1">
+                                      <div className="left-part">
+                                                <img src={`http://127.0.0.1:8000/storage/images/ouvrier/${ouvrier.photo}`}  alt="Avatar"/>
+                                                <h3> <i>{ouvrier.poste}</i></h3>    
                                             </div>
-                                            <div className='papier'>
-                                              <div>Papier</div>
-                                              <div>{`${zone.quantite_depot_actuelle_papier}`}</div>
-                                            </div>
-                                            <div className='composte'>
-                                              <div>Composte</div>
-                                              <div> {`${zone.quantite_depot_actuelle_composte}`}</div>
-                                            </div>
-                                            <div className='canette'>
-                                              <div >Canette</div>
-                                              <div>{`${zone.quantite_depot_actuelle_canette}`}</div>
+                                            <div className="right-part">
+                                                <h3 style={{textAlign:'center'}}><i>{ouvrier.nom +' '+ ouvrier.prenom}</i></h3>
+                                                    <li> <FontAwesomeIcon icon={faAddressCard} className="icon-card"/><strong style={{marginLeft:"10px"}}>CIN:</strong>{' '+ouvrier.CIN}  </li> 
+                                                    <li> <FontAwesomeIcon icon={faBuilding} className="icon-card"/><strong  style={{marginLeft:"15px"}}>Adresse:</strong>{' '+ouvrier.adresse} </li> 
+                                                    <li> <FontAwesomeIcon icon={faPhone} className="icon-card"/><strong  style={{marginLeft:"10px"}}>Telephone:</strong>{' '+ouvrier.numero_telephone} </li> 
+                                                    <li> <FontAwesomeIcon icon={faAt} className="icon-card"/><strong  style={{marginLeft:"10px"}}> Email:</strong>{' '+ouvrier.email} </li>    
                                             </div>
                                         </div>
-                                            
-                                        </AccordionDetails>
+                              </Col>   
+                              )):(<div style={{color:"red"}}>pas des ouvriers</div>)}   
+                        
+                            </div>
+              </div>  
+               :
+              <div style={{alignSelf: 'center'}}>
+                    {camions.length!==0?(
+                      <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300,  border:"1px solid #f0f0f0"}}>
+                      <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
+                        <h3 style={{color:'red', padding:" 0 24%"}}>Détails des camions :</h3>
+                      </CardActions>
+                      <CardContent>
+                              <div className="scroller" style={{height:'260px', padding:"10px 20px"}}> 
+                                  <h4 style={{color:"green"}}>nombre des camions :{camions.length} </h4>                       
+                                  {camions.length!==0?(camions.map(camion =>    
+                                    <div key={camion.camion.id} style={{ marginBottom:"0px"}}>
+                                        <Accordion sx={{ border:"0.5px solid #C8C8C8"}}>
+                                            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#F0F0F0"}}>
+                                                <LocalShippingIcon/>
+                                                <p style={{marginLeft:"10px",textAlign:"left"}}><b>matricule:</b> {camion.camion.matricule}</p>
+                                            </AccordionSummary>
+                                            <AccordionDetails  sx={{backgroundColor:"#F0F0E0"}}> 
+                                            <ul style={{marginTop:"0px", textAlign:"left"}}>
+                                                <li><b>region:</b> {camion.camion.region[0].region}</li>
+                                                <li><b>Heure de sortie:</b> {camion.camion.heure_sortie}</li>
+                                                <li><b>Heure d'entrée:</b> {camion.camion.heure_entree}</li>
+                                                <li><b>volume maximale camion:</b>  {camion.camion.volume_maximale_camion}</li>
+                                                <li><b>volume carburant consomme:</b>  {camion.camion.volume_carburant_consomme}</li>
+                                                <li><b>Kilometrage:</b>  {camion.camion.Kilometrage}</li>                      
+                                            </ul>                
 
-                                    </Accordion>  
-                                </div>)
-                              ):(<div style={{color:"red", marginTop:"20%"}}><b>pas encore des zone depots...</b></div>)}  
-                              <br/>   <br/> 
+                                                <b  style={{ color:"red"}}>quantité dechets collectés de cette camion :</b>
+                                                <div className='data'>
+                                                    <div className='plastique'>
+                                                      <div>Plastique</div>
+                                                      <div>{`${camion.camion.volume_actuelle_plastique}`}</div>
+                                                    </div>
+                                                    <div className='papier'>
+                                                      <div>Papier</div>
+                                                      <div>{`${camion.camion.volume_actuelle_papier}`}</div>
+                                                    </div>
+                                                    <div className='composte'>
+                                                      <div>Composte</div>
+                                                      <div> {`${camion.camion.volume_actuelle_composte}`}</div>
+                                                    </div>
+                                                    <div className='canette'>
+                                                      <div >Canette</div>
+                                                      <div>{`${camion.camion.volume_actuelle_canette}`}</div>
+                                                    </div>
+                                                </div>
+                                                <b  style={{ color:"red"}}>ouvriers de cette camion :</b>
+                                                {camion.ouvrier.length!==0?(camion.ouvrier.map(ouvrier => 
+                                                  <div>
+                                                      <span><b style={{color:"green"}}> {ouvrier.poste}:</b></span>  {ouvrier.nom} {ouvrier.prenom}
+                                                  </div>)):(<div style={{color:"red"}}>pas des ouvriers</div>)}   
+                                            </AccordionDetails>
+
+                                        </Accordion>  
+                                    </div>)
+                                  ):(<div style={{color:"red", marginTop:"20%"}}><b>pas encore des camions...</b></div>)}  
+                                  <br/>   <br/> 
+                              </div>
+                      </CardContent>
+                    </CardMapDetails>
+                  ):(<CardMapDetails>
+                      <Box sx={{padding:3 ,width: 354 }}>
+                          <Skeleton sx={{height:60}} />
+                          <Skeleton animation="wave" sx={{height:60}} />                      
+                          <Skeleton sx={{height:60}} />
+                          <Skeleton animation="wave" sx={{height:60}} />                      
+                          <Skeleton sx={{height:60}} />
+                          <Skeleton animation="wave" sx={{height:60}} />
+                          <Skeleton sx={{height:60}} />
+                          <Skeleton animation="wave" sx={{height:60}} />
+                      </Box>
+                      </CardMapDetails>)}
+              </div>       
+          } 
+
+          { (uniqueZoneDepot!==null)&&(showUniqueZoneDepot===true)?
+              <div style={{alignSelf: 'center'}}>
+                      <div className='scroller' style={{minWidth:354, maxWidth: 700,maxHeight:250, minHeight:250, border:"1px solid #f0f0f0"}}>
+                        <h3 style={{color:"green", textAlign:"center",paddingTop:"20px"}}> zone depot : {uniqueZoneDepot.id}</h3>
+                        <ul style={{marginTop:"0px", textAlign:"left"}}>
+                            <li><b>adresse:</b> {uniqueZoneDepot.adresse}</li>
+                            <li><b>longitude:</b> {uniqueZoneDepot.longitude}</li>
+                            <li><b>latitude:</b> {uniqueZoneDepot.latitude}</li>
+                            <li><b>quantite depot maximale:</b> {uniqueZoneDepot.quantite_depot_maximale}</li>                         
+                        </ul>                
+                      <b  style={{ color:"red", marginLeft:'15%'}}>quantité dechets collectés par type :</b>
+                      <div className='data'>
+                          <div className='plastique'>
+                            <div>Plastique</div>
+                            <div>{`${uniqueZoneDepot.quantite_depot_actuelle_plastique}`}</div>
                           </div>
-                  </CardContent>
-                  </CardMapDetails>
-              ):(<CardMapDetails>
+                          <div className='papier'>
+                            <div>Papier</div>
+                            <div>{`${uniqueZoneDepot.quantite_depot_actuelle_papier}`}</div>
+                          </div>
+                          <div className='composte'>
+                            <div>Composte</div>
+                            <div> {`${uniqueZoneDepot.quantite_depot_actuelle_composte}`}</div>
+                          </div>
+                          <div className='canette'>
+                            <div >Canette</div>
+                            <div>{`${uniqueZoneDepot.quantite_depot_actuelle_canette}`}</div>
+                          </div>
+                      </div>
+                            
+                      </div>
+              </div> 
+              :
+              <div style={{alignSelf: 'center'}}>
+              {zoneDepots.length!==0?(
+                <CardMapDetails  sx={{minWidth:354, maxWidth: 700,maxHeight:300, minHeight:300, border:"1px solid #f0f0f0"}}>
+                <CardActions disableSpacing sx={{marginBottom:"-20px"}}>
+                  <h3 style={{color:'red', padding:" 0 22%"}}>Détails zones depots :</h3>
+                </CardActions>
+                <CardContent>
+                  <div className="scroller" style={{height:'260px', padding:"10px 20px"}}> 
+                      <h4 style={{color:"green"}}>nombre des zone de depot :{camions.length} </h4>                       
+                      {zoneDepots.length!==0?(zoneDepots.map(zone =>    
+                        <div key={zone.id} style={{ marginBottom:"0px"}}>
+                            <Accordion sx={{ border:"0.5px solid #C8C8C8"}}>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" sx={{backgroundColor:"#F0F0F0"}}>
+                                    <img style={{width:"30px", height:"30px", marginRight:"10px"}} src={ZoneDepotImage} alt='etablissement-icon'/>
+                                    <p style={{marginLeft:"10px",textAlign:"left"}}><b>zone depot:</b> {zone.id}</p>
+                                </AccordionSummary>
+                                <AccordionDetails  sx={{backgroundColor:"#F0F0E0",textAlign:"left"}}> 
+                                    <li><b>adresse:</b> {zone.adresse}</li>
+                                    <li><b>longitude:</b> {zone.longitude}</li>
+                                    <li><b>latitude:</b> {zone.latitude}</li>
+                                    <li><b>quantite depot maximale:</b> {zone.quantite_depot_maximale}</li>                         
+                                <b  style={{ color:"red", marginLeft:'15%'}}>quantité dechets collectés par type :</b>
+                                <div className='data'>
+                                    <div className='plastique'>
+                                      <div>Plastique</div>
+                                      <div>{`${zone.quantite_depot_actuelle_plastique}`}</div>
+                                    </div>
+                                    <div className='papier'>
+                                      <div>Papier</div>
+                                      <div>{`${zone.quantite_depot_actuelle_papier}`}</div>
+                                    </div>
+                                    <div className='composte'>
+                                      <div>Composte</div>
+                                      <div> {`${zone.quantite_depot_actuelle_composte}`}</div>
+                                    </div>
+                                    <div className='canette'>
+                                      <div >Canette</div>
+                                      <div>{`${zone.quantite_depot_actuelle_canette}`}</div>
+                                    </div>
+                                </div>
+                                    
+                                </AccordionDetails>
+
+                            </Accordion>  
+                        </div>)
+                      ):(<div style={{color:"red", marginTop:"20%"}}><b>pas encore des zone depots...</b></div>)}  
+                      <br/>   <br/> 
+                  </div>
+                </CardContent>
+                </CardMapDetails>
+            ):( <CardMapDetails>
                   <Box sx={{padding:3 ,width: 354 }}>
                       <Skeleton sx={{height:60}} />
                       <Skeleton animation="wave" sx={{height:60}} />                      
@@ -641,9 +641,9 @@ export default function MapGestionnaire() {
                       <Skeleton sx={{height:60}} />
                       <Skeleton animation="wave" sx={{height:60}} />
                   </Box>
-                  </CardMapDetails>)}
-                </div>       
-            } 
+                </CardMapDetails>)}
+              </div>       
+          } 
       </div>
     </div>
   )

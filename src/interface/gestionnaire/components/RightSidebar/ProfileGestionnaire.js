@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function ProfileGestionnaire({toggleDrawer}) {
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_gestionnaire')}`);
 
   var requestOptions = {
     method: 'GET',

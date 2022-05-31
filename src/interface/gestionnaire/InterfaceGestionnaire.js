@@ -10,7 +10,7 @@ import { Experimental_CssVarsProvider as CssVarsProvider, useColorScheme,experim
 import Moon from '@mui/icons-material/DarkMode';
 import Sun from '@mui/icons-material/LightMode';
 import { grey } from '@mui/material/colors';
-import Logo from '../../Global/images/reschool.png'
+import Logo from '../../Global/images/reschool-blanc.png'
 /*   dark-light  components */
 const DarkLightMode = () => {
       const { mode, setMode } = useColorScheme();
@@ -87,8 +87,8 @@ export default function InterfaceGestionnaire() {
                   <Box open={open}  sx={{ backgroundColor: 'lightgrey',position:"fixed",bottom:0,width:'100%',height:30,textAlign:'center'}}>
                       <Box>
                         Re school ecology © 2022    
-                        <a href='https://www.facebook.com/RESCHOOL.EDUCATION/'> facebook</a>
-                        <a href='https://www.facebook.com/RESCHOOL.EDUCATION/'> website</a>
+                        <a  href='https://www.facebook.com/RESCHOOL.EDUCATION/'> facebook</a>
+                        <a  href='https://www.facebook.com/RESCHOOL.EDUCATION/'> website</a>
                       </Box>
                   </Box>
             </Box>

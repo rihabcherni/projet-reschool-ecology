@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, FormHelperText,TextField } from '@mui/material';
 import Swal from 'sweetalert';
+import Cookies from 'js-cookie'
 export default function InputUpdateResponsable() {
     const initialValue = { nom: "", prenom: "",CIN:"", numero_telephone: "", email: "", adresse:"",created_at:"", updated_at:"", error_list:[]};
     const [validation, setValidation] = useState([])
     const [data, setData] = useState(initialValue)
-    const show=[["Etablissement","nom_etablissement"],  ["Nom","nom"],  ["Prénom","prenom"],  
+    const show=[ ["Nom","nom"],  ["Prénom","prenom"],  
                  ["Numero de telephone","numero_telephone"],["Numero de fixe","numero_fixe"], ["Email","email"], ["Adresse","adresse"],];
 
     const handleFormSubmit= (e) =>  {
@@ -15,7 +16,7 @@ export default function InputUpdateResponsable() {
                 headers: {
                   'content-type': "application/json",
                   'Accept': 'application/json',
-                  "Authorization":`Bearer ${localStorage.getItem('auth_token')}`
+                  "Authorization":`Bearer ${localStorage.getItem('auth_token_responsable')}`
                 }
               }).then(resp => resp.json())
                 .then(resp => {                    
@@ -43,7 +44,7 @@ export default function InputUpdateResponsable() {
     }
   return (
     <div>
-    
+        <p>{Cookies.get('auth_nom')}</p>
         {show.length!==0 ?(show.map((sh, key) =>               
             ((sh[1]!=="id" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo")?(
                 <>

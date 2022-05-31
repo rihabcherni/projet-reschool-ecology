@@ -3,14 +3,13 @@ import '../../../../../App.css'
 import Api from '../../../../../Global/ComponentsTable/Api';
   const show=[
             ["Identifiant","id"],
-            ["responsable Etablissement","responsable_etablissement_id"],
+            ["commande","commande_poubelle_id"],
+            ["stock_poubelle_id","stock_poubelle_id"],
             ["quantite","quantite"],
-            ["montant_total","montant_total"],
-            ["date_commande","date_commande"],
-            ["date_livraison","date_livraison"],
+            ["prix_unitaires","prix_unitaires"],
   ];    
 export default function DetailCommandePoubelleTable() {
-  const initialValue = { id_commande_poubelle: "", id_stock_poubelle: "",quantite: "", prix_unitaires: "",error_list:[]};    
+  const initialValue = { commande_poubelle_id: "", stock_poubelle_id: "",quantite: "", prix_unitaires: "",error_list:[]};    
   const url = `http://127.0.0.1:8000/api/detail-commande-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },

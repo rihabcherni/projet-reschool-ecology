@@ -9,8 +9,7 @@ export const LinkResponsableEtablissement = [
     {id: 2, name: "Map",path:"/responsable-etablissement/map", icon: <FaMapMarkedAlt/>},
     {id: 3, name: "Poubelle",path:"/responsable-etablissement/poubelle", icon: <BsTrashFill/>},
     {id: 4, name: "Pannes Poubelle",path:"/responsable-etablissement/panne-poubelle", icon: <BsTools/>},
-    {id: 5, name: "Calendrier",path:"/responsable-etablissement/calendrier", icon: <BsFillCalendarDateFill/>},
-    {id: 7, name: "Achat Poubelle",path:"/responsable-etablissement/produit-poubelle", icon: <BsFillBasketFill/>},
-    {id: 6, name: "Commander",path:"/responsable-etablissement/commander", icon: <RiShoppingBasketFill/>},
+    {id: 6, name: "Commander",path:"/responsable-etablissement/produit-poubelle", icon: <RiShoppingBasketFill/>},
+    {id: 6, name: "Historique commande",path:"/responsable-etablissement/historique-commande", icon: <RiShoppingBasketFill/>},
     {id: 7, name: "Panier",path:"/responsable-etablissement/panier", icon: <BsFillBasketFill/>}
   ];

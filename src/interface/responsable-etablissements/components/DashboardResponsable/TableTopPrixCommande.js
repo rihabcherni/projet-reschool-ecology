@@ -34,65 +34,88 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 export default function TableTopPrixCommande() {
-  const [data, setData] = useState(null)
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
+  
   var requestOptions = {
     method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
   };
+  const [data, setData] = useState(null)
   const getData = () => {
-    fetch("http://127.0.0.1:8000/api/top-prix-commande-etablissement/2", requestOptions)
-      .then(response => response.json())
-      .then(result => setData(result))
-      .catch(error => console.log('error', error));
-  
+  fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/top-prix-commande-responsable", requestOptions)
+    .then(response => response.json())
+    .then(result => setData(result))
+    .catch(error => console.log('error', error));
   }
-  useEffect(() => {
+    useEffect(() => {
       getData()
-  }, [])
+    }, [])
   
-  if(data!==null){
-  return (
-    <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 300 }} aria-label="customized table">
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell align="center">Bloc établissement</StyledTableCell>
-                    <StyledTableCell align="center">Etage établissement</StyledTableCell>
-                    <StyledTableCell align="center">Etat</StyledTableCell>
-                    <StyledTableCell align="center">N° bloc poubelle</StyledTableCell>
-                    <StyledTableCell align="center">Poubelle</StyledTableCell>
-                    <StyledTableCell align="center">Temps remplissage</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-            
-            {data.map((row) => (
-                <StyledTableRow key={row.id}>
-                    <StyledTableCell align="center">{row.bloc_etablissement}</StyledTableCell>
-                    <StyledTableCell align="center">{row.etage}</StyledTableCell>
-                    <StyledTableCell align="center">{row.etat}</StyledTableCell>
-                    <StyledTableCell align="center">{row.bloc_poubelle}</StyledTableCell>
-                    <StyledTableCell align="center">N°{row.id}: {row.nom} ({row.type}, {row.capacite_poubelle}L)</StyledTableCell>
-                    <StyledTableCell align="center">{row.temps_remplissage}</StyledTableCell>
-                      
-                </StyledTableRow>
-            ))}
-                </TableBody>
-            </Table>
-    </TableContainer>     
-  )
-}else{
-  return (
-    <>
-      <div >
-          <Skeleton variant="rectangular"  height={20}/>
-          <Skeleton variant="rectangular"  height={20}/>
-          <Skeleton variant="rectangular"  height={20}/>
-          <Skeleton variant="rectangular"  height={20}/>
-      </div>
-    </>
-  );
-}}
+    if(data!==null){
+      return (
+        <div style={{width:"100%"}}> 
+            <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 300 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align="center">photo</StyledTableCell>
+
+                            <StyledTableCell align="center">Numéro commande</StyledTableCell>
+                            <StyledTableCell align="center">type_poubelle</StyledTableCell>
+                            <StyledTableCell align="center">capacite_poubelle</StyledTableCell>
+                            <StyledTableCell align="center">pourcentage_remise</StyledTableCell>
+  
+                            <StyledTableCell align="center">quantite</StyledTableCell>
+                            <StyledTableCell align="center">prix unitaires</StyledTableCell>
+                            <StyledTableCell align="center">Type paiment</StyledTableCell>
+                            <StyledTableCell align="center">Montant Total</StyledTableCell>
+                            <StyledTableCell align="center">Date Commande</StyledTableCell>
+                            <StyledTableCell align="center">Date  Livraison</StyledTableCell>
+  
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                  
+                    {data.map((row) => (
+                      <StyledTableRow key={row.id}>
+                            <StyledTableCell align="center">{row.commande.montant_total}</StyledTableCell>
+                            <StyledTableCell align="center">
+                                <img  style={{height:"57px", width:"77px"}} 
+                                  src={`http://127.0.0.1:8000/storage/images/stock_poubelle/${row.produits.photo}`}alt="poubelle stock" />
+                            </StyledTableCell>
+                            <StyledTableCell align="center">{row.commande.id}</StyledTableCell>
+
+                            <StyledTableCell align="center">{row.produits.type_poubelle}</StyledTableCell>
+                            <StyledTableCell align="center">{row.produits.capacite_poubelle}</StyledTableCell>
+                            <StyledTableCell align="center">{row.produits.pourcentage_remise}</StyledTableCell>
+
+                            <StyledTableCell align="center">{row.commande.detail_commande_poubelle.quantite}</StyledTableCell>
+                            <StyledTableCell align="center">{row.commande.detail_commande_poubelle.prix_unitaires}</StyledTableCell>
+  
+                            <StyledTableCell align="center">{row.commande.type_paiment}</StyledTableCell>
+  
+                            <StyledTableCell align="center">{row.commande.date_commande}</StyledTableCell>
+                            <StyledTableCell align="center">{row.commande.date_livraison}</StyledTableCell>
+                              
+                        </StyledTableRow>
+                    ))}
+                        </TableBody>
+                    </Table>
+            </TableContainer>  
+        </div>   
+      )
+    }else{
+      return (
+        <>
+          <div >
+              <Skeleton variant="rectangular"  height={20}/>
+              <Skeleton variant="rectangular"  height={20}/>
+              <Skeleton variant="rectangular"  height={20}/>
+              <Skeleton variant="rectangular"  height={20}/>
+          </div>
+        </>
+      );
+    }
+  }

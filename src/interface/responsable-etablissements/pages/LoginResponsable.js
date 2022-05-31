@@ -9,13 +9,14 @@ import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import Cookies from 'js-cookie'
+import {Navigate , useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
 axios.defaults.baseURL= "http://127.0.0.1:8000/api/auth-responsable-etablissement";
 
 let token='';
-if(localStorage.getItem('auth_token')!==''){
-	 token=localStorage.getItem('auth_token');
+if(localStorage.getItem('auth_token_responsable')!==''){
+	 token=localStorage.getItem('auth_token_responsable');
 	 axios.interceptors.request.use(function(config){
 		config.headers.Authorization = token ? `Bearer ${token}` : '' ; 
 		return config;
@@ -45,8 +46,15 @@ const LoginResponsable=()=>{
       axios.get('sanctum/csrf-cookie').then(response => {
         axios.post(`api/auth-responsable-etablissement/login`,data).then(res =>{
           if(res.data.status === 200){
-            localStorage.setItem('auth_token',res.data.token);
-            localStorage.setItem('auth_email',res.data.email);
+            localStorage.setItem('auth_token_responsable',res.data.token);
+            localStorage.setItem('role',"responsable_etablissement");
+            Cookies.set('auth_nom', res.data.responsable.prenom ,{ expires: 2147483647 } )
+            localStorage.setItem('auth_email',res.data.responsable.email);
+            localStorage.setItem('auth_nom',res.data.responsable.nom);
+            localStorage.setItem('auth_prenom',res.data.responsable.prenom);
+            localStorage.setItem('auth_adresse',res.data.responsable.adresse);
+            localStorage.setItem('auth_numero_telephone',res.data.responsable.numero_telephone);
+            localStorage.setItem('auth_numero_fixe',res.data.responsable.numero_fixe);
             window.location.reload();   
             navigate("/responsable-etablissement");  
             Swal('Success',res.data.message,"success");

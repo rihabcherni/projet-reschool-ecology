@@ -10,7 +10,7 @@ export default function BlocPoubelleTable() {
   const url = `http://127.0.0.1:8000/api/bloc-poubelle`
   const columnDefs = [
     { headerName: "Idetifiant", field: "id", maxWidth:80, minWidth:50, pinned: 'left' },
-    { headerName: "etage etablissement", field: "etage_etablissement_id", },
+    { headerName: "Etage etablissement", field: "etage_etablissement_id", },
   ]
   return (
     <div style={{width:"100%"}}>

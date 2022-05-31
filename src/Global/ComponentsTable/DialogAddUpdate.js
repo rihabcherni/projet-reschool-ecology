@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField, FormHelperText } from '@mui/material';
+import Select from 'react-select';
 
 export default function DialogCrudUpdate({open,handleClose,data,onChange,handleFormSubmit,  validation, show}) {
+  const [selectedOption, setSelectedOption] = useState(null);
+
  const {id}=data
   let rows = [];
     for (let i = 0; i < show.length; i++) {
@@ -51,6 +54,8 @@ export default function DialogCrudUpdate({open,handleClose,data,onChange,handleF
             }
         }
       }
+
+
   return (
     <div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title"  aria-describedby="alert-dialog-description"  fullWidth>
@@ -63,7 +68,7 @@ export default function DialogCrudUpdate({open,handleClose,data,onChange,handleF
                        && sh[1]!=="quantite_total_collecte_plastique" 
                        && sh[1]!=="quantite_total_collecte_composte" 
                        && sh[1]!=="quantite_total_collecte_papier" 
-                       && sh[1]!=="quantite_total_collecte_canette" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo" )?(
+                       && sh[1]!=="quantite_total_collecte_canette" && sh[1]!=="created_at" && sh[1]!=="updated_at" && sh[1]!=="photo")?(
                         <>
                           <TextField key={key} id={sh[1]} value={data[sh[1]]}  onChange={e=>onChange(e)} placeholder={sh[1]}  error={!!validation[sh[1]]} label={sh[1]} variant="outlined" margin="dense" fullWidth />
                             <FormHelperText error={true}>

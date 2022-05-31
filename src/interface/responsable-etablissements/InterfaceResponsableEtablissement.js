@@ -9,8 +9,8 @@ import HeaderRightIcon from "./components/header/HeaderRightIcon";
 import { Experimental_CssVarsProvider as CssVarsProvider, useColorScheme,experimental_extendTheme} from '@mui/material/styles';
 import Moon from '@mui/icons-material/DarkMode';
 import Sun from '@mui/icons-material/LightMode';
-import { grey , green} from '@mui/material/colors';
-import Logo from '../../Global/images/reschool.png'
+import { green} from '@mui/material/colors';
+import Logo from '../../Global/images/reschool-blanc.png'
 
 const theme = experimental_extendTheme({
   colorSchemes: {
@@ -64,7 +64,7 @@ export default function InterfaceResponsableEtablissement() {
                         <Toolbar>
                               <Box sx={{marginRight: 5, ...(open && { display: 'none' })  }}>
                                   <div  style={{fontWeight:"bold", color:"white" ,margin:"0 0 0 -15px",fontFamily: 'Fredoka'}}>
-                                      <img src={Logo} style={{verticalAlign: "middle",marginRight:"20px", width:"40px", borderRadius:"50%"}}/>               
+                                      <img alt='logo' src={Logo} style={{verticalAlign: "middle",marginRight:"20px", width:"40px", borderRadius:"50%"}}/>               
                                       <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" ><MenuIcon sx={{ fontSize: 25 }} /> </IconButton>
                                   </div>
                               </Box>               

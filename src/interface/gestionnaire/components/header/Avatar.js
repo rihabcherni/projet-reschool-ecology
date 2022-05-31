@@ -13,7 +13,7 @@ import { ListItemIcon } from '@mui/material';
 import { IconButton } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ProfilePhoto from "../../../../Global/images/default_profile_image.jpg"
-import { Link  , Outlet,useNavigate} from 'react-router-dom';
+import { Link  ,useNavigate} from 'react-router-dom';
 import Swal from "sweetalert";
 import axios from "axios";
 import {StyledBadge} from '../../../../style'
@@ -24,7 +24,7 @@ export default function BadgeAvatars() {
     e.preventDefault();
     axios.post(`api/auth-gestionnaire/logout`).then(res=>{
       if(res.data.status===200){
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_token_gestionnaire');
         localStorage.removeItem('auth_email');
         Swal('Success',res.data.message,"success")
         navigate("/")   
@@ -32,7 +32,7 @@ export default function BadgeAvatars() {
     })
   }
   var AuthButtons='';
-    if(localStorage.getItem('auth_token')){
+    if(localStorage.getItem('auth_token_gestionnaire')){
       AuthButtons=( <li onClick={logoutSubmit} style={{color:"green"}}>Se Déconnecter</li> )
   }
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ export default function BadgeAvatars() {
     setNotification(null);
   };
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_gestionnaire')}`);
 
   var requestOptions = {
     method: 'GET',

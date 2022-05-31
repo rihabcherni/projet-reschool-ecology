@@ -30,15 +30,35 @@ export default function Api({initialValue, url, columnDefs, show}) {
   const handleCloseShow = () => {
     setOpenShow(false);
   };
-    
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+   
+  var requestOptionsDelete = {
+    method: 'DELETE',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
   useEffect(() => {
     getData()
   }, [])
   const getData = () => {
-    fetch(url).then(resp => resp.json()).then(resp => {setTableData(resp.data);}).catch(err => {
-      // Do something for an error here
-      console.log("Error Reading data " + err);
-    });
+    if(localStorage.getItem('auth_token_responsable')){
+      fetch(url, requestOptions).then(resp => resp.json()).then(resp => {setTableData(resp.data);}).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+      });
+    }else{
+      fetch(url).then(resp => resp.json()).then(resp => {setTableData(resp.data);}).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+      });
+    }
+  
   }
   const onChange = (e) => {
     const { value, id } = e.target
@@ -59,15 +79,21 @@ export default function Api({initialValue, url, columnDefs, show}) {
     const confirm = window.confirm("Êtes-vous sûr de vouloir supprimer cette ligne", oldData.id)
     Swal("Suppression", "ligne supprimer avec succés" ,"success")
     if (confirm) {
-      fetch(url + `/${oldData.id}`, { method: "DELETE" }).then(resp => resp.json()).then(resp => getData())
+      if(localStorage.getItem('auth_token_responsable')){
+        fetch(url+ `/${oldData.id}`, requestOptionsDelete).then(resp => resp.json()).then(resp => getData())
+      }
+    else{
+      fetch(url+ `/${oldData.id}`,{method: "DELETE"}).then(resp => resp.json()).then(resp => getData())
+    }
     }
   }
   const handleFormSubmit= (e) =>  {
     if (formData.id) {
       const confirm = window.confirm("Êtes-vous sûr de vouloir mettre à jour cette ligne?")
+      if(localStorage.getItem('auth_token_responsable')){
       confirm && fetch(url + `/${formData.id}`, {
         method: "PUT", body: JSON.stringify(formData), headers: {
-          'content-type': "application/json"
+          'content-type': "application/json","Authorization":`Bearer ${localStorage.getItem('auth_token_responsable')}`
         }
       }).then(resp => resp.json())
       .then(resp => {
@@ -81,17 +107,32 @@ export default function Api({initialValue, url, columnDefs, show}) {
             // Do something for an error here
             console.log("Error Reading data " + err);
           });
-          console.log(validation)
+          console.log(validation)  } else{ confirm && fetch(url + `/${formData.id}`, {
+            method: "PUT", body: JSON.stringify(formData), headers: {
+              'content-type': "application/json"
+            }
+          }).then(resp => resp.json())
+          .then(resp => {
+                if(resp.validation_error){
+                  setValidation(resp.validation_error)
+                }else{
+                  handleClose()
+                  getData()      
+                }
+              }).catch(err => {
+                // Do something for an error here
+                console.log("Error Reading data " + err);
+              });
+              console.log(validation)  }
+
+
       } else {
         // adding new user
+        if(localStorage.getItem('auth_token_responsable')){
         fetch(url, {
-          method: "POST", 
-          body: JSON.stringify(formData), 
-          headers: {
-            'content-type': "application/json",
-            'Accept': 'application/json'
-          }
-        }).then(resp => resp.json())
+          method: "POST", body: JSON.stringify(formData), headers: {
+            'content-type': "application/json", 'Accept': 'application/json',"Authorization":`Bearer ${localStorage.getItem('auth_token_responsable')}`
+          }}).then(resp =>resp.json() )
           .then(resp => {
             if(resp.validation_error){
               setValidation(resp.validation_error)
@@ -103,7 +144,26 @@ export default function Api({initialValue, url, columnDefs, show}) {
             // Do something for an error here
             console.log("Error Reading data " + err);
           });
-          console.log(validation)
+          console.log(validation)    }
+          else{
+            fetch(url, {
+              method: "POST", body: JSON.stringify(formData), headers: {
+                'content-type': "application/json",
+                'Accept': 'application/json',
+              }}).then(resp => resp.json())
+            .then(resp => {
+              if(resp.validation_error){
+                setValidation(resp.validation_error)
+              }else{
+                 handleClose()
+                 getData()      
+              }
+            }).catch(err => {
+              // Do something for an error here
+              console.log("Error Reading data " + err);
+            });
+            console.log(validation) 
+          }
       }
     }
     let tableColumn;

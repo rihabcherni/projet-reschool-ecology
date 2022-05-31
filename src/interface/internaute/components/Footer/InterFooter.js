@@ -2,12 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faYoutube , faInstagramSquare, faGoogle, faFacebookF} from '@fortawesome/free-brands-svg-icons'
 import "../../assets/css/Footer.css"
-import Logo from '../../../../Global/images/reschool.png'
+import Logo from '../../../../Global/images/reschool-blanc.png'
 import { faEnvelope, faMap, faPhone } from '@fortawesome/free-solid-svg-icons';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const Interfooter = () => {
-  
-
   return (
     < >
         <div className="footerSection">
@@ -19,9 +17,9 @@ const Interfooter = () => {
             <div className='section'>
                 <p className='title-footer'>Menu</p>
                 <a className="footerLink" href="#accueil">Accueil</a> <br></br>
+                <a className="footerLink" href="#statistique">Statistique</a> <br></br>
                 <a className="footerLink" href="#produits">Produits </a> <br></br>
                 <a className="footerLink" href="#mission">Mission </a> <br></br>
-                <a className="footerLink" href="#partenaires">Partenaires </a> <br></br>
                 <a className="footerLink" href="#a-propos">A propos </a> <br></br>
                 <a className="footerLink" href="#contact">Contactez-nous </a> <br></br>
     
@@ -45,7 +43,7 @@ const Interfooter = () => {
                 </div>
                 <div class="wrapper">
                   <ul>
-                    <li class="facebook"><a  class="facebook" href="https://www.facebook.com/RESCHOOL.EDUCATION"><FontAwesomeIcon icon={faFacebookF} className='fa fa-facebook'/></a></li>                 
+                    <li class="facebook"><a class="facebook" to="https://www.facebook.com/RESCHOOL.EDUCATION"><FontAwesomeIcon icon={faFacebookF} className='fa fa-facebook'/></a></li>                 
                     <li class="youtube"><a href=" https://www.youtube.com/channel/UCVz1D9WyNVZAFCB6cxqpDGQ"><FontAwesomeIcon icon={faYoutube} className='fa fa-youtube'/></a></li>                 
                     <li class="google"><a href="https://reschoolwethink.education/"><FontAwesomeIcon icon={faGoogle} className='fa fa-google'/></a></li>                 
                     <li class="instagram"><a href="https://www.instagram.com/reschool.la.boutique/"><FontAwesomeIcon icon={faInstagramSquare} className='fa fa-instagram '/></a></li>                   
@@ -66,6 +64,5 @@ const Interfooter = () => {
      </>
     );
 }
-
 export default Interfooter;
 

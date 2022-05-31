@@ -3,7 +3,7 @@ import React , {useState, useEffect} from 'react'
 export default function ProfileResponsable() {
   
 var myHeaders = new Headers();
-myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
 
 var requestOptions = {
   method: 'GET',

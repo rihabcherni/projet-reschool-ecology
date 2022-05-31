@@ -35,14 +35,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function TablePoubellePlusRemplis() {
   const [data, setData] = useState(null)
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
   var requestOptions = {
     method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
   };
   const getData = () => {
-    fetch("http://127.0.0.1:8000/api/poubelle-plus-remplis-etablissement/2", requestOptions)
+    fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/poubelle-plus-remplis-etablissement", requestOptions)
       .then(response => response.json())
       .then(result => setData(result))
       .catch(error => console.log('error', error));

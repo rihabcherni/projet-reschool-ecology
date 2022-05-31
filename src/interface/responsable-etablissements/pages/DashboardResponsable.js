@@ -33,7 +33,7 @@ export default function DashboardResponsable() {
                     <TablePoubellePlusRemplis/> 
                 </Item>               
                 <Item>
-                    <Typography variant='h5'>Commande plus chers</Typography>
+                    <Typography variant='h5'>Liste des commandes les plus chères</Typography>
                     <TableTopPrixCommande/> 
                 </Item>
               </div>

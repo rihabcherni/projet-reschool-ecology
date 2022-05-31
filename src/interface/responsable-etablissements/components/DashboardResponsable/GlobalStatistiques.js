@@ -35,14 +35,14 @@ const CardStatistique =( {data , nom ,icon})=>{
 export default function GlobalStatistiques() {
     const [data, setData] = useState(null)
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
     var requestOptions = {
       method: 'GET',
       headers: myHeaders,
       redirect: 'follow'
     };
     const getData = () => {
-      fetch("http://127.0.0.1:8000/api/dashboard-etablissement/2", requestOptions)
+      fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/dashboard-etablissement", requestOptions)
         .then(response => response.json())
         .then(result => setData(result))
         .catch(error => console.log('error', error));

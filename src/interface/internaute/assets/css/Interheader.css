@@ -1,3 +1,68 @@
 #headertitle:hover {
     color :green;
 }
+
+@media only screen and (max-width: 700px) {
+    .menu{
+        transition: 0.7s all ease;
+    }
+
+    .menu-header{
+        display: none !important;
+
+    }
+    .navbar{
+        display: none;
+        /* background-color: red ; */
+    }
+}
+.menu{
+    position: fixed !important;
+    top: 0; 
+}
+
+.ui.menu .item {
+  color:rgb(111, 215, 73);
+  text-shadow:  0 0 5px #65ffad;
+  font-family:  'Fredoka', sans-serif;
+}
+ .horizontale{
+    font-size:  18px !important;
+  }
+  
+.ui.menu .active.item {
+  color:rgb(41, 213, 41);
+  text-shadow: 0 0 3px #60d249, 0 0 5px #65ffad;
+} 
+
+
+.apropos {
+    position: relative;
+    animation-name: example;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes example {
+    0%   {  top:0px;}
+    100%  { top:200px;}
+  }
+
+  #start {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;     
+    justify-content: center; 
+    align-items: center;    
+  }
+  #start div:nth-child(2n){
+    background-color: rgb(6, 71, 6);
+    color: white;
+  }
+
+  .title-section{
+      font-size: 55px;
+      font-weight: 700;
+      color: rgb(39, 212, 39);
+      text-align:center;
+      text-shadow: 2px 2px 5px  #151815;
+  }

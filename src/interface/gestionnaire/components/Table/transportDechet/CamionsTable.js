@@ -33,8 +33,8 @@ export default function CamionsTable() {
     { headerName: "volume carburant consomme  (L)", field: "volume_carburant_consomme"},
     { headerName: "longitude", field: "longitude"},
     { headerName: "latitude", field: "latitude"},
-    { headerName: "heure sortie", field: "heure_sortie"},
-    { headerName: "heure entree", field: "heure_entree"},
+    { headerName: "heure de sortie", field: "heure_sortie"},
+    { headerName: "Heure d'entrée", field: "heure_entree"},
     { headerName: "Kilometrage  (KM)", field: "Kilometrage"}
   ]
   return (

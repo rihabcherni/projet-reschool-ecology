@@ -18,7 +18,7 @@ export default function ProfileResponsable() {
   const [profile, setProfile]=React.useState([]);
   const [profileImg, setProfileImg]=React.useState("");
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`); 
+  myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`); 
   var requestOptions = { method: 'GET',  headers: myHeaders }; 
   
   const getStatus =()=> {
@@ -33,7 +33,7 @@ export default function ProfileResponsable() {
     reader.onload = () =>{ if(reader.readyState === 2){  setProfileImg(reader.result) } }
     reader.readAsDataURL(e.target.files[0])
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token')}`);
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('auth_token_responsable')}`);
     var formdata = new FormData();
     formdata.append("photo", e.target.files[0], e.target.files[0].name);
     var requestOptions = {  method: 'POST', headers: myHeaders, body: formdata,};

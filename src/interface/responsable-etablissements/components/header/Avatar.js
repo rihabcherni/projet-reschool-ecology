@@ -13,22 +13,29 @@ import Logout from '@mui/icons-material/Logout';
 import { ListItemIcon } from '@mui/material';
 import { IconButton } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Drawer from 'react-modern-drawer'
+import CloseIcon from '@mui/icons-material/Close';
 import { Link  , Outlet,useNavigate} from 'react-router-dom';
 import Swal from "sweetalert";
 import axios from "axios";
 import {StyledBadge} from '../../../../style'
+import Panier from '../RightSidebar/Panier';
 
 
 export default function BadgeAvatars() {
+  
+  const [isOpen, setIsOpen] = React.useState(false)
+  const toggleDrawer = () => {
+      setIsOpen((prevState) => !prevState)
+  }
 /**                logout                   */
 
   const logoutSubmit= (e)=>{
     e.preventDefault();
     axios.post(`api/auth-responsable-etablissement/logout`).then(res=>{
       if(res.data.status===200){
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_token_responsable');
         localStorage.removeItem('auth_email');
         Swal('Success',res.data.message,"success")
         navigate("/")   
@@ -36,7 +43,7 @@ export default function BadgeAvatars() {
     })
   }
   var AuthButtons='';
-    if(localStorage.getItem('auth_token')){
+    if(localStorage.getItem('auth_token_responsable')){
       AuthButtons=( <li onClick={logoutSubmit}>Se Déconnecter</li> )
   }
   const navigate = useNavigate();
@@ -70,7 +77,31 @@ export default function BadgeAvatars() {
   };
   return (
      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
+
+          <Tooltip title="Panier">
+              <IconButton size="large" aria-label="visualiser panier" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
+                  aria-haspopup="true" aria-expanded={openInbox ? 'true' : undefined} onClick={toggleDrawer}>
+                    <Badge badgeContent={1} color="error">
+                      <ShoppingCartIcon fontSize='large' />
+                    </Badge>
+              </IconButton>
+          </Tooltip>
+          <Drawer open={isOpen} direction='right' size={350} >
+            <Button onClick={toggleDrawer}><CloseIcon /></Button>
+            <Panier/>
+          </Drawer>
+
+
+
+
+
+
+
+
+
+
+
+            <IconButton size="large" aria-label="show  messages" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
                aria-haspopup="true" aria-expanded={openInbox ? 'true' : undefined} onClick={clickInbox}>
                   <Badge badgeContent={4} color="error">
                     <MailIcon />

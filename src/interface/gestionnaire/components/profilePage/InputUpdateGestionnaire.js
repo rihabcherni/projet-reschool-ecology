@@ -13,7 +13,7 @@ export default function InputUpdateGestionnaire() {
                 headers: {
                   'content-type': "application/json",
                   'Accept': 'application/json',
-                  "Authorization":`Bearer ${localStorage.getItem('auth_token')}`
+                  "Authorization":`Bearer ${localStorage.getItem('auth_token_gestionnaire')}`
                 }
               }).then(resp => resp.json())
                 .then(resp => {                    

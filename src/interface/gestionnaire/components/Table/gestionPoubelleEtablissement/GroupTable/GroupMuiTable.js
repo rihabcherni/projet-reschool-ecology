@@ -1,6 +1,65 @@
 import React, { useState,   useCallback, useEffect , useRef} from 'react';
 import MaterialTable from 'material-table';
 import {tableIcons ,localization} from './style'
+import styled from 'styled-components'
+
+const Progress = ({done}) => {
+	const [style, setStyle] = React.useState({});
+	const [color, setColor] = React.useState("");
+	const [colorNumber, setColorNumber] = React.useState("");
+	
+	setTimeout(() => {
+    if(done< 25){
+      setColor("green")
+      setColorNumber("black")
+    }else if (done>=25 && done<50){
+      setColor("yellow")
+      setColorNumber("black")
+    }else if (done>=50 && done<75){
+      setColor("orange")
+      setColorNumber("white")
+    }else if (done>=75 && done<100){
+      setColor("red")
+      setColorNumber("white")
+    }
+		const newStyle = {
+			opacity: 1,
+			width: `${done}%`,
+      backgroundColor:`${color}`,
+      boxShadow: `0 3px 3px -5px ${color}, 0 2px 5px ${color}`,
+      color: `${colorNumber}` 
+		}
+		
+		setStyle(newStyle);
+	}, 100);
+	
+	return (
+		<ProgressStyle>
+			<ProgressDone style={style}>
+         {done}%
+			</ProgressDone>
+		</ProgressStyle>
+	)
+}
+const ProgressStyle = styled.div`
+	background-color: #d8d8d8;
+	position: relative;
+	margin: 15px 0;
+	height: 30px;
+	width: 100%;
+`
+const ProgressDone = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: left;
+  padding-left:10px ;
+	height: 100%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+  `
+
+
 export default function GroupMuiTable() {
     const [tableZone, setTableZone] =  useState([]);
     const url = `http://127.0.0.1:8000/api/region-map`
@@ -83,12 +142,14 @@ export default function GroupMuiTable() {
                                                                                                 <MaterialTable icons={tableIcons}  title="Details poubelles" localization={localization}  data={rowData.poubelles}
                                                                                                     columns={[
                                                                                                         { title: 'Id', field: 'id' },
-                                                                                                        { title: 'bloc_poubelle_id ', field: 'bloc_poubelle_id'},
-                                                                                                        { title: 'nom', field: 'nom' },                                                           
-                                                                                                        { title: 'compteur', field: 'compteur' },                                                           
-                                                                                                        { title: 'capacite_poubelle', field: 'capacite_poubelle' },                                                                                                                                                                              { title: 'type', field: 'type' },                                                           
-                                                                                                        { title: 'Etat', field: 'Etat' },                                                           
-                                                                                                        { title: 'temps_remplissage', field: 'temps_remplissage' },                                                           
+                                                                                                        { title: 'Poubelle', field: 'nom' },                                                           
+                                                                                                        { title: 'Nombre de déchets', field: 'compteur' },                                                           
+                                                                                                        { title: 'Capacite poubelle', field: 'capacite_poubelle' },                                                                                                                                                                              { title: 'type', field: 'type' },                                                           
+                                                                                                        { title: 'Etat', field: 'Etat' ,render: rowData =>   <Progress done={`${rowData.Etat}`} />,  
+                                                                                                        cellStyle: {
+                                                                                                           width:"200px"
+                                                                                                          }},                                                           
+                                                                                                        { title: 'Temps remplissage', field: 'temps_remplissage' },                                                           
                                                                                                         { title: 'created at', field: 'created_at', type: 'date' }, 
                                                                                                         { title: 'updated at', field: 'updated_at', type: 'date' }, 
                                                                                                     ]}
