@@ -79,7 +79,6 @@ fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-respons
                           <StyledTableCell align="center">pourcentage_remise</StyledTableCell>
 
                           <StyledTableCell align="center">quantite</StyledTableCell>
-                          <StyledTableCell align="center">prix unitaires</StyledTableCell>
                           <StyledTableCell align="center">Type paiment</StyledTableCell>
                           <StyledTableCell align="center">Montant Total</StyledTableCell>
                           <StyledTableCell align="center">Date Commande</StyledTableCell>
@@ -102,7 +101,6 @@ fetch("http://127.0.0.1:8000/api/auth-responsable-etablissement/commande-respons
                           <StyledTableCell align="center">{row.produits.pourcentage_remise}</StyledTableCell>
 
                           <StyledTableCell align="center">{row.commande.detail_commande_poubelle.quantite}</StyledTableCell>
-                          <StyledTableCell align="center">{row.commande.detail_commande_poubelle.prix_unitaires}</StyledTableCell>
 
                           <StyledTableCell align="center">{row.commande.type_paiment}</StyledTableCell>
                           <StyledTableCell align="center">{row.commande.montant_total}</StyledTableCell>

@@ -108,19 +108,7 @@ export default function GlobalStatistiques() {
                         <CardStatistique data={data[0].bloc_poubelles_count} nom='Bloc Poubelles'
                             icon={ <FaTrashAlt className='card-icon' style={{width:"40px",color:'gray'}}/>}/>
                     </div>   
-                    <div className='container2' >
-                        <CardStatistique data={data[0].poubelle_plastique} nom='Poubelles plastiques'
-                            icon={ <FaTrash className='card-icon' style={{width:"40px",color:'gray'}}/>}/>
-                
-                        <CardStatistique data={data[0].poubelle_papier} nom='Poubelles papier'
-                            icon={ <FaTrash className='card-icon' style={{width:"40px",color:'gray'}}/>}/>
-                            
-                        <CardStatistique data={data[0].poubelle_composte} nom='Poubelles composte'
-                            icon={ <FaTrash className='card-icon' style={{width:"40px",color:'gray'}}/>}/>
-                    
-                        <CardStatistique data={data[0].poubelle_canette} nom='Poubelles canette'
-                            icon={ <FaTrash className='card-icon' style={{width:"40px",color:'gray'}}/>}/>
-                    </div>
+                  
                     <div className='container2' >
                         <CardStatistique data={data[0].poubelle_plastique} nom='Poubelles plastiques'
                             icon={ <FaTrash className='card-icon' style={{width:"40px",color:'gray'}}/>}/>

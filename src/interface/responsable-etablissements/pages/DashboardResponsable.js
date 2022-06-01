@@ -3,7 +3,6 @@ import {Typography , Paper} from '@mui/material'
 import { styled } from '@mui/material/styles';
 import GlobalStatistiques from '../components/DashboardResponsable/GlobalStatistiques';
 import TablePoubellePlusRemplis from '../components/DashboardResponsable/TablePoubellePlusRemplis';
-import TableTopPrixCommande from '../components/DashboardResponsable/TableTopPrixCommande';
 export const Item = styled(Paper)(({ theme }) => 
   (
     {
@@ -32,10 +31,7 @@ export default function DashboardResponsable() {
                     <Typography variant='h5'>Poubelles les plus remplis dans l'etablissement </Typography>
                     <TablePoubellePlusRemplis/> 
                 </Item>               
-                <Item>
-                    <Typography variant='h5'>Liste des commandes les plus chères</Typography>
-                    <TableTopPrixCommande/> 
-                </Item>
+               
               </div>
         </div>
     </div>

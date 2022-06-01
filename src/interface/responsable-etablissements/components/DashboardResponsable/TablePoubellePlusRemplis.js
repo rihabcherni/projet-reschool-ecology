@@ -60,7 +60,7 @@ export default function TablePoubellePlusRemplis() {
                 <TableRow>
                     <StyledTableCell align="center">Bloc établissement</StyledTableCell>
                     <StyledTableCell align="center">Etage établissement</StyledTableCell>
-                    <StyledTableCell align="center">Etat</StyledTableCell>
+                    <StyledTableCell align="center" style={{backgroundColor:"red"}}>Etat</StyledTableCell>
                     <StyledTableCell align="center">N° bloc poubelle</StyledTableCell>
                     <StyledTableCell align="center">Poubelle</StyledTableCell>
                     <StyledTableCell align="center">Temps remplissage</StyledTableCell>
@@ -72,7 +72,7 @@ export default function TablePoubellePlusRemplis() {
                 <StyledTableRow key={row.id}>
                     <StyledTableCell align="center">{row.bloc_etablissement}</StyledTableCell>
                     <StyledTableCell align="center">{row.etage}</StyledTableCell>
-                    <StyledTableCell align="center">{row.etat}</StyledTableCell>
+                    <StyledTableCell align="center" style={{backgroundColor:"red", color:"white"}}>{row.etat}</StyledTableCell>
                     <StyledTableCell align="center">{row.bloc_poubelle}</StyledTableCell>
                     <StyledTableCell align="center">N°{row.id}: {row.nom} ({row.type}, {row.capacite_poubelle}L)</StyledTableCell>
                     <StyledTableCell align="center">{row.temps_remplissage}</StyledTableCell>

@@ -16,12 +16,11 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Drawer from 'react-modern-drawer'
 import CloseIcon from '@mui/icons-material/Close';
-import { Link  , Outlet,useNavigate} from 'react-router-dom';
+import { Link  ,useNavigate} from 'react-router-dom';
 import Swal from "sweetalert";
 import axios from "axios";
 import {StyledBadge} from '../../../../style'
 import Panier from '../RightSidebar/Panier';
-
 
 export default function BadgeAvatars() {
   
@@ -81,31 +80,26 @@ export default function BadgeAvatars() {
           <Tooltip title="Panier">
               <IconButton size="large" aria-label="visualiser panier" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
                   aria-haspopup="true" aria-expanded={openInbox ? 'true' : undefined} onClick={toggleDrawer}>
-                    <Badge badgeContent={1} color="error">
                       <ShoppingCartIcon fontSize='large' />
-                    </Badge>
               </IconButton>
           </Tooltip>
-          <Drawer open={isOpen} direction='right' size={350} >
-            <Button onClick={toggleDrawer}><CloseIcon /></Button>
-            <Panier/>
+          <Drawer open={isOpen} direction='right' size={350}  className='scroller' >
+            <div style={{backgroundColor:"green", display:"grid", gridTemplateColumns:"2fr 3fr", verticalAlign:"center"}}>
+              <Button onClick={toggleDrawer} sx={{backgroundColor:'white', width:"20px", height:"30px", margin:"3px",}}>
+                  <CloseIcon />
+              </Button>      
+              <h1 style={{color:"white", margin:"10px"}}>Panier</h1>
+            </div>
+
+             <Box sx={{color:"black"}}>
+               <Panier />
+             </Box>
           </Drawer>
-
-
-
-
-
-
-
-
-
 
 
             <IconButton size="large" aria-label="show  messages" color="secondary" id="inbox-button" aria-controls={openInbox ? 'inbox-menu' : undefined} 
                aria-haspopup="true" aria-expanded={openInbox ? 'true' : undefined} onClick={clickInbox}>
-                  <Badge badgeContent={4} color="error">
                     <MailIcon />
-                  </Badge>
             </IconButton>
             <Menu id="inbox-menu"  MenuListProps={{ 'aria-labelledby': 'inbox-button' }} anchorEl={inbox} open={openInbox}  onClose={closeInbox} TransitionComponent={Fade} >
               <MenuItem onClick={closeInbox}>Message 1</MenuItem>
@@ -117,9 +111,7 @@ export default function BadgeAvatars() {
 
             <IconButton  size="large"  aria-label="show 17 new notifications" color="secondary" id="notification-button" aria-controls={openNotification ? 'notification-menu' : undefined} 
             aria-haspopup="true" aria-expanded={openNotification ? 'true' : undefined} onClick={clickNotification}>
-                  <Badge badgeContent={17} color="error">
                     <NotificationsIcon />
-                  </Badge>
             </IconButton>
             <Menu id="notification-menu"  MenuListProps={{ 'aria-labelledby': 'notification-button' }} anchorEl={notification} open={openNotification}  onClose={closeNotification} TransitionComponent={Fade} >
               <MenuItem onClick={closeNotification}>Notification 1</MenuItem>

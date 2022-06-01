@@ -1,8 +1,6 @@
-import React  from 'react'
-import { Grid,Paper, Avatar, TextField, Button, Typography,Link,FormControl,FormHelperText,InputLabel,OutlinedInput,InputAdornment ,IconButton} from '@mui/material'
+import React from 'react'
+import { Grid,Paper, Avatar, Button, Typography,Link,FormControl,FormHelperText,InputLabel,OutlinedInput,InputAdornment ,IconButton} from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import LockIcon from '@mui/icons-material/Lock';
@@ -12,7 +10,6 @@ import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert"
 import styled from 'styled-components'
-import {Image} from "semantic-ui-react"
 import LogoImage from '../../../Global/images/reschool-blanc.png'
 const Logo= styled.div`
   // padding-top: 30px;  
@@ -52,6 +49,7 @@ const LoginGestionnaire=()=>{
       }
       axios.get('sanctum/csrf-cookie').then(response => {
         axios.post(`api/auth-gestionnaire/login`,data).then(res =>{
+        
           if(res.data.status === 200){
             localStorage.setItem('auth_token_gestionnaire',res.data.token);
             localStorage.setItem('role',"gestionnaire");
@@ -81,16 +79,9 @@ const LoginGestionnaire=()=>{
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };    
-    const paperStyle={
-      padding :40,height:550,width:400, margin:"5% auto"
-    }
-    const avatarStyle={
-      backgroundColor:'#21BA45',width:60,height:60
-    } //#338037
-    const btnstyle={
-      backgroundColor:'#21BA45',
-      margin:'8px 0'
-    }
+    const paperStyle={ padding :40,height:550,width:400, margin:"5% auto" }
+    const avatarStyle={  backgroundColor:'#21BA45',width:60,height:60}
+    const btnstyle={ backgroundColor:'#21BA45',  margin:'8px 0'}
     return(
         <Grid>
             <Logo>  <img width='100px' src={LogoImage} /> </Logo>
@@ -143,15 +134,12 @@ const LoginGestionnaire=()=>{
                             {loginInput.error_list.mot_de_passe}           
                           </FormHelperText> 
                       </FormControl>
-
-
-                      <FormControlLabel control={ <Checkbox name="Souvenez de moi" color="success"/>} label="Souvenez de moi" />
+                      <br/>
+                      <br/>
                       <ReCAPTCHA
-                          sitekey='6LcApHsfAAAAAHz09e3JvjZHKzd-8xV4d3BhmeQH'
-                          
+                          sitekey='6LcApHsfAAAAAHz09e3JvjZHKzd-8xV4d3BhmeQH'   
                           onChange={onChange}
-                        />
-                                      
+                        />          
                       <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth> Se connecter </Button>
                       <Typography sx={{textAlign:"center"}}>
                         <Link href="/gestionnaire/oublier-mot-de-passe" >

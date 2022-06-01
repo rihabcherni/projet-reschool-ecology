@@ -24,6 +24,18 @@ export default function ListeProduitsPoubelle() {
       getData()
     }, [])
   if(produit!==null){
+    
+    let dataPanier=[];
+    const AjoutPanier=(produit)=>{
+      if(produit.quantite_disponible!==0 ){         
+        dataPanier.push(produit)
+        localStorage.setItem("panier", JSON.stringify(dataPanier));
+        console.log(dataPanier)
+      }else{
+        console.log("error")
+      }
+     
+    }
   return (
     <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)',  gridGap: '30px'}}>
         {
@@ -41,14 +53,17 @@ export default function ListeProduitsPoubelle() {
                     <div style={{height:"130px"}}>
                         {p.pourcentage_remise!==0 ?
                             <>
-                                <li><b style={{color:"green", fontSize:"18px"}}>{p.prix_unitaire  * p.pourcentage_remise/100} TND</b></li>
+                                <li><b style={{color:"green", fontSize:"18px"}}>{p.prix_unitaire -((p.prix_unitaire * p.pourcentage_remise)/100)} TND</b></li>
                                 <li style={{textDecoration: "line-through"}}>{p.prix_unitaire} TND</li>
                             </>:<li><b style={{color:"green", fontSize:"18px"}}>{p.prix_unitaire } TND</b></li>}
                         <li>poubelle {p.type_poubelle}</li>
                         <li>capacité: {p.capacite_poubelle} Litre</li>
                         {p.quantite_disponible!==0?  <li style={{color:"green", fontSize:"18px", fontWeight:"bold"}}>En stock</li> :  <li style={{color:"red", fontSize:"18px", fontWeight:"bold"}}>Hors stock</li>}
                     </div>
-                    <button className='button-card'>Ajouter panier</button>
+                    {p.quantite_disponible!==0? 
+                      <button className='button-card' onClick={() => AjoutPanier(p)} >Ajouter panier</button>:
+                      <button  disabled>Ajouter panier</button>
+                    }
                 </div>
             </Card>
           )) : <p>vide</p> 
